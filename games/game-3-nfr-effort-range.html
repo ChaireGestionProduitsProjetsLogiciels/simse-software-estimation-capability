@@ -1,0 +1,271 @@
+<!-- games/game-3-nfr-effort-range.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Game 3 — NFR-Based Effort Range Selection | SimSE Educational Games</title>
+  <meta name="description" content="Game 3: Select an effort estimation range based on NFR scenarios and a linear regression model with MMRE bounds." />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-title">SimSE Educational Games</span>
+          <span class="brand-subtitle">Philanthropic Research Chair in Software Product and Project Management</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#use">How to use</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Page header -->
+    <section class="hero hero-page">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-inner hero-inner-page">
+        <div class="hero-copy">
+          <p class="kicker">Game 3 • A-posteriori estimation track</p>
+          <h1>NFR-Based Effort Range Selection</h1>
+          <p class="lead">
+            Practice selecting an <strong>effort estimation range</strong> (not a single-point estimate) based on
+            how <strong>Non-Functional Requirements (NFRs)</strong> shift expected effort around a
+            <strong>linear regression model</strong>.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="../questionnaires/game-3-questionnaire.html">Open questionnaire</a>
+            <a class="btn btn-soft" href="#downloads">Downloads</a>
+          </div>
+
+          <div class="hero-links">
+            <span class="muted">Recommended:</span>
+            <a href="#how-it-works">read “How it works” first</a>
+          </div>
+        </div>
+
+        <aside class="hero-aside" aria-label="Quick facts">
+          <div class="stat-card">
+            <div class="stat-num">10</div>
+            <div class="stat-label">NFR scenarios</div>
+            <div class="stat-sub">one decision per scenario</div>
+          </div>
+
+          <div class="mini-cards">
+            <div class="mini-card">
+              <div class="mini-title">Input</div>
+              <p class="mini-text">A regression figure with the equation line and ±MMRE bounds.</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-title">Action</div>
+              <p class="mini-text">Choose an effort range (1–5) for each NFR scenario.</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-title">Outcome</div>
+              <p class="mini-text">Immediate scoring based on the expected range selection.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Learning objective</h2>
+          <p>
+            Teach students how a set of <strong>non-functional requirements (NFRs)</strong> impacts the selection of an
+            <strong>effort estimation range</strong> when using a <strong>linear regression model</strong>.
+          </p>
+        </header>
+
+        <div class="grid-2">
+          <article class="card card-raise">
+            <h3>What the player sees</h3>
+            <ul class="bullets">
+              <li>A figure presenting the regression model information for a corresponding dataset</li>
+              <li>The regression equation line (baseline estimate)</li>
+              <li>Two bounds based on uncertainty: <strong>equation ± MMRE</strong></li>
+              <li>Ten NFR scenarios, each with different NFR types and levels</li>
+            </ul>
+          </article>
+
+          <article class="card card-raise" id="how-it-works">
+            <h3>What the player does</h3>
+            <ol class="steps">
+              <li>Open the next available NFR scenario.</li>
+              <li>Assess how the NFR levels increase or decrease expected project effort.</li>
+              <li>Select the most appropriate effort range around the regression model.</li>
+              <li>Enter a number from <strong>1 to 5</strong> (one answer per scenario).</li>
+            </ol>
+            <p class="muted small">
+              Each scenario is answered once and cannot be revisited in the game flow.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Answer options -->
+    <section class="section section-soft">
+      <div class="container">
+        <header class="section-header">
+          <h2>Answer options (enter a number from 1 to 5)</h2>
+          <p>
+            For each NFR scenario, the player answers the following question:
+            <strong>“Among the five options below, which one would you choose to perform the effort estimation?”</strong>
+          </p>
+        </header>
+
+        <div class="option-grid">
+          <div class="option-card">
+            <div class="option-num">1</div>
+            <div class="option-body">
+              <div class="option-title">Above +MMRE</div>
+              <div class="option-text">The effort range above the <strong>+MMRE</strong> bound.</div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">2</div>
+            <div class="option-body">
+              <div class="option-title">Equation to +MMRE</div>
+              <div class="option-text">The effort range from the <strong>equation line</strong> up to <strong>+MMRE</strong>.</div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">3</div>
+            <div class="option-body">
+              <div class="option-title">On the equation</div>
+              <div class="option-text">Effort exactly on the <strong>equation line</strong>.</div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">4</div>
+            <div class="option-body">
+              <div class="option-title">Equation to -MMRE</div>
+              <div class="option-text">The effort range from the <strong>equation line</strong> down to <strong>-MMRE</strong>.</div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">5</div>
+            <div class="option-body">
+              <div class="option-title">Below -MMRE</div>
+              <div class="option-text">The effort range below the <strong>-MMRE</strong> bound.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Instructor notes / guidance -->
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Teaching notes</h2>
+          <p>
+            This game is useful to train students to reason about <strong>uncertainty</strong> and to understand how NFRs
+            may shift effort estimates above or below a regression baseline.
+          </p>
+        </header>
+
+        <div class="grid-2">
+          <article class="card card-raise">
+            <h3>Suggested use in class</h3>
+            <ul class="bullets">
+              <li>Start with a short recap: regression line as baseline + ±MMRE as uncertainty bounds</li>
+              <li>Have students justify their choice (why option 1 vs 2 vs 3, etc.)</li>
+              <li>Compare answers across scenarios to highlight systematic NFR effects</li>
+            </ul>
+          </article>
+
+          <article class="card card-raise">
+            <h3>What to evaluate</h3>
+            <ul class="bullets">
+              <li>Consistency of reasoning across scenarios</li>
+              <li>Ability to link NFR intensity to effort shift direction</li>
+              <li>Understanding that estimates can be ranges, not single points</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Downloads / Docs -->
+    <section id="downloads" class="section section-soft">
+      <div class="container">
+        <header class="section-header">
+          <h2>Downloads & documentation</h2>
+          <p>Replace the placeholders below with your GitHub Pages download URLs and manual links.</p>
+        </header>
+
+        <div class="download-grid">
+          <article class="download-card">
+            <h3>Game</h3>
+            <div class="download-links">
+              <a class="btn btn-primary" href="#" download>Download EXE</a>
+              <a class="btn btn-soft" href="#" download>Download JAR</a>
+            </div>
+          </article>
+
+          <article class="download-card">
+            <h3>Documentation</h3>
+            <div class="download-links">
+              <a class="btn btn-soft" href="#">Player’s Manual</a>
+              <a class="btn btn-soft" href="#">Instructor’s Manual</a>
+            </div>
+          </article>
+
+          <article class="download-card">
+            <h3>Resources</h3>
+            <div class="download-links">
+              <a class="btn btn-soft" href="#">Dataset / figure pack</a>
+              <a class="btn btn-soft" href="#">Additional links</a>
+            </div>
+          </article>
+        </div>
+
+        <p class="muted small top-gap">
+          Questionnaire: <a href="../questionnaires/game-3-questionnaire.html">game-3-questionnaire.html</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <a class="btn btn-soft" href="../index.html#games">← Back to all games</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-title">SimSE Educational Games</div>
+        <div class="muted">Philanthropic Research Chair in Software Product and Project Management</div>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#use">How to use</a>
+        <a class="ext" href="https://www.ics.uci.edu/~emilyo/SimSE/" target="_blank" rel="noopener noreferrer">SimSE community</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!-- questionnaires/game-3-questionnaire.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NFR Scenarios Questionnaire | Game 3</title>
+
+  <!-- Use the site CSS only -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/questionnaire.css" />
+
+ 
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Site header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-title">SimSE Educational Games</span>
+          <span class="brand-subtitle">Philanthropic Research Chair in Software Product and Project Management</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#use">How to use</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="q-wrap">
+      <div class="q-topbar">
+        <a class="q-back" href="../games/game-3-nfr-effort-range.html">← Back to Game 3</a>
+        <span class="muted small">Questionnaire • NFR scenarios</span>
+      </div>
+
+      <section class="q-header">
+        <h1>NFR Scenarios Questionnaire</h1>
+        <p class="q-subtitle">Non-Functional Requirements Effort Estimation — Game 3</p>
+      </section>
+
+      <div class="info-box">
+        <strong>How to use</strong><br />
+        Select a scenario to open the interactive calculator. Count NFR levels, calculate the total weight, review the regression graph,
+        select your range, and submit your answer in SimSE.
+      </div>
+
+      <section class="scenario-card">
+        <div class="section-header" style="margin-bottom:14px;">
+          <h2 style="margin:0; font-size:1.15rem;">Select a scenario</h2>
+          <p class="muted" style="margin:6px 0 0;">Click “Play Scenario” to open the modal.</p>
+        </div>
+
+        <div class="navigation">
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 1</div><button class="play-btn" onclick="openScenario(0)">Play Scenario</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 2</div><button class="play-btn" onclick="openScenario(1)">Play Scenario</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 3</div><button class="play-btn" onclick="openScenario(2)">Play Scenario</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 4</div><button class="play-btn" onclick="openScenario(3)">Play Scenario</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 5</div><button class="play-btn" onclick="openScenario(4)">Play Scenario</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 6</div><button class="play-btn" onclick="openScenario(5)">Play Scenario</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 7</div><button class="play-btn" onclick="openScenario(6)">Play Scenario</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 8</div><button class="play-btn" onclick="openScenario(7)">Play Scenario</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 9</div><button class="play-btn" onclick="openScenario(8)">Play Scenario</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 10</div><button class="play-btn" onclick="openScenario(9)">Play Scenario</button></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Modal (structure kept for your JS) -->
+    <div id="scenarioModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="modalTitle">Scenario</h2>
+          <button class="close-btn" onclick="closeModal()" aria-label="Close">&times;</button>
+        </div>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Site footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-title">SimSE Educational Games</div>
+        <div class="muted">Philanthropic Research Chair in Software Product and Project Management</div>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#use">How to use</a>
+        <a class="ext" href="https://www.ics.uci.edu/~emilyo/SimSE/" target="_blank" rel="noopener noreferrer">SimSE community</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Keep your existing JS and data =====
+    // Replace ONLY these button classes in template strings:
+    // - "btn btn-secondary" -> "btn btn-soft"
+    // Everything else stays the same.
+
+    // Scenario data (KEEP YOUR FULL ARRAY HERE)
+    const scenarios = [
+      {
+        id: 1,
+        name: "Scenario 1",
+        requirements: [
+          { name: "Performance requirements", level: "Low" },
+          { name: "Interface requirements", level: "Low" },
+          { name: "Operational requirements", level: "Low" },
+          { name: "Resource requirements", level: "Low" },
+          { name: "Design requirements & implementation constraints", level: "Low" },
+          { name: "Security and privacy requirements", level: "Low" },
+          { name: "Portability requirements", level: "Low" },
+          { name: "Software quality requirements", level: "Low" },
+          { name: "Software reliability requirements", level: "Low" },
+          { name: "Software maintainability requirements", level: "Low" },
+          { name: "Software safety requirements", level: "Low" },
+          { name: "Software configuration and delivery requirements", level: "Low" },
+          { name: "Data definition and database requirements", level: "Low" },
+          { name: "Human factor-related requirements", level: "Low" },
+          { name: "Adaptation and installation requirements", level: "Low" },
+          { name: "Other requirements", level: "Low" }
+        ]
+      },
+      {
+        id: 2,
+        name: "Scenario 2",
+        requirements: [
+          { name: "Performance requirements", level: "Nominal" },
+          { name: "Interface requirements", level: "High" },
+          { name: "Operational requirements", level: "Nominal" },
+          { name: "Resource requirements", level: "Low" },
+          { name: "Design requirements & implementation constraints", level: "High" },
+          { name: "Security and privacy requirements", level: "Very High" },
+          { name: "Portability requirements", level: "Nominal" },
+          { name: "Software quality requirements", level: "High" },
+          { name: "Software reliability requirements", level: "Nominal" },
+          { name: "Software maintainability requirements", level: "Nominal" },
+          { name: "Software safety requirements", level: "Low" },
+          { name: "Software configuration and delivery requirements", level: "Nominal" },
+          { name: "Data definition and database requirements", level: "Low" },
+          { name: "Human factor-related requirements", level: "Nominal" },
+          { name: "Adaptation and installation requirements", level: "Low" },
+          { name: "Other requirements", level: "Low" }
+        ]
+      }
+      // ...KEEP your remaining scenarios...
+    ];
+
+    let currentScenarioIndex = 0;
+    let currentStep = 1;
+    let calculatedTotal = 0;
+    let selectedRange = null;
+
+    function openScenario(index) {
+      currentScenarioIndex = index;
+      currentStep = 1;
+      selectedRange = null;
+
+      const scenario = scenarios[index];
+      if (!scenario) showUnavailableMessage(index);
+      else showStep1(scenario);
+
+      document.getElementById("scenarioModal").style.display = "block";
+    }
+
+    function showUnavailableMessage(index) {
+      document.getElementById("modalTitle").textContent = `Scenario ${index + 1}`;
+      document.getElementById("modalBody").innerHTML = `
+        <div style="text-align:center; padding: 60px 20px; color: var(--muted);">
+          <div style="font-size: 3rem; margin-bottom: 20px;">📋</div>
+          <h3 style="margin: 0 0 12px; color: var(--text); font-weight: 900; letter-spacing:-0.02em;">
+            Scenario ${index + 1} data not yet available
+          </h3>
+          <p style="margin:0;">Please add the scenario configuration.</p>
+        </div>
+      `;
+    }
+
+    function showStep1(scenario) {
+      document.getElementById("modalTitle").textContent = scenario.name + " - Step 1: Calculate Total Weight";
+
+      const quarterLength = Math.ceil(scenario.requirements.length / 4);
+      const columns = [
+        scenario.requirements.slice(0, quarterLength),
+        scenario.requirements.slice(quarterLength, quarterLength * 2),
+        scenario.requirements.slice(quarterLength * 2, quarterLength * 3),
+        scenario.requirements.slice(quarterLength * 3)
+      ];
+
+      document.getElementById("modalBody").innerHTML = `
+        <div style="margin-bottom: 16px;">
+          <h4 style="margin:0 0 10px; font-size: .95rem; font-weight: 900; color: var(--text); letter-spacing:-0.01em;">
+            NFR Attributes for this Project
+          </h4>
+          ${generateTable(columns, quarterLength)}
+        </div>
+
+        <div class="calculator-section">
+          <h4 class="calc-title">Calculate Total Weight</h4>
+          <p style="font-size:.9rem; color: var(--muted); margin: 0 0 12px;">
+            Count each level in the table above and enter the counts below:
+          </p>
+
+          <div style="display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap;">
+            <div class="calc-input-group" style="flex:1; min-width:220px;">
+              <label>Low (×1)</label>
+              <input type="number" id="inputLow" min="0" max="16" value="0" oninput="calculateTotal()">
+            </div>
+            <div class="calc-input-group" style="flex:1; min-width:220px;">
+              <label>Nominal (×2)</label>
+              <input type="number" id="inputNominal" min="0" max="16" value="0" oninput="calculateTotal()">
+            </div>
+            <div class="calc-input-group" style="flex:1; min-width:220px;">
+              <label>High (×3)</label>
+              <input type="number" id="inputHigh" min="0" max="16" value="0" oninput="calculateTotal()">
+            </div>
+            <div class="calc-input-group" style="flex:1; min-width:220px;">
+              <label>Very High (×4)</label>
+              <input type="number" id="inputVeryHigh" min="0" max="16" value="0" oninput="calculateTotal()">
+            </div>
+          </div>
+
+          <div class="calc-formula" id="formula">(0 × 1) + (0 × 2) + (0 × 3) + (0 × 4) = 0</div>
+
+          <div class="total-display">
+            <div class="total-label">Total Weight</div>
+            <div class="total-value" id="totalWeight">0</div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-soft" onclick="closeModal()">Cancel</button>
+          <button class="btn btn-primary" onclick="goToStep2()">Next: Select Range →</button>
+        </div>
+      `;
+    }
+
+    function generateTable(columns, quarterLength) {
+      let html = `
+        <table class="nfr-compact-table">
+          <thead>
+            <tr>
+              <th style="width:25px;">#</th><th>Requirement</th><th style="width:110px; text-align:center;">Level</th>
+              <th style="width:25px;">#</th><th>Requirement</th><th style="width:110px; text-align:center;">Level</th>
+              <th style="width:25px;">#</th><th>Requirement</th><th style="width:110px; text-align:center;">Level</th>
+              <th style="width:25px;">#</th><th>Requirement</th><th style="width:110px; text-align:center;">Level</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      for (let i = 0; i < columns[0].length; i++) {
+        html += "<tr>";
+        for (let col = 0; col < 4; col++) {
+          const req = columns[col][i];
+          if (req) {
+            const cls = "level-" + req.level.toLowerCase().replace(" ", "-");
+            html += `
+              <td style="color:#64748b; font-weight:800; text-align:center; font-size:.75rem;">${i + 1 + col * quarterLength}</td>
+              <td style="font-size:.78rem;">${req.name}</td>
+              <td style="text-align:center;"><span class="nfr-level ${cls}">${req.level}</span></td>
+            `;
+          } else {
+            html += `<td colspan="3"></td>`;
+          }
+        }
+        html += "</tr>";
+      }
+
+      html += "</tbody></table>";
+      return html;
+    }
+
+    function goToStep2() {
+      calculatedTotal = parseInt(document.getElementById("totalWeight").textContent, 10);
+
+      if (calculatedTotal === 0) {
+        alert("Please enter the counts to calculate the total weight before proceeding.");
+        return;
+      }
+
+      currentStep = 2;
+      const scenario = scenarios[currentScenarioIndex];
+      document.getElementById("modalTitle").textContent = scenario.name + " - Step 2: Select Effort Range";
+
+      document.getElementById("modalBody").innerHTML = `
+        <div class="total-display" style="margin-bottom:16px;">
+          <div class="total-label">Your Calculated Total Weight</div>
+          <div class="total-value">${calculatedTotal}</div>
+        </div>
+
+        <div style="background: rgba(15,23,42,.03); border: 1px solid var(--border); border-radius: 16px; padding: 16px; margin-bottom: 16px;">
+          <h3 style="margin:0 0 14px; text-align:center; font-size:1.05rem; font-weight:900; letter-spacing:-0.02em;">Linear Regression Model — Click a range to select</h3>
+
+          <div class="graph-container">
+            <img src="../assets/img/regression_graph.png" alt="Regression Graph"
+              onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'700\\' height=\\'510\\'%3E%3Crect width=\\'700\\' height=\\'510\\' fill=\\'%23f2f4f7\\'/%3E%3Ctext x=\\'50%25\\' y=\\'50%25\\' text-anchor=\\'middle\\' font-family=\\'Arial\\' font-size=\\'18\\' fill=\\'%2364758b\\'%3EAdd your regression graph image here%3C/text%3E%3C/svg%3E'">
+            <div class="range-overlay">
+              <div class="range-zone" id="zone1" style="top:0; height:20%;" onclick="selectRange(1)"></div>
+              <div class="range-zone" id="zone2" style="top:20%; height:20%;" onclick="selectRange(2)"></div>
+              <div class="range-zone" id="zone3" style="top:40%; height:10%;" onclick="selectRange(3)"></div>
+              <div class="range-zone" id="zone4" style="top:50%; height:20%;" onclick="selectRange(4)"></div>
+              <div class="range-zone" id="zone5" style="top:70%; height:30%;" onclick="selectRange(5)"></div>
+            </div>
+          </div>
+
+          <div class="ranges-legend">
+            <h3>5 Effort Estimation Ranges (click to select)</h3>
+            <div class="range-item" id="legend1" onclick="selectRange(1)"><span class="range-letter">Range 1</span><span>Over +MMRE</span></div>
+            <div class="range-item" id="legend2" onclick="selectRange(2)"><span class="range-letter">Range 2</span><span>From equation to +MMRE</span></div>
+            <div class="range-item" id="legend3" onclick="selectRange(3)"><span class="range-letter">Range 3</span><span>On equation</span></div>
+            <div class="range-item" id="legend4" onclick="selectRange(4)"><span class="range-letter">Range 4</span><span>From equation to -MMRE</span></div>
+            <div class="range-item" id="legend5" onclick="selectRange(5)"><span class="range-letter">Range 5</span><span>Below -MMRE</span></div>
+          </div>
+        </div>
+
+        <div class="question-box" id="selectionBox" style="display:none;">
+          <strong>✓ Your Selection:</strong>
+          <p style="margin-top:10px; font-size:1.05rem; color:#0f5132;">
+            You have selected <strong id="selectedRangeDisplay">Range ?</strong> for Total Weight = ${calculatedTotal}
+          </p>
+        </div>
+
+        <div class="action-note">
+          <strong>Next Step</strong>
+          With your Total Weight of <strong>${calculatedTotal}</strong>, select a range above, then go to SimSE to submit your answer.
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-soft" onclick="backToStep1()">← Back to Calculator</button>
+          <button class="btn btn-primary" onclick="closeModal()">Done</button>
+        </div>
+      `;
+    }
+
+    function selectRange(rangeNum) {
+      selectedRange = rangeNum;
+
+      for (let i = 1; i <= 5; i++) {
+        document.getElementById("zone" + i)?.classList.remove("selected");
+        document.getElementById("legend" + i)?.classList.remove("selected");
+      }
+
+      document.getElementById("zone" + rangeNum)?.classList.add("selected");
+      document.getElementById("legend" + rangeNum)?.classList.add("selected");
+
+      document.getElementById("selectionBox").style.display = "block";
+      document.getElementById("selectedRangeDisplay").textContent = "Range " + rangeNum;
+    }
+
+    function backToStep1() {
+      currentStep = 1;
+      showStep1(scenarios[currentScenarioIndex]);
+    }
+
+    function calculateTotal() {
+      const low = parseInt(document.getElementById("inputLow").value, 10) || 0;
+      const nominal = parseInt(document.getElementById("inputNominal").value, 10) || 0;
+      const high = parseInt(document.getElementById("inputHigh").value, 10) || 0;
+      const veryHigh = parseInt(document.getElementById("inputVeryHigh").value, 10) || 0;
+
+      const total = (low * 1) + (nominal * 2) + (high * 3) + (veryHigh * 4);
+
+      document.getElementById("totalWeight").textContent = total;
+      document.getElementById("formula").textContent =
+        `(${low} × 1) + (${nominal} × 2) + (${high} × 3) + (${veryHigh} × 4) = ${total}`;
+    }
+
+    function closeModal() {
+      document.getElementById("scenarioModal").style.display = "none";
+      currentStep = 1;
+      selectedRange = null;
+    }
+
+    window.onclick = function (event) {
+      const modal = document.getElementById("scenarioModal");
+      if (event.target === modal) closeModal();
+    };
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") closeModal();
+    });
+  </script>
+</body>
+</html>
