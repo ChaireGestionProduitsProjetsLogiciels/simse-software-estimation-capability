@@ -4,7 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NFR Scenarios Questionnaire | Game 3</title>
+  <title>Game 3 Questionnaire — Identification of Estimation Ranges (NFR) | SimSE Educational Games</title>
+  <meta name="description" content="Interactive questionnaire for Game 3: calculate NFR total weight and select an effort estimation range around a linear regression model (±MMRE)." />
+
+
 
   <!-- Use the site CSS only -->
   <link rel="stylesheet" href="../assets/css/style.css" />
@@ -44,13 +47,16 @@
 
       <section class="q-header">
         <h1>NFR Scenarios Questionnaire</h1>
-        <p class="q-subtitle">Non-Functional Requirements Effort Estimation — Game 3</p>
+        <p class="q-subtitle">Identification of Estimation Ranges based on Functional and Non-Functional Requirements (NFR) — Game 3</p>
       </section>
 
       <div class="info-box">
         <strong>How to use</strong><br />
-        Select a scenario to open the interactive calculator. Count NFR levels, calculate the total weight, review the regression graph,
-        select your range, and submit your answer in SimSE.
+        Select a scenario to open the interactive calculator. Count NFR levels, calculate the total weight, review the graph (data, regression equation and ±MMRE),
+        select an effort estimation range, and submit your answer in SimSE.
+        <p class="muted small" style="margin: 10px 0 0;">
+          <strong>MMRE</strong> = Mean Magnitude of Relative Error.
+        </p>
       </div>
 
       <section class="scenario-card">
@@ -115,21 +121,21 @@
         name: "Scenario 1",
         requirements: [
           { name: "Performance requirements", level: "Low" },
-          { name: "Interface requirements", level: "Low" },
+          { name: "Interface requirements", level: "Nominal" },
           { name: "Operational requirements", level: "Low" },
           { name: "Resource requirements", level: "Low" },
-          { name: "Design requirements & implementation constraints", level: "Low" },
-          { name: "Security and privacy requirements", level: "Low" },
-          { name: "Portability requirements", level: "Low" },
+          { name: "Design requirements & implementation constraints", level: "Nominal" },
+          { name: "Security and privacy requirements", level: "High" },
+          { name: "Portability requirements", level: "High" },
           { name: "Software quality requirements", level: "Low" },
-          { name: "Software reliability requirements", level: "Low" },
-          { name: "Software maintainability requirements", level: "Low" },
-          { name: "Software safety requirements", level: "Low" },
+          { name: "Software reliability requirements", level: "High" },
+          { name: "Software maintainability requirements", level: "High" },
+          { name: "Software safety requirements", level: "High" },
           { name: "Software configuration and delivery requirements", level: "Low" },
-          { name: "Data definition and database requirements", level: "Low" },
-          { name: "Human factor-related requirements", level: "Low" },
-          { name: "Adaptation and installation requirements", level: "Low" },
-          { name: "Other requirements", level: "Low" }
+          { name: "Data definition and database requirements", level: "High" },
+          { name: "Human factor-related requirements", level: "High" },
+          { name: "Adaptation and installation requirements", level: "High" },
+          { name: "Other requirements", level: "High" }
         ]
       },
       {
@@ -139,41 +145,41 @@
           { name: "Performance requirements", level: "Nominal" },
           { name: "Interface requirements", level: "Nominal" },
           { name: "Operational requirements", level: "Nominal" },
-          { name: "Resource requirements", level: "Nominal" },
-          { name: "Design requirements & implementation constraints", level: "Nominal" },
-          { name: "Security and privacy requirements", level: "Nominal" },
-          { name: "Portability requirements", level: "Nominal" },
-          { name: "Software quality requirements", level: "Nominal" },
-          { name: "Software reliability requirements", level: "Nominal" },
-          { name: "Software maintainability requirements", level: "Nominal" },
-          { name: "Software safety requirements", level: "Nominal" },
-          { name: "Software configuration and delivery requirements", level: "Nominal" },
-          { name: "Data definition and database requirements", level: "Nominal" },
-          { name: "Human factor-related requirements", level: "Nominal" },
-          { name: "Adaptation and installation requirements", level: "Nominal" },
-          { name: "Other requirements", level: "Nominal" }
+          { name: "Resource requirements", level: "Very High" },
+          { name: "Design requirements & implementation constraints", level: "High" },
+          { name: "Security and privacy requirements", level: "High" },
+          { name: "Portability requirements", level: "Very High" },
+          { name: "Software quality requirements", level: "Very High" },
+          { name: "Software reliability requirements", level: "Very High" },
+          { name: "Software maintainability requirements", level: "High" },
+          { name: "Software safety requirements", level: "High" },
+          { name: "Software configuration and delivery requirements", level: "High" },
+          { name: "Data definition and database requirements", level: "Very High" },
+          { name: "Human factor-related requirements", level: "Very High" },
+          { name: "Adaptation and installation requirements", level: "Very High" },
+          { name: "Other requirements", level: "High" }
         ]
       },
       {
         id: 3,
         name: "Scenario 3",
         requirements: [
-          { name: "Performance requirements", level: "High" },
-          { name: "Interface requirements", level: "High" },
+          { name: "Performance requirements", level: "Low" },
+          { name: "Interface requirements", level: "Low" },
           { name: "Operational requirements", level: "High" },
           { name: "Resource requirements", level: "High" },
-          { name: "Design requirements & implementation constraints", level: "High" },
-          { name: "Security and privacy requirements", level: "High" },
-          { name: "Portability requirements", level: "High" },
-          { name: "Software quality requirements", level: "High" },
+          { name: "Design requirements & implementation constraints", level: "Very High" },
+          { name: "Security and privacy requirements", level: "Very High" },
+          { name: "Portability requirements", level: "Very High" },
+          { name: "Software quality requirements", level: "Very High" },
           { name: "Software reliability requirements", level: "High" },
-          { name: "Software maintainability requirements", level: "High" },
-          { name: "Software safety requirements", level: "High" },
-          { name: "Software configuration and delivery requirements", level: "High" },
-          { name: "Data definition and database requirements", level: "High" },
-          { name: "Human factor-related requirements", level: "High" },
-          { name: "Adaptation and installation requirements", level: "High" },
-          { name: "Other requirements", level: "High" }
+          { name: "Software maintainability requirements", level: "Very High" },
+          { name: "Software safety requirements", level: "Low" },
+          { name: "Software configuration and delivery requirements", level: "Low" },
+          { name: "Data definition and database requirements", level: "Very High" },
+          { name: "Human factor-related requirements", level: "Very High" },
+          { name: "Adaptation and installation requirements", level: "Very High" },
+          { name: "Other requirements", level: "Very High" }
         ]
       },
       {
@@ -181,21 +187,21 @@
         name: "Scenario 4",
         requirements: [
           { name: "Performance requirements", level: "Very High" },
-          { name: "Interface requirements", level: "Very High" },
-          { name: "Operational requirements", level: "Very High" },
-          { name: "Resource requirements", level: "Very High" },
-          { name: "Design requirements & implementation constraints", level: "Very High" },
-          { name: "Security and privacy requirements", level: "Very High" },
+          { name: "Interface requirements", level: "Nominal" },
+          { name: "Operational requirements", level: "Low" },
+          { name: "Resource requirements", level: "Low" },
+          { name: "Design requirements & implementation constraints", level: "Low" },
+          { name: "Security and privacy requirements", level: "Low" },
           { name: "Portability requirements", level: "Very High" },
           { name: "Software quality requirements", level: "Very High" },
-          { name: "Software reliability requirements", level: "Very High" },
+          { name: "Software reliability requirements", level: "Low" },
           { name: "Software maintainability requirements", level: "Very High" },
           { name: "Software safety requirements", level: "Very High" },
-          { name: "Software configuration and delivery requirements", level: "Very High" },
-          { name: "Data definition and database requirements", level: "Very High" },
-          { name: "Human factor-related requirements", level: "Very High" },
-          { name: "Adaptation and installation requirements", level: "Very High" },
-          { name: "Other requirements", level: "Very High" }
+          { name: "Software configuration and delivery requirements", level: "Low" },
+          { name: "Data definition and database requirements", level: "Nominal" },
+          { name: "Human factor-related requirements", level: "Nominal" },
+          { name: "Adaptation and installation requirements", level: "Nominal" },
+          { name: "Other requirements", level: "Nominal" }
         ]
       },
       {
@@ -204,14 +210,14 @@
         requirements: [
           { name: "Performance requirements", level: "Low" },
           { name: "Interface requirements", level: "Low" },
-          { name: "Operational requirements", level: "Low" },
-          { name: "Resource requirements", level: "Low" },
-          { name: "Design requirements & implementation constraints", level: "Low" },
+          { name: "Operational requirements", level: "Nominal" },
+          { name: "Resource requirements", level: "Nominal" },
+          { name: "Design requirements & implementation constraints", level: "Very High" },
           { name: "Security and privacy requirements", level: "Nominal" },
           { name: "Portability requirements", level: "Nominal" },
-          { name: "Software quality requirements", level: "Nominal" },
-          { name: "Software reliability requirements", level: "Nominal" },
-          { name: "Software maintainability requirements", level: "Nominal" },
+          { name: "Software quality requirements", level: "Low" },
+          { name: "Software reliability requirements", level: "Low" },
+          { name: "Software maintainability requirements", level: "Low" },
           { name: "Software safety requirements", level: "Nominal" },
           { name: "Software configuration and delivery requirements", level: "Nominal" },
           { name: "Data definition and database requirements", level: "Nominal" },
@@ -224,20 +230,20 @@
         id: 6,
         name: "Scenario 6",
         requirements: [
-          { name: "Performance requirements", level: "High" },
-          { name: "Interface requirements", level: "High" },
+          { name: "Performance requirements", level: "Nominal" },
+          { name: "Interface requirements", level: "Low" },
           { name: "Operational requirements", level: "High" },
           { name: "Resource requirements", level: "High" },
           { name: "Design requirements & implementation constraints", level: "High" },
-          { name: "Security and privacy requirements", level: "High" },
-          { name: "Portability requirements", level: "High" },
+          { name: "Security and privacy requirements", level: "Very High" },
+          { name: "Portability requirements", level: "Very High" },
           { name: "Software quality requirements", level: "High" },
           { name: "Software reliability requirements", level: "High" },
           { name: "Software maintainability requirements", level: "Very High" },
           { name: "Software safety requirements", level: "Very High" },
           { name: "Software configuration and delivery requirements", level: "Very High" },
-          { name: "Data definition and database requirements", level: "Very High" },
-          { name: "Human factor-related requirements", level: "Very High" },
+          { name: "Data definition and database requirements", level: "High" },
+          { name: "Human factor-related requirements", level: "High" },
           { name: "Adaptation and installation requirements", level: "Very High" },
           { name: "Other requirements", level: "Very High" }
         ]
@@ -246,21 +252,21 @@
         id: 7,
         name: "Scenario 7",
         requirements: [
-          { name: "Performance requirements", level: "Nominal" },
-          { name: "Interface requirements", level: "Nominal" },
+          { name: "Performance requirements", level: "High" },
+          { name: "Interface requirements", level: "Low" },
           { name: "Operational requirements", level: "Nominal" },
           { name: "Resource requirements", level: "Nominal" },
-          { name: "Design requirements & implementation constraints", level: "Nominal" },
+          { name: "Design requirements & implementation constraints", level: "High" },
           { name: "Security and privacy requirements", level: "Nominal" },
           { name: "Portability requirements", level: "High" },
-          { name: "Software quality requirements", level: "High" },
-          { name: "Software reliability requirements", level: "High" },
+          { name: "Software quality requirements", level: "Very High" },
+          { name: "Software reliability requirements", level: "Low" },
           { name: "Software maintainability requirements", level: "High" },
           { name: "Software safety requirements", level: "High" },
-          { name: "Software configuration and delivery requirements", level: "High" },
+          { name: "Software configuration and delivery requirements", level: "Nominal" },
           { name: "Data definition and database requirements", level: "High" },
-          { name: "Human factor-related requirements", level: "High" },
-          { name: "Adaptation and installation requirements", level: "High" },
+          { name: "Human factor-related requirements", level: "Very High" },
+          { name: "Adaptation and installation requirements", level: "Very High" },
           { name: "Other requirements", level: "High" }
         ]
       },
@@ -269,20 +275,20 @@
         name: "Scenario 8",
         requirements: [
           { name: "Performance requirements", level: "Very High" },
-          { name: "Interface requirements", level: "Very High" },
+          { name: "Interface requirements", level: "Low" },
           { name: "Operational requirements", level: "Very High" },
           { name: "Resource requirements", level: "Very High" },
-          { name: "Design requirements & implementation constraints", level: "Very High" },
-          { name: "Security and privacy requirements", level: "Very High" },
-          { name: "Portability requirements", level: "Very High" },
+          { name: "Design requirements & implementation constraints", level: "Nominal" },
+          { name: "Security and privacy requirements", level: "High" },
+          { name: "Portability requirements", level: "Nominal" },
           { name: "Software quality requirements", level: "High" },
-          { name: "Software reliability requirements", level: "High" },
+          { name: "Software reliability requirements", level: "Nominal" },
           { name: "Software maintainability requirements", level: "High" },
-          { name: "Software safety requirements", level: "Nominal" },
-          { name: "Software configuration and delivery requirements", level: "Nominal" },
-          { name: "Data definition and database requirements", level: "Nominal" },
-          { name: "Human factor-related requirements", level: "Low" },
-          { name: "Adaptation and installation requirements", level: "Low" },
+          { name: "Software safety requirements", level: "Very High" },
+          { name: "Software configuration and delivery requirements", level: "Very High" },
+          { name: "Data definition and database requirements", level: "Low" },
+          { name: "Human factor-related requirements", level: "Very High" },
+          { name: "Adaptation and installation requirements", level: "Very High" },
           { name: "Other requirements", level: "Low" }
         ]
       },
@@ -291,46 +297,46 @@
         name: "Scenario 9",
         requirements: [
           { name: "Performance requirements", level: "Low" },
-          { name: "Interface requirements", level: "Low" },
+          { name: "Interface requirements", level: "Nominal" },
           { name: "Operational requirements", level: "Low" },
-          { name: "Resource requirements", level: "Low" },
-          { name: "Design requirements & implementation constraints", level: "Low" },
+          { name: "Resource requirements", level: "Very High" },
+          { name: "Design requirements & implementation constraints", level: "High" },
           { name: "Security and privacy requirements", level: "Low" },
           { name: "Portability requirements", level: "Low" },
-          { name: "Software quality requirements", level: "Low" },
+          { name: "Software quality requirements", level: "High" },
           { name: "Software reliability requirements", level: "Low" },
-          { name: "Software maintainability requirements", level: "Nominal" },
-          { name: "Software safety requirements", level: "Nominal" },
-          { name: "Software configuration and delivery requirements", level: "High" },
+          { name: "Software maintainability requirements", level: "Very High" },
+          { name: "Software safety requirements", level: "Low" },
+          { name: "Software configuration and delivery requirements", level: "Low" },
           { name: "Data definition and database requirements", level: "High" },
-          { name: "Human factor-related requirements", level: "High" },
-          { name: "Adaptation and installation requirements", level: "Very High" },
-          { name: "Other requirements", level: "Very High" }
+          { name: "Human factor-related requirements", level: "Low" },
+          { name: "Adaptation and installation requirements", level: "Low" },
+          { name: "Other requirements", level: "Nominal" }
         ]
       },
       {
         id: 10,
         name: "Scenario 10",
         requirements: [
-          { name: "Performance requirements", level: "Low" },
+          { name: "Performance requirements", level: "High" },
           { name: "Interface requirements", level: "Low" },
-          { name: "Operational requirements", level: "Low" },
+          { name: "Operational requirements", level: "Nominal" },
           { name: "Resource requirements", level: "Low" },
           { name: "Design requirements & implementation constraints", level: "Nominal" },
-          { name: "Security and privacy requirements", level: "Nominal" },
-          { name: "Portability requirements", level: "Nominal" },
+          { name: "Security and privacy requirements", level: "Very High" },
+          { name: "Portability requirements", level: "High" },
           { name: "Software quality requirements", level: "Nominal" },
-          { name: "Software reliability requirements", level: "High" },
-          { name: "Software maintainability requirements", level: "High" },
+          { name: "Software reliability requirements", level: "Very High" },
+          { name: "Software maintainability requirements", level: "Very High" },
           { name: "Software safety requirements", level: "High" },
-          { name: "Software configuration and delivery requirements", level: "High" },
-          { name: "Data definition and database requirements", level: "Very High" },
+          { name: "Software configuration and delivery requirements", level: "Nominal" },
+          { name: "Data definition and database requirements", level: "Low" },
           { name: "Human factor-related requirements", level: "Very High" },
-          { name: "Adaptation and installation requirements", level: "Very High" },
-          { name: "Other requirements", level: "Very High" }
+          { name: "Adaptation and installation requirements", level: "High" },
+          { name: "Other requirements", level: "Low" }
         ]
       },
-      // ...KEEP your remaining scenarios...
+
     ];
 
     let currentScenarioIndex = 0;
@@ -493,7 +499,7 @@
 
           <div class="ranges-legend">
             <h3>5 Effort Estimation Ranges (click to select)</h3>
-            <div class="range-item" id="legend1" onclick="selectRange(1)"><span class="range-letter">Range 1</span><span>Over +MMRE</span></div>
+            <div class="range-item" id="legend1" onclick="selectRange(1)"><span class="range-letter">Range 1</span><span>Above +MMRE</span></div>
             <div class="range-item" id="legend2" onclick="selectRange(2)"><span class="range-letter">Range 2</span><span>From equation to +MMRE</span></div>
             <div class="range-item" id="legend3" onclick="selectRange(3)"><span class="range-letter">Range 3</span><span>On equation</span></div>
             <div class="range-item" id="legend4" onclick="selectRange(4)"><span class="range-letter">Range 4</span><span>From equation to -MMRE</span></div>

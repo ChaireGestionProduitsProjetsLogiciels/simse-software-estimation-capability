@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Game 3 — NFR-Based Effort Range Selection | SimSE Educational Games</title>
+  <title>Game 3 — Identification of Estimation Ranges based on Functional and Non-Functional Requirements (NFR) | SimSE Educational Games</title>
   <meta name="description" content="Game 3: Select an effort estimation range based on NFR scenarios and a linear regression model with MMRE bounds." />
   <link rel="stylesheet" href="../assets/css/style.css" />
 </head>
@@ -37,7 +37,7 @@
       <div class="container hero-inner hero-inner-page">
         <div class="hero-copy">
           <p class="kicker">Game 3 • A-posteriori estimation track</p>
-          <h1>NFR-Based Effort Range Selection</h1>
+          <h1>Identification of Estimation Ranges based on Functional and Non-Functional Requirements (NFR)</h1>
           <p class="lead">
             Practice selecting an <strong>effort estimation range</strong> (not a single-point estimate) based on
             how <strong>Non-Functional Requirements (NFRs)</strong> shift expected effort around a
@@ -65,7 +65,7 @@
           <div class="mini-cards">
             <div class="mini-card">
               <div class="mini-title">Input</div>
-              <p class="mini-text">A regression figure with the equation line and ±MMRE bounds.</p>
+              <p class="mini-text">A graph with the regression equation (full red line) and ±MMRE bounds (dashed red lines).</p>
             </div>
             <div class="mini-card">
               <div class="mini-title">Action</div>
@@ -95,11 +95,14 @@
           <article class="card card-raise">
             <h3>What the player sees</h3>
             <ul class="bullets">
-              <li>A figure presenting the regression model information for a corresponding dataset</li>
-              <li>The regression equation line (baseline estimate)</li>
-              <li>Two bounds based on uncertainty: <strong>equation ± MMRE</strong></li>
-              <li>Ten NFR scenarios, each with different NFR types and levels</li>
+              <li>A graph showing project data and the linear regression model</li>
+              <li>The full red line representing the regression equation</li>
+              <li>The upper and lower dashed red lines representing <strong>equation ± MMRE</strong></li>
+              <li>Ten NFR scenarios, each with different levels of non-functional requirements</li>
             </ul>
+            <p class="muted small">
+              <strong>MMRE</strong> = Mean Magnitude of Relative Error.
+            </p>
           </article>
 
           <article class="card card-raise" id="how-it-works">
@@ -107,7 +110,7 @@
             <ol class="steps">
               <li>Open the next available NFR scenario.</li>
               <li>Assess how the NFR levels increase or decrease expected project effort.</li>
-              <li>Select the most appropriate effort range around the regression model.</li>
+              <li>Select the most appropriate effort estimation range from the graph (data, regression equation and ±MMRE).</li>
               <li>Enter a number from <strong>1 to 5</strong> (one answer per scenario).</li>
             </ol>
             <p class="muted small">
@@ -125,7 +128,7 @@
           <h2>Answer options (enter a number from 1 to 5)</h2>
           <p>
             For each NFR scenario, the player answers the following question:
-            <strong>“Among the five options below, which one would you choose to perform the effort estimation?”</strong>
+            <strong>“Among the five options below, which one would you choose to perform the effort estimation for this software project?”</strong>
           </p>
         </header>
 
@@ -191,6 +194,7 @@
               <li>Start with a short recap: regression line as baseline + ±MMRE as uncertainty bounds</li>
               <li>Have students justify their choice (why option 1 vs 2 vs 3, etc.)</li>
               <li>Compare answers across scenarios to highlight systematic NFR effects</li>
+              <li>Emphasize that the player selects a range, not a single-point estimate</li>
             </ul>
           </article>
 
