@@ -552,11 +552,11 @@
       const high = parseInt(document.getElementById("inputHigh").value, 10) || 0;
       const veryHigh = parseInt(document.getElementById("inputVeryHigh").value, 10) || 0;
 
-      const total = (low * 1) + (nominal * 2) + (high * 3) + (veryHigh * 4);
+      const total = (low * -1) + (nominal * 0) + (high * 1) + (veryHigh * 2);
 
       document.getElementById("totalWeight").textContent = total;
       document.getElementById("formula").textContent =
-        `(${low} × 1) + (${nominal} × 2) + (${high} × 3) + (${veryHigh} × 4) = ${total}`;
+        `(${low} × -1) + (${nominal} × 0) + (${high} × 1) + (${veryHigh} × 2) = ${total}`;
     }
 
     function closeModal() {
