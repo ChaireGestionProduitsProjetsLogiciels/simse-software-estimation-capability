@@ -1,0 +1,805 @@
+<!-- questionnaires/game-4-questionnaire.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game 4 Questionnaire - Effort Estimation Adjustment (Effort Drivers) | SimSE Educational Games</title>
+  <meta name="description" content="Interactive questionnaire for Game 4: adjust an initial NFR estimation by incorporating non-product effort drivers and select the refined estimation position." />
+
+  <!-- Use the site CSS only -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/questionnaire.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Site header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-title">SimSE Educational Games</span>
+          <span class="brand-subtitle">Philanthropic Research Chair in Software Product and Project Management</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#use">How to use</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="q-wrap">
+      <div class="q-topbar">
+        <a class="q-back" href="../games/game-4-effort-drivers-adjustment.html">← Back to Game 4</a>
+        <span class="muted small">Questionnaire • Effort Driver scenarios</span>
+      </div>
+
+      <section class="q-header">
+        <h1>Effort Drivers Adjustment Questionnaire</h1>
+        <p class="q-subtitle">Effort Estimation Adjustment using Non-Product Effort Drivers - Game 4</p>
+      </section>
+
+      <div class="info-box">
+        <strong>How to use</strong><br />
+        Select a scenario to open the interactive calculator. Review the initial NFR estimation, examine the 10 effort drivers and their levels, 
+        calculate the total weight, determine the adjustment, select the final estimation position (1-10), and submit your answer in SimSE.
+        <p class="muted small" style="margin: 10px 0 0;">
+          <strong>Weight system:</strong> Low = -1, Nominal = 0, High = +1, Very High = +2
+        </p>
+      </div>
+
+      <section class="scenario-card">
+        <div class="section-header" style="margin-bottom:14px;">
+          <h2 style="margin:0; font-size:1.15rem;">Select a scenario</h2>
+          <p class="muted" style="margin:6px 0 0;">Click "Play Scenario" to open the modal.</p>
+        </div>
+
+        <div class="navigation">
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 1</div><button class="play-btn" onclick="openScenario(0)">Play Scenario</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 2</div><button class="play-btn" onclick="openScenario(1)">Play Scenario</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 3</div><button class="play-btn" onclick="openScenario(2)">Play Scenario</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 4</div><button class="play-btn" onclick="openScenario(3)">Play Scenario</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 5</div><button class="play-btn" onclick="openScenario(4)">Play Scenario</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 6</div><button class="play-btn" onclick="openScenario(5)">Play Scenario</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 7</div><button class="play-btn" onclick="openScenario(6)">Play Scenario</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 8</div><button class="play-btn" onclick="openScenario(7)">Play Scenario</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 9</div><button class="play-btn" onclick="openScenario(8)">Play Scenario</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Scenario 10</div><button class="play-btn" onclick="openScenario(9)">Play Scenario</button></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Modal -->
+    <div id="scenarioModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="modalTitle">Scenario</h2>
+          <button class="close-btn" onclick="closeModal()" aria-label="Close">&times;</button>
+        </div>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Site footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-title">SimSE Educational Games</div>
+        <div class="muted">Philanthropic Research Chair in Software Product and Project Management</div>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#use">How to use</a>
+        <a class="ext" href="https://www.ics.uci.edu/~emilyo/SimSE/" target="_blank" rel="noopener noreferrer">SimSE community</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scenario data with 10 effort drivers
+    const scenarios = [
+      {
+        id: 1,
+        name: "Scenario 1",
+        initialEstimation: "Range 5 (Below -MMRE)",
+        initialRange: 5,
+        drivers: [
+          { name: "TIME - Execution time constraint", level: "Very High" },
+          { name: "STOR - Main storage constraint", level: "Very High" },
+          { name: "TURN - Computer turnaround time", level: "Nominal" },
+          { name: "ACAP - Analyst capability", level: "Nominal" },
+          { name: "AEXP - Applications experience", level: "Very High" },
+          { name: "PCAP - Programmer capability", level: "Low" },
+          { name: "LEXP - Programming language experience", level: "Very High" },
+          { name: "MODP - Use of modern programming practices", level: "Very High" },
+          { name: "TOOL - Use of software tools", level: "High" },
+          { name: "SCED - Required development schedule", level: "High" }
+        ]
+      },
+      {
+        id: 2,
+        name: "Scenario 2",
+        initialEstimation: "Range 5 (Below -MMRE)",
+        initialRange: 5,
+        drivers: [
+          { name: "TIME - Execution time constraint", level: "High" },
+          { name: "STOR - Main storage constraint", level: "High" },
+          { name: "TURN - Computer turnaround time", level: "Very High" },
+          { name: "ACAP - Analyst capability", level: "High" },
+          { name: "AEXP - Applications experience", level: "Very High" },
+          { name: "PCAP - Programmer capability", level: "Nominal" },
+          { name: "LEXP - Programming language experience", level: "High" },
+          { name: "MODP - Use of modern programming practices", level: "Low" },
+          { name: "TOOL - Use of software tools", level: "High" },
+          { name: "SCED - Required development schedule", level: "Very High" }
+        ]
+      },
+      {
+        id: 3,
+        name: "Scenario 3",
+        initialEstimation: "Range 2 (Equation to +MMRE)",
+        initialRange: 2,
+        drivers: [
+          { name: "TIME - Execution time constraint", level: "High" },
+          { name: "STOR - Main storage constraint", level: "High" },
+          { name: "TURN - Computer turnaround time", level: "Very High" },
+          { name: "ACAP - Analyst capability", level: "Nominal" },
+          { name: "AEXP - Applications experience", level: "High" },
+          { name: "PCAP - Programmer capability", level: "Very High" },
+          { name: "LEXP - Programming language experience", level: "Very High" },
+          { name: "MODP - Use of modern programming practices", level: "High" },
+          { name: "TOOL - Use of software tools", level: "Low" },
+          { name: "SCED - Required development schedule", level: "Very High" }
+        ]
+      },
+      {
+        id: 4,
+        name: "Scenario 4",
+        initialEstimation: "Range 2 (Equation to +MMRE)",
+        initialRange: 2,
+        drivers: [
+          { name: "TIME - Execution time constraint", level: "Low" },
+          { name: "STOR - Main storage constraint", level: "High" },
+          { name: "TURN - Computer turnaround time", level: "Low" },
+          { name: "ACAP - Analyst capability", level: "Low" },
+          { name: "AEXP - Applications experience", level: "Very High" },
+          { name: "PCAP - Programmer capability", level: "Low" },
+          { name: "LEXP - Programming language experience", level: "Nominal" },
+          { name: "MODP - Use of modern programming practices", level: "Low" },
+          { name: "TOOL - Use of software tools", level: "High" },
+          { name: "SCED - Required development schedule", level: "Low" }
+        ]
+      },
+      {
+        id: 5,
+        name: "Scenario 5",
+        initialEstimation: "Range 4 (Equation to -MMRE)",
+        initialRange: 4,
+        drivers: [
+          { name: "TIME - Execution time constraint", level: "High" },
+          { name: "STOR - Main storage constraint", level: "Very High" },
+          { name: "TURN - Computer turnaround time", level: "Very High" },
+          { name: "ACAP - Analyst capability", level: "High" },
+          { name: "AEXP - Applications experience", level: "Nominal" },
+          { name: "PCAP - Programmer capability", level: "High" },
+          { name: "LEXP - Programming language experience", level: "Nominal" },
+          { name: "MODP - Use of modern programming practices", level: "High" },
+          { name: "TOOL - Use of software tools", level: "High" },
+          { name: "SCED - Required development schedule", level: "High" }
+        ]
+      },
+      {
+        id: 6,
+        name: "Scenario 6",
+        initialEstimation: "Range 4 (Equation to -MMRE)",
+        initialRange: 4,
+        drivers: [
+          { name: "TIME - Execution time constraint", level: "Very High" },
+          { name: "STOR - Main storage constraint", level: "Low" },
+          { name: "TURN - Computer turnaround time", level: "Low" },
+          { name: "ACAP - Analyst capability", level: "Low" },
+          { name: "AEXP - Applications experience", level: "Low" },
+          { name: "PCAP - Programmer capability", level: "Low" },
+          { name: "LEXP - Programming language experience", level: "Low" },
+          { name: "MODP - Use of modern programming practices", level: "Low" },
+          { name: "TOOL - Use of software tools", level: "Nominal" },
+          { name: "SCED - Required development schedule", level: "Low" }
+        ]
+      },
+      {
+        id: 7,
+        name: "Scenario 7",
+        initialEstimation: "Range 1 (Above +MMRE)",
+        initialRange: 1,
+        drivers: [
+          { name: "TIME - Execution time constraint", level: "Nominal" },
+          { name: "STOR - Main storage constraint", level: "Low" },
+          { name: "TURN - Computer turnaround time", level: "Low" },
+          { name: "ACAP - Analyst capability", level: "Low" },
+          { name: "AEXP - Applications experience", level: "Nominal" },
+          { name: "PCAP - Programmer capability", level: "Low" },
+          { name: "LEXP - Programming language experience", level: "Nominal" },
+          { name: "MODP - Use of modern programming practices", level: "Low" },
+          { name: "TOOL - Use of software tools", level: "Low" },
+          { name: "SCED - Required development schedule", level: "High" }
+        ]
+      },
+      {
+        id: 8,
+        name: "Scenario 8",
+        initialEstimation: "Range 1 (Above +MMRE)",
+        initialRange: 1,
+        drivers: [
+          { name: "TIME - Execution time constraint", level: "High" },
+          { name: "STOR - Main storage constraint", level: "Very High" },
+          { name: "TURN - Computer turnaround time", level: "High" },
+          { name: "ACAP - Analyst capability", level: "Very High" },
+          { name: "AEXP - Applications experience", level: "High" },
+          { name: "PCAP - Programmer capability", level: "High" },
+          { name: "LEXP - Programming language experience", level: "Low" },
+          { name: "MODP - Use of modern programming practices", level: "Low" },
+          { name: "TOOL - Use of software tools", level: "Low" },
+          { name: "SCED - Required development schedule", level: "Low" }
+        ]
+      },
+      {
+        id: 9,
+        name: "Scenario 9",
+        initialEstimation: "Range 2 (Equation to +MMRE)",
+        initialRange: 2,
+        drivers: [
+          { name: "TIME - Execution time constraint", level: "Nominal" },
+          { name: "STOR - Main storage constraint", level: "Low" },
+          { name: "TURN - Computer turnaround time", level: "High" },
+          { name: "ACAP - Analyst capability", level: "Low" },
+          { name: "AEXP - Applications experience", level: "Very High" },
+          { name: "PCAP - Programmer capability", level: "Low" },
+          { name: "LEXP - Programming language experience", level: "Low" },
+          { name: "MODP - Use of modern programming practices", level: "High" },
+          { name: "TOOL - Use of software tools", level: "Nominal" },
+          { name: "SCED - Required development schedule", level: "Nominal" }
+        ]
+      },
+      {
+        id: 10,
+        name: "Scenario 10",
+        initialEstimation: "Range 4 (Equation to -MMRE)",
+        initialRange: 4,
+        drivers: [
+          { name: "TIME - Execution time constraint", level: "High" },
+          { name: "STOR - Main storage constraint", level: "High" },
+          { name: "TURN - Computer turnaround time", level: "High" },
+          { name: "ACAP - Analyst capability", level: "Very High" },
+          { name: "AEXP - Applications experience", level: "Very High" },
+          { name: "PCAP - Programmer capability", level: "Very High" },
+          { name: "LEXP - Programming language experience", level: "High" },
+          { name: "MODP - Use of modern programming practices", level: "High" },
+          { name: "TOOL - Use of software tools", level: "Very High" },
+          { name: "SCED - Required development schedule", level: "Low" }
+        ]
+      }
+    ];
+
+    let currentScenarioIndex = 0;
+    let currentStep = 1;
+    let selectedPosition = null;
+    let calculatedTotal = 0;
+
+    function openScenario(index) {
+      currentScenarioIndex = index;
+      currentStep = 1;
+      selectedPosition = null;
+      const scenario = scenarios[index];
+      document.getElementById("modalTitle").textContent = scenario.name + " - Step 1: Count & Calculate";
+      document.getElementById("scenarioModal").style.display = "flex";
+      showStep1(scenario);
+    }
+
+    function showStep1(scenario) {
+      document.getElementById("modalBody").innerHTML = `
+        <div class="initial-estimation-box">
+          <h3 style="margin:0 0 8px; font-size:1rem; font-weight:700; color:#1e293b;">Initial NFR Estimation</h3>
+          <p style="margin:0; font-size:1.1rem; font-weight:600; color:#2563eb;">${scenario.initialEstimation}</p>
+        </div>
+
+        <div style="margin: 20px 0;">
+          <h3 style="margin:0 0 14px; font-size:1rem; font-weight:700;">Effort Drivers</h3>
+          ${generateDriversTable(scenario.drivers)}
+        </div>
+
+        <div class="weight-calculation">
+          <h3 style="margin:0 0 14px; font-size:1rem; font-weight:700;">Calculate Total Weight</h3>
+          <p style="margin:0 0 14px; font-size:0.9rem; color:#64748b;">Count how many drivers are at each level and enter the counts below.</p>
+          
+          <div class="calc-inputs" style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+            <div class="calc-input-group" style="flex:1; min-width:180px;">
+              <label>Low (×-1)</label>
+              <input type="number" id="inputLow" min="0" max="10" value="0" oninput="calculateTotal()">
+            </div>
+            <div class="calc-input-group" style="flex:1; min-width:180px;">
+              <label>Nominal (×0)</label>
+              <input type="number" id="inputNominal" min="0" max="10" value="0" oninput="calculateTotal()">
+            </div>
+            <div class="calc-input-group" style="flex:1; min-width:180px;">
+              <label>High (×1)</label>
+              <input type="number" id="inputHigh" min="0" max="10" value="0" oninput="calculateTotal()">
+            </div>
+            <div class="calc-input-group" style="flex:1; min-width:180px;">
+              <label>Very High (×2)</label>
+              <input type="number" id="inputVeryHigh" min="0" max="10" value="0" oninput="calculateTotal()">
+            </div>
+          </div>
+
+          <div class="calc-formula" id="formula">(0 × -1) + (0 × 0) + (0 × 1) + (0 × 2) = 0</div>
+
+          <div class="total-display">
+            <div class="total-label">Total Weight</div>
+            <div class="total-value" id="totalWeight">0</div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-soft" onclick="closeModal()">Cancel</button>
+          <button class="btn btn-primary" onclick="goToStep2()">Next: Select Position →</button>
+        </div>
+      `;
+    }
+
+    function generateDriversTable(drivers) {
+      // Split drivers into two columns of 5
+      const leftColumn = drivers.slice(0, 5);
+      const rightColumn = drivers.slice(5, 10);
+
+      let html = `
+        <table class="drivers-table">
+          <thead>
+            <tr>
+              <th style="width:25px; text-align:center;">#</th>
+              <th>Effort Driver</th>
+              <th style="width:110px; text-align:center;">Level</th>
+              <th style="width:25px; text-align:center;">#</th>
+              <th>Effort Driver</th>
+              <th style="width:110px; text-align:center;">Level</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      for (let i = 0; i < 5; i++) {
+        const leftDriver = leftColumn[i];
+        const rightDriver = rightColumn[i];
+        const leftCls = "level-" + leftDriver.level.toLowerCase().replace(" ", "-");
+        const rightCls = "level-" + rightDriver.level.toLowerCase().replace(" ", "-");
+        
+        html += `
+          <tr>
+            <td style="text-align:center; color:#64748b; font-weight:600;">${i + 1}</td>
+            <td style="font-size:0.85rem;">${leftDriver.name}</td>
+            <td style="text-align:center;"><span class="nfr-level ${leftCls}">${leftDriver.level}</span></td>
+            <td style="text-align:center; color:#64748b; font-weight:600;">${i + 6}</td>
+            <td style="font-size:0.85rem;">${rightDriver.name}</td>
+            <td style="text-align:center;"><span class="nfr-level ${rightCls}">${rightDriver.level}</span></td>
+          </tr>
+        `;
+      }
+
+      html += "</tbody></table>";
+      return html;
+    }
+
+    function calculateTotal() {
+      const low = parseInt(document.getElementById("inputLow").value, 10) || 0;
+      const nominal = parseInt(document.getElementById("inputNominal").value, 10) || 0;
+      const high = parseInt(document.getElementById("inputHigh").value, 10) || 0;
+      const veryHigh = parseInt(document.getElementById("inputVeryHigh").value, 10) || 0;
+
+      const total = (low * -1) + (nominal * 0) + (high * 1) + (veryHigh * 2);
+
+      document.getElementById("totalWeight").textContent = total;
+      document.getElementById("formula").textContent =
+        `(${low} × -1) + (${nominal} × 0) + (${high} × 1) + (${veryHigh} × 2) = ${total}`;
+    }
+
+    function goToStep2() {
+      calculatedTotal = parseInt(document.getElementById("totalWeight").textContent, 10);
+
+      if (calculatedTotal === 0 && 
+          (parseInt(document.getElementById("inputLow").value, 10) === 0 &&
+           parseInt(document.getElementById("inputNominal").value, 10) === 0 &&
+           parseInt(document.getElementById("inputHigh").value, 10) === 0 &&
+           parseInt(document.getElementById("inputVeryHigh").value, 10) === 0)) {
+        alert("Please enter the counts to calculate the total weight before proceeding.");
+        return;
+      }
+
+      currentStep = 2;
+      const scenario = scenarios[currentScenarioIndex];
+      document.getElementById("modalTitle").textContent = scenario.name + " - Step 2: Select Adjusted Position";
+
+      document.getElementById("modalBody").innerHTML = `
+        <div class="total-display" style="margin-bottom:16px;">
+          <div class="total-label">Your Calculated Total Weight</div>
+          <div class="total-value">${calculatedTotal}</div>
+        </div>
+
+        <div style="background: rgba(15,23,42,.03); border: 1px solid var(--border); border-radius: 16px; padding: 16px; margin-bottom: 16px;">
+          <h3 style="margin:0 0 14px; text-align:center; font-size:1.05rem; font-weight:900; letter-spacing:-0.02em;">Linear Regression Model - Click a position to select</h3>
+
+          <div class="graph-container">
+            <img src="../assets/img/regression_graph.png" alt="Regression Graph"
+              onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'700\\' height=\\'510\\'%3E%3Crect width=\\'700\\' height=\\'510\\' fill=\\'%23f2f4f7\\'/%3E%3Ctext x=\\'50%25\\' y=\\'50%25\\' text-anchor=\\'middle\\' font-family=\\'Arial\\' font-size=\\'18\\' fill=\\'%2364758b\\'%3EAdd your regression graph image here%3C/text%3E%3C/svg%3E'">
+            <div class="range-overlay">
+              <div class="range-zone" id="zone1" style="top:0; height:10%;" onclick="selectPosition(1)"></div>
+              <div class="range-zone" id="zone2" style="top:10%; height:10%;" onclick="selectPosition(2)"></div>
+              <div class="range-zone" id="zone3" style="top:20%; height:10%;" onclick="selectPosition(3)"></div>
+              <div class="range-zone" id="zone4" style="top:30%; height:10%;" onclick="selectPosition(4)"></div>
+              <div class="range-zone" id="zone5" style="top:40%; height:5%;" onclick="selectPosition(5)"></div>
+              <div class="range-zone" id="zone6" style="top:45%; height:5%;" onclick="selectPosition(6)"></div>
+              <div class="range-zone" id="zone7" style="top:50%; height:10%;" onclick="selectPosition(7)"></div>
+              <div class="range-zone" id="zone8" style="top:60%; height:10%;" onclick="selectPosition(8)"></div>
+              <div class="range-zone" id="zone9" style="top:70%; height:15%;" onclick="selectPosition(9)"></div>
+              <div class="range-zone" id="zone10" style="top:85%; height:15%;" onclick="selectPosition(10)"></div>
+            </div>
+          </div>
+
+          <div class="positions-legend">
+            <h3>10 Estimation Positions (click to select)</h3>
+            <div class="position-item" id="legend1" onclick="selectPosition(1)"><span class="position-number">1</span><span>Range 1 - Bottom half (Above +MMRE)</span></div>
+            <div class="position-item" id="legend2" onclick="selectPosition(2)"><span class="position-number">2</span><span>Range 1 - Top half (Above +MMRE)</span></div>
+            <div class="position-item" id="legend3" onclick="selectPosition(3)"><span class="position-number">3</span><span>Range 2 - Bottom half (Equation to +MMRE)</span></div>
+            <div class="position-item" id="legend4" onclick="selectPosition(4)"><span class="position-number">4</span><span>Range 2 - Top half (Equation to +MMRE)</span></div>
+            <div class="position-item" id="legend5" onclick="selectPosition(5)"><span class="position-number">5</span><span>Range 3 - Bottom half (On equation)</span></div>
+            <div class="position-item" id="legend6" onclick="selectPosition(6)"><span class="position-number">6</span><span>Range 3 - Top half (On equation)</span></div>
+            <div class="position-item" id="legend7" onclick="selectPosition(7)"><span class="position-number">7</span><span>Range 4 - Bottom half (Equation to -MMRE)</span></div>
+            <div class="position-item" id="legend8" onclick="selectPosition(8)"><span class="position-number">8</span><span>Range 4 - Top half (Equation to -MMRE)</span></div>
+            <div class="position-item" id="legend9" onclick="selectPosition(9)"><span class="position-number">9</span><span>Range 5 - Bottom half (Below -MMRE)</span></div>
+            <div class="position-item" id="legend10" onclick="selectPosition(10)"><span class="position-number">10</span><span>Range 5 - Top half (Below -MMRE)</span></div>
+          </div>
+        </div>
+
+        <div class="question-box" id="selectionBox" style="display:none;">
+          <strong>✓ Your Selection:</strong>
+          <p style="margin-top:10px; font-size:1.05rem; color:#0f5132;">
+            You have selected <strong id="selectedPositionDisplay">Position ?</strong> for Total Weight = ${calculatedTotal}
+          </p>
+        </div>
+
+        <div class="action-note">
+          <strong>Next Step</strong>
+          With your Total Weight of <strong>${calculatedTotal}</strong>, select a position above, then go to SimSE to submit your answer.
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-soft" onclick="backToStep1()">← Back to Calculator</button>
+          <button class="btn btn-primary" onclick="closeModal()">Done</button>
+        </div>
+      `;
+    }
+
+    function selectPosition(posNum) {
+      selectedPosition = posNum;
+
+      for (let i = 1; i <= 10; i++) {
+        document.getElementById("zone" + i)?.classList.remove("selected");
+        document.getElementById("legend" + i)?.classList.remove("selected");
+      }
+
+      document.getElementById("zone" + posNum)?.classList.add("selected");
+      document.getElementById("legend" + posNum)?.classList.add("selected");
+
+      document.getElementById("selectionBox").style.display = "block";
+      document.getElementById("selectedPositionDisplay").textContent = "Position " + posNum;
+    }
+
+    function backToStep1() {
+      currentStep = 1;
+      showStep1(scenarios[currentScenarioIndex]);
+    }
+
+    function closeModal() {
+      document.getElementById("scenarioModal").style.display = "none";
+      currentStep = 1;
+      selectedPosition = null;
+    }
+
+    window.onclick = function (event) {
+      const modal = document.getElementById("scenarioModal");
+      if (event.target === modal) closeModal();
+    };
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") closeModal();
+    });
+  </script>
+
+  <style>
+    .initial-estimation-box {
+      background: #dbeafe;
+      border-left: 4px solid #2563eb;
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .drivers-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    .drivers-table th,
+    .drivers-table td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .drivers-table thead {
+      background: #f9fafb;
+    }
+
+    .drivers-table th {
+      font-weight: 600;
+      color: #374151;
+      font-size: 0.875rem;
+    }
+
+    .drivers-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .weight-calculation {
+      background: #f9fafb;
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .calc-details {
+      margin-bottom: 16px;
+    }
+
+    .calc-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    .calc-label {
+      font-weight: 600;
+      color: #64748b;
+      min-width: 80px;
+    }
+
+    .calc-value {
+      color: #1e293b;
+      font-family: 'Courier New', monospace;
+    }
+
+    .summary-boxes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .summary-box {
+      background: #f9fafb;
+      padding: 14px;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid #e5e7eb;
+    }
+
+    .summary-label {
+      font-size: 0.875rem;
+      color: #64748b;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .summary-value {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    .adjustment-guide {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .criteria-match {
+      font-size: 0.9rem;
+    }
+
+    .positions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .position-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: white;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .position-card:hover {
+      border-color: #2563eb;
+      background: #f0f9ff;
+    }
+
+    .position-card.selected {
+      border-color: #2563eb;
+      background: #dbeafe;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .position-num {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #2563eb;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 8px;
+    }
+
+    .position-details {
+      flex: 1;
+    }
+
+    .position-range {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #1e293b;
+    }
+
+    .position-half {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    .position-desc {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    .action-note {
+      background: #f0fdf4;
+      border-left: 4px solid #22c55e;
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-size: 0.9rem;
+    }
+
+    .positions-legend {
+      margin-top: 20px;
+    }
+
+    .positions-legend h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1e293b;
+    }
+
+    .position-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      background: white;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .position-item:hover {
+      border-color: #2563eb;
+      background: #f0f9ff;
+    }
+
+    .position-item.selected {
+      border-color: #2563eb;
+      background: #dbeafe;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .position-number {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #2563eb;
+      color: white;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: 6px;
+    }
+
+    .calc-input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .calc-input-group label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    .calc-input-group input {
+      padding: 8px 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .calc-input-group input:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .calc-formula {
+      background: white;
+      padding: 12px;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: #1e293b;
+      margin-bottom: 16px;
+      border: 1px solid #e5e7eb;
+    }
+
+    @media (max-width: 768px) {
+      .positions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-boxes {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</body>
+</html>

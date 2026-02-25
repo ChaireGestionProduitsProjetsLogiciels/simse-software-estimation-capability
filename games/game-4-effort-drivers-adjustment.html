@@ -1,0 +1,385 @@
+<!-- games/game-4-effort-drivers-adjustment.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Game 4 - Effort Estimation Adjustment using Non-Product Effort Drivers | SimSE Educational Games</title>
+  <meta name="description" content="Game 4: Adjust an initial NFR-based effort estimation by incorporating non-product effort drivers from Boehm's COCOMO model." />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-title">SimSE Educational Games</span>
+          <span class="brand-subtitle">Philanthropic Research Chair in Software Product and Project Management</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#use">How to use</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Page header -->
+    <section class="hero hero-page">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-inner hero-inner-page">
+        <div class="hero-copy">
+          <p class="kicker">Estimation & Project constraints</p>
+          <h1>Adjustment to the estimation range with a set of project constraints</h1>
+          <p class="lead">
+            Learn to <strong>adjust an initial estimation</strong> by incorporating <strong>non-product effort drivers</strong> 
+            (Computer, Personnel, and Project attributes) that influence development effort beyond functional and 
+            non-functional requirements.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="../questionnaires/game-4-questionnaire.html">Open questionnaire</a>
+            <a class="btn btn-soft" href="#downloads">Downloads</a>
+          </div>
+
+          <div class="hero-links">
+            <span class="muted">Recommended:</span>
+            <a href="#how-it-works">read "How it works" first</a>
+          </div>
+        </div>
+
+        <aside class="hero-aside" aria-label="Quick facts">
+          <div class="stat-card">
+            <div class="stat-num">10</div>
+            <div class="stat-label">Adjustment scenarios</div>
+            <div class="stat-sub">one decision per scenario</div>
+          </div>
+
+          <div class="mini-cards">
+            <div class="mini-card">
+              <div class="mini-title">Input</div>
+              <p class="mini-text">Initial NFR estimation + 10 effort drivers with their levels.</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-title">Action</div>
+              <p class="mini-text">Calculate total weight and select adjusted estimation position (1–10).</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-title">Outcome</div>
+              <p class="mini-text">Immediate scoring based on correct range adjustment logic.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Learning objective</h2>
+          <p>
+            Teach students how to <strong>adjust a previously established effort estimation range</strong> by incorporating 
+            <strong>non-product attributes</strong> as additional independent variables, building upon initial estimates 
+            derived from functional size and non-functional requirements.
+          </p>
+        </header>
+
+        <div class="grid-2">
+          <article class="card card-raise">
+            <h3>What the player sees</h3>
+            <ul class="bullets">
+              <li>A graph showing the linear regression model with equation line and ±MMRE bounds</li>
+              <li>Five effort ranges, each divided into bottom half and top half (10 positions total)</li>
+              <li>An initial estimation position based on NFR analysis</li>
+              <li>Ten scenarios with different combinations of effort driver levels</li>
+              <li>A table of 10 effort drivers: TIME, STOR, TURN, ACAP, AEXP, PCAP, LEXP, MODP, TOOL, SCED</li>
+            </ul>
+          </article>
+
+          <article class="card card-raise" id="how-it-works">
+            <h3>What the player does</h3>
+            <ol class="steps">
+              <li>Review the initial NFR-based estimation position (Range 1-5).</li>
+              <li>Examine the 10 effort drivers and their levels (Low, Nominal, High, Very High).</li>
+              <li>Calculate the total weight using the weight system.</li>
+              <li>Apply adjustment criteria to determine the final estimation position.</li>
+              <li>Select the appropriate position from <strong>1 to 10</strong> (bottom/top half of each range).</li>
+            </ol>
+            <p class="muted small">
+              Each scenario is answered once and cannot be revisited in the game flow.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Answer options -->
+    <section class="section section-soft">
+      <div class="container">
+        <header class="section-header">
+          <h2>Answer options (enter a number from 1 to 10)</h2>
+          <p>
+            For each scenario, the player answers the following question:
+            <strong>"After considering these additional effort drivers, which estimation position would you choose?"</strong>
+          </p>
+        </header>
+
+        <div class="option-grid">
+          <div class="option-card">
+            <div class="option-num">1</div>
+            <div class="option-body">
+              <div class="option-title">Range 1 - Bottom half</div>
+              <div class="option-text">Above +MMRE (lower portion)</div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">2</div>
+            <div class="option-body">
+              <div class="option-title">Range 1 - Top half</div>
+              <div class="option-text">Above +MMRE (upper portion)</div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">3</div>
+            <div class="option-body">
+              <div class="option-title">Range 2 - Bottom half</div>
+              <div class="option-text">Equation to +MMRE (lower portion)</div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">4</div>
+            <div class="option-body">
+              <div class="option-title">Range 2 - Top half</div>
+              <div class="option-text">Equation to +MMRE (upper portion)</div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">5</div>
+            <div class="option-body">
+              <div class="option-title">Range 3 - Bottom half</div>
+              <div class="option-text">On equation (lower portion)</div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">6</div>
+            <div class="option-body">
+              <div class="option-title">Range 3 - Top half</div>
+              <div class="option-text">On equation (upper portion)</div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">7</div>
+            <div class="option-body">
+              <div class="option-title">Range 4 - Bottom half</div>
+              <div class="option-text">Equation to -MMRE (lower portion)</div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">8</div>
+            <div class="option-body">
+              <div class="option-title">Range 4 - Top half</div>
+              <div class="option-text">Equation to -MMRE (upper portion)</div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">9</div>
+            <div class="option-body">
+              <div class="option-title">Range 5 - Bottom half</div>
+              <div class="option-text">Below -MMRE (lower portion)</div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">10</div>
+            <div class="option-body">
+              <div class="option-title">Range 5 - Top half</div>
+              <div class="option-text">Below -MMRE (upper portion)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Instructor notes -->
+    <section class="section section-soft">
+      <div class="container">
+        <header class="section-header">
+          <h2>Teaching notes</h2>
+          <p>
+            This game builds on estimation fundamentals by introducing <strong>effort adjustment</strong> based on 
+            project context factors beyond product requirements.
+          </p>
+        </header>
+
+        <div class="grid-2">
+          <article class="card card-raise">
+            <h3>Suggested use in class</h3>
+            <ul class="bullets">
+              <li>Review the concept of initial NFR-based estimation as a starting point</li>
+              <li>Explain how non-product factors (team, environment, process) influence effort</li>
+              <li>Have students work through weight calculations step-by-step</li>
+              <li>Discuss scenarios where drivers offset each other (mixed weights)</li>
+              <li>Emphasize the precision gained by using half-intervals (10 positions vs 5)</li>
+            </ul>
+          </article>
+
+          <article class="card card-raise">
+            <h3>What to evaluate</h3>
+            <ul class="bullets">
+              <li>Accuracy of weight calculation (correct sum of 10 drivers)</li>
+              <li>Correct application of adjustment criteria</li>
+              <li>Understanding that adjustments can move ranges or stay within range</li>
+              <li>Recognition of the cumulative effect of multiple drivers</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Downloads / Docs -->
+    <section id="downloads" class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Downloads & documentation</h2>
+          <p>Access game files, manuals, and supporting resources.</p>
+        </header>
+
+        <div class="download-grid">
+          <article class="download-card">
+            <h3>Game</h3>
+            <div class="download-links">
+              <a class="btn btn-primary" href="#" download>Download EXE</a>
+              <a class="btn btn-soft" href="#" download>Download JAR</a>
+            </div>
+          </article>
+
+          <article class="download-card">
+            <h3>Documentation</h3>
+            <div class="download-links">
+              <a class="btn btn-soft" href="#">Player's Manual</a>
+              <a class="btn btn-soft" href="#">Instructor's Manual</a>
+            </div>
+          </article>
+
+          <article class="download-card">
+            <h3>Resources</h3>
+            <div class="download-links">
+              <a class="btn btn-soft" href="#">Excel scenario file</a>
+              <a class="btn btn-soft" href="#">COCOMO reference</a>
+            </div>
+          </article>
+        </div>
+
+        <p class="muted small top-gap">
+          Questionnaire: <a href="../questionnaires/game-4-questionnaire.html">game-4-questionnaire.html</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <a class="btn btn-soft" href="../index.html#games">← Back to all games</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-title">SimSE Educational Games</div>
+        <div class="muted">Philanthropic Research Chair in Software Product and Project Management</div>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#use">How to use</a>
+        <a class="ext" href="https://www.ics.uci.edu/~emilyo/SimSE/" target="_blank" rel="noopener noreferrer">SimSE community</a>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .top-gap {
+      margin-top: 2rem;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .data-table thead {
+      background: #f9fafb;
+    }
+
+    .data-table th {
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .data-table .highlight {
+      font-weight: 600;
+      color: #2563eb;
+    }
+
+    .data-table .total-row {
+      background: #f9fafb;
+      font-weight: 600;
+    }
+
+    .example-section {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: #f9fafb;
+      border-radius: 8px;
+    }
+
+    .example-section h4 {
+      margin-top: 0;
+      color: #374151;
+    }
+
+    .final-answer {
+      background: #dbeafe;
+      border-left: 4px solid #2563eb;
+    }
+
+    .final-answer .large {
+      font-size: 1.25rem;
+      margin: 0;
+    }
+  </style>
+</body>
+</html>
