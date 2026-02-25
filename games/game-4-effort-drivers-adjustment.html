@@ -121,6 +121,154 @@
       </div>
     </section>
 
+    <!-- Weight system -->
+    <section class="section section-soft">
+      <div class="container">
+        <header class="section-header">
+          <h2>Weight system</h2>
+          <p>
+            Each effort driver has an associated weight based on its level. Players sum these weights to determine 
+            the adjustment to the initial estimation.
+          </p>
+        </header>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Level</th>
+                <th>Weight</th>
+                <th>Impact on Effort</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Low</td>
+                <td class="highlight">-1</td>
+                <td>Decreases effort</td>
+              </tr>
+              <tr>
+                <td>Nominal</td>
+                <td class="highlight">0</td>
+                <td>Neutral impact</td>
+              </tr>
+              <tr>
+                <td>High</td>
+                <td class="highlight">+1</td>
+                <td>Increases effort</td>
+              </tr>
+              <tr>
+                <td>Very High</td>
+                <td class="highlight">+2</td>
+                <td>Strongly increases effort</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card card-raise top-gap">
+          <h3>The 10 Effort Drivers</h3>
+          <div class="grid-2">
+            <div>
+              <h4>Computer Attributes</h4>
+              <ul class="bullets">
+                <li><strong>TIME</strong> — Execution time constraint</li>
+                <li><strong>STOR</strong> — Main storage constraint</li>
+                <li><strong>TURN</strong> — Computer turnaround time</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Personnel Attributes</h4>
+              <ul class="bullets">
+                <li><strong>ACAP</strong> — Analyst capability</li>
+                <li><strong>AEXP</strong> — Applications experience</li>
+                <li><strong>PCAP</strong> — Programmer capability</li>
+                <li><strong>LEXP</strong> — Programming language experience</li>
+              </ul>
+            </div>
+          </div>
+          <div class="top-gap">
+            <h4>Project Attributes</h4>
+            <ul class="bullets">
+              <li><strong>MODP</strong> — Use of modern programming practices</li>
+              <li><strong>TOOL</strong> — Use of software tools</li>
+              <li><strong>SCED</strong> — Required development schedule</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Adjustment criteria -->
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Adjustment decision criteria</h2>
+          <p>
+            The sum of the 10 effort driver weights determines how to adjust the initial NFR estimation range.
+          </p>
+        </header>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Total Weight</th>
+                <th>Range Adjustment</th>
+                <th>Sub-interval Selection</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0</td>
+                <td>Stay in current range</td>
+                <td>Either half (no change)</td>
+              </tr>
+              <tr>
+                <td>[-1, -5]</td>
+                <td>Stay in current range</td>
+                <td class="highlight">Bottom half</td>
+              </tr>
+              <tr>
+                <td>[-6, -10]</td>
+                <td class="highlight">Move down 1 range</td>
+                <td>Top half</td>
+              </tr>
+              <tr>
+                <td>[1, 5]</td>
+                <td>Stay in current range</td>
+                <td class="highlight">Top half</td>
+              </tr>
+              <tr>
+                <td>[6, 10]</td>
+                <td class="highlight">Move up 1 range</td>
+                <td>Bottom half</td>
+              </tr>
+              <tr>
+                <td>[11, 15]</td>
+                <td class="highlight">Move up 1 range</td>
+                <td class="highlight">Top half</td>
+              </tr>
+              <tr>
+                <td>[16, 20]</td>
+                <td class="highlight">Move up 2 ranges</td>
+                <td>Bottom half</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card card-raise top-gap">
+          <h3>Interpretation</h3>
+          <ul class="bullets">
+            <li><strong>Negative totals:</strong> Effort drivers decrease expected effort → move toward lower ranges or bottom halves</li>
+            <li><strong>Positive totals:</strong> Effort drivers increase expected effort → move toward higher ranges or top halves</li>
+            <li><strong>Zero total:</strong> Effort drivers balance out → remain in current range</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <!-- Answer options -->
     <section class="section section-soft">
       <div class="container">
