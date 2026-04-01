@@ -1,0 +1,411 @@
+<!-- games/game-c-statistical-regression.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Game C - Building a Valid Statistical Model with Industry Data | SimSE Educational Games</title>
+  <meta name="description" content="Game C: Build a valid linear regression model from ISBSG industry data by selecting the right data subset, removing outliers, and evaluating model fit using R² and MMRE." />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-title">SimSE Educational Games</span>
+          <span class="brand-subtitle">Philanthropic Research Chair in Software Product and Project Management</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#use">How to use</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Page header -->
+    <section class="hero hero-page">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-inner hero-inner-page">
+        <div class="hero-copy">
+          <p class="kicker">Game C • Statistical regression track</p>
+          <h1>Building a valid statistical model with industry data on functional requirements and related development effort</h1>
+          <p class="lead">
+            Select the appropriate subset of <strong>ISBSG industry data</strong>, apply outlier removal,
+            and build a valid linear regression model that relates functional size (COSMIC Function Points)
+            to development effort.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="../questionnaires/game-c-questionnaire.html">Open questionnaire</a>
+            <a class="btn btn-soft" href="#downloads">Downloads</a>
+          </div>
+
+          <div class="hero-links">
+            <span class="muted">Recommended:</span>
+            <a href="#how-it-works">read "How it works" first</a>
+          </div>
+        </div>
+
+        <aside class="hero-aside" aria-label="Quick facts">
+          <div class="stat-card">
+            <div class="stat-num">10</div>
+            <div class="stat-label">Data subsets to explore</div>
+            <div class="stat-sub">filtered from 90 ISBSG projects</div>
+          </div>
+
+          <div class="mini-cards">
+            <div class="mini-card">
+              <div class="mini-title">Filter</div>
+              <p class="mini-text">Select a data subset by application type, development type, or language.</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-title">Build</div>
+              <p class="mini-text">Remove outliers and fit a linear regression of effort on functional size.</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-title">Evaluate</div>
+              <p class="mini-text">Assess model quality using R², MMRE, and sample size.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Learning objective -->
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Learning objective</h2>
+          <p>
+            Teach students how to <strong>construct and evaluate a linear regression model</strong> from
+            industry benchmark data by selecting appropriate project subsets, handling outliers,
+            and interpreting model fit statistics to judge whether an estimation model is valid.
+          </p>
+        </header>
+
+        <div class="grid-2">
+          <article class="card card-raise" id="how-it-works">
+            <h3>How the game works</h3>
+            <ol class="steps">
+              <li>Choose a data subset from the ISBSG database (90 projects filtered by application type, development type, or language).</li>
+              <li>Review the descriptive statistics of the subset.</li>
+              <li>Apply the Grubbs outlier test and remove flagged projects from the dataset.</li>
+              <li>Fit a simple linear regression: Effort (hrs) = b0 + b1 × Size (COSMIC CFP).</li>
+              <li>Evaluate model quality: examine R², MMRE, and the final sample size.</li>
+              <li>Decide whether the model is valid for use in estimation and submit your assessment in SimSE.</li>
+            </ol>
+          </article>
+
+          <article class="card card-raise">
+            <h3>What drives model quality</h3>
+            <ul class="bullets">
+              <li><strong>Sample size (N)</strong> - the number of projects used after outlier removal</li>
+              <li><strong>R-square (R²)</strong> - proportion of effort variance explained by size</li>
+              <li><strong>MMRE</strong> - Mean Magnitude of Relative Error; measures prediction dispersion</li>
+              <li><strong>Subset homogeneity</strong> - filtering by type or language reduces variability</li>
+              <li><strong>Outlier removal</strong> - Grubbs test applied to both size and effort distributions</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dataset and subsets -->
+    <section class="section section-soft">
+      <div class="container">
+        <header class="section-header">
+          <h2>Dataset and subsets</h2>
+          <p>
+            The game uses a database of <strong>90 ISBSG projects</strong> measured in COSMIC Function Points.
+            Each subset is defined by one or more filter criteria applied to the full dataset.
+          </p>
+        </header>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Scenario</th>
+                <th>Subset name</th>
+                <th>Filter criteria</th>
+                <th style="text-align:center;">Total projects</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="highlight">1</td>
+                <td>Business-Web-New-Java</td>
+                <td>Application: Business &bull; Platform: Web &bull; Type: New development &bull; Language: Java</td>
+                <td style="text-align:center;">37</td>
+              </tr>
+              <tr>
+                <td class="highlight">2</td>
+                <td>Real time-Maintenance-Java</td>
+                <td>Application: Real time &bull; Type: Maintenance &bull; Language: Java</td>
+                <td style="text-align:center;">12</td>
+              </tr>
+              <tr>
+                <td class="highlight">3</td>
+                <td>Real time-Maintenance</td>
+                <td>Application: Real time &bull; Type: Maintenance</td>
+                <td style="text-align:center;">14</td>
+              </tr>
+              <tr>
+                <td class="highlight">4</td>
+                <td>Real time-C</td>
+                <td>Application: Real time &bull; Language: C</td>
+                <td style="text-align:center;">18</td>
+              </tr>
+              <tr>
+                <td class="highlight">5</td>
+                <td>Maintenance</td>
+                <td>Type: Maintenance</td>
+                <td style="text-align:center;">40</td>
+              </tr>
+              <tr>
+                <td class="highlight">6</td>
+                <td>Business-New</td>
+                <td>Application: Business &bull; Type: New development</td>
+                <td style="text-align:center;">44</td>
+              </tr>
+              <tr>
+                <td class="highlight">7</td>
+                <td>Real time</td>
+                <td>Application: Real time</td>
+                <td style="text-align:center;">20</td>
+              </tr>
+              <tr>
+                <td class="highlight">8</td>
+                <td>New</td>
+                <td>Type: New development</td>
+                <td style="text-align:center;">50</td>
+              </tr>
+              <tr>
+                <td class="highlight">9</td>
+                <td>C</td>
+                <td>Language: C</td>
+                <td style="text-align:center;">20</td>
+              </tr>
+              <tr>
+                <td class="highlight">10</td>
+                <td>Java</td>
+                <td>Language: Java</td>
+                <td style="text-align:center;">70</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Model evaluation criteria -->
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Model evaluation criteria</h2>
+          <p>
+            Three statistics are used to assess whether the regression model is suitable for software effort estimation.
+          </p>
+        </header>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Statistic</th>
+                <th>Definition</th>
+                <th>Interpretation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="highlight">R² (R-square)</td>
+                <td>Proportion of effort variance explained by functional size</td>
+                <td>Higher is better. Values above 0.70 indicate a strong size-effort relationship.</td>
+              </tr>
+              <tr>
+                <td class="highlight">MMRE</td>
+                <td>Mean Magnitude of Relative Error across all projects in the model</td>
+                <td>Lower is better. Values below 0.25 are generally considered acceptable.</td>
+              </tr>
+              <tr>
+                <td class="highlight">N</td>
+                <td>Number of projects used in the final regression after outlier removal</td>
+                <td>A larger sample produces more reliable estimates. Very small N reduces model generalizability.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid-2" style="margin-top: 2rem;">
+          <article class="card card-raise">
+            <h3>Outlier removal</h3>
+            <p>
+              Before fitting the regression, outliers are identified using the <strong>Grubbs test</strong>
+              (significance level 0.05, two-sided) applied independently to the size and effort distributions.
+              Projects flagged as outliers are excluded and the model is refitted on the remaining data.
+            </p>
+          </article>
+
+          <article class="card card-raise">
+            <h3>Regression model form</h3>
+            <p>
+              All models in this game use a <strong>simple linear regression</strong> of the form:
+            </p>
+            <p style="font-family: monospace; background: #f8fafc; padding: 0.75rem 1rem; border-radius: 8px; margin-top: 0.75rem; font-size: 0.95rem;">
+              Effort (hrs) = b0 + b1 &times; Size (CFP)
+            </p>
+            <p style="margin-top: 0.75rem;">
+              where Size is measured in COSMIC Function Points (CFP) and Effort in hours.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Teaching notes -->
+    <section class="section section-soft">
+      <div class="container">
+        <header class="section-header">
+          <h2>Teaching notes</h2>
+          <p>
+            This game develops students' ability to <strong>critically evaluate regression-based estimation models</strong>
+            and understand how data subsetting affects model validity.
+          </p>
+        </header>
+
+        <div class="grid-2">
+          <article class="card card-raise">
+            <h3>Suggested use in class</h3>
+            <ul class="bullets">
+              <li>Introduce the concept of homogeneous data subsets before running the game</li>
+              <li>Discuss why filtering by application type, development type, or language can improve model fit</li>
+              <li>Compare R² and MMRE values across subsets and explain the differences</li>
+              <li>Highlight cases where outlier removal drastically reduces N and discuss the trade-off</li>
+              <li>Identify which subsets produce models suitable for estimation and justify the criteria used</li>
+            </ul>
+          </article>
+
+          <article class="card card-raise">
+            <h3>What to evaluate</h3>
+            <ul class="bullets">
+              <li>Ability to interpret R² and MMRE in the context of estimation quality</li>
+              <li>Understanding of the effect of subset selection on model homogeneity and fit</li>
+              <li>Correct application of outlier detection and its impact on the regression results</li>
+              <li>Judgment on whether a model with given N, R², and MMRE is valid for practical use</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Downloads -->
+    <section id="downloads" class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Downloads &amp; documentation</h2>
+          <p>Access game files, manuals, and supporting resources.</p>
+        </header>
+
+        <div class="download-grid">
+          <article class="download-card">
+            <h3>Game</h3>
+            <div class="download-links">
+              <a class="btn btn-primary" href="#" download>Download EXE</a>
+              <a class="btn btn-soft" href="#" download>Download JAR</a>
+            </div>
+          </article>
+
+          <article class="download-card">
+            <h3>Documentation</h3>
+            <div class="download-links">
+              <a class="btn btn-soft" href="#">Player's Manual</a>
+              <a class="btn btn-soft" href="#">Instructor's Manual</a>
+            </div>
+          </article>
+
+          <article class="download-card">
+            <h3>Resources</h3>
+            <div class="download-links">
+              <a class="btn btn-soft" href="#">ISBSG Dataset</a>
+              <a class="btn btn-soft" href="#">Additional links</a>
+            </div>
+          </article>
+        </div>
+
+        <p class="muted small top-gap">
+          Questionnaire: <a href="../questionnaires/game-c-questionnaire.html">game-c-questionnaire.html</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <a class="btn btn-soft" href="../index.html#games">← Back to all games</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-title">SimSE Educational Games</div>
+        <div class="muted">Philanthropic Research Chair in Software Product and Project Management</div>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#use">How to use</a>
+        <a class="ext" href="https://www.ics.uci.edu/~emilyo/SimSE/" target="_blank" rel="noopener noreferrer">SimSE community</a>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .top-gap { margin-top: 2rem; }
+
+    .table-container {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .data-table thead { background: #f9fafb; }
+
+    .data-table th {
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .data-table .highlight {
+      font-weight: 700;
+      color: #2563eb;
+      font-family: monospace;
+      font-size: 1rem;
+    }
+  </style>
+</body>
+</html>
