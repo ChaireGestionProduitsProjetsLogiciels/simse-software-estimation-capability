@@ -1,0 +1,496 @@
+<!-- questionnaires/game-c-questionnaire.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game C Questionnaire - Statistical Regression Model | SimSE Educational Games</title>
+  <meta name="description" content="Interactive questionnaire for Game C: consult the statistical results for each ISBSG data subset (Grubbs test, ANOVA, model summary, coefficients, MMRE)." />
+
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/questionnaire.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-title">SimSE Educational Games</span>
+          <span class="brand-subtitle">Philanthropic Research Chair in Software Product and Project Management</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#use">How to use</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="q-wrap">
+      <div class="q-topbar">
+        <a class="q-back" href="../games/game-c-statistical-regression.html">← Back to Game C</a>
+        <span class="muted small">Questionnaire • Statistical regression</span>
+      </div>
+
+      <section class="q-header">
+        <h1>Statistical Regression Model Questionnaire</h1>
+        <p class="q-subtitle">Building a valid statistical model with industry data on functional requirements and related development effort - Game C</p>
+      </section>
+
+      <div class="info-box">
+        <strong>How to use</strong><br />
+        Select a data subset below to consult the statistical results for that sheet: descriptive statistics,
+        Grubbs outlier test, analysis of variance, model summary, regression coefficients, and MMRE.
+        Use these values to answer the questions in SimSE.
+        <p class="muted small" style="margin: 10px 0 0;">
+          <strong>CFP</strong> = COSMIC Function Points &nbsp;&bull;&nbsp;
+          <strong>R²</strong> = proportion of effort variance explained by size &nbsp;&bull;&nbsp;
+          <strong>MMRE</strong> = Mean Magnitude of Relative Error
+        </p>
+      </div>
+
+      <section class="scenario-card">
+        <div class="section-header" style="margin-bottom:14px;">
+          <h2 style="margin:0; font-size:1.15rem;">Select a data subset</h2>
+          <p class="muted" style="margin:6px 0 0;">Each button corresponds to one sheet in the Excel file.</p>
+        </div>
+
+        <div class="navigation" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+          <div class="scenario-btn"><div class="scenario-btn-title">Business-Web-New-Java</div><button class="play-btn" onclick="openSheet(0)">View Results</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Real time-Maintenance-Java</div><button class="play-btn" onclick="openSheet(1)">View Results</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Real time-Maintenance</div><button class="play-btn" onclick="openSheet(2)">View Results</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Real time-C</div><button class="play-btn" onclick="openSheet(3)">View Results</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Maintenance</div><button class="play-btn" onclick="openSheet(4)">View Results</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Business-New</div><button class="play-btn" onclick="openSheet(5)">View Results</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Real time</div><button class="play-btn" onclick="openSheet(6)">View Results</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">New</div><button class="play-btn" onclick="openSheet(7)">View Results</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">C</div><button class="play-btn" onclick="openSheet(8)">View Results</button></div>
+          <div class="scenario-btn"><div class="scenario-btn-title">Java</div><button class="play-btn" onclick="openSheet(9)">View Results</button></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Modal -->
+    <div id="sheetModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="modalTitle">Data subset</h2>
+          <button class="close-btn" onclick="closeModal()" aria-label="Close">&times;</button>
+        </div>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-title">SimSE Educational Games</div>
+        <div class="muted">Philanthropic Research Chair in Software Product and Project Management</div>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#use">How to use</a>
+        <a class="ext" href="https://www.ics.uci.edu/~emilyo/SimSE/" target="_blank" rel="noopener noreferrer">SimSE community</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const sheets = [
+      {
+        name: "Business-Web-New-Java",
+        filters: "Application: Business &bull; Platform: Web &bull; Type: New development &bull; Language: Java",
+        nTotal: 37, nOutliers: 9, nModel: 28, rowsWoData: 1,
+        sizeMean: "102.14", sizeSd: "30.99",
+        effortMean: "724.25", effortSd: "285.65",
+        outlierDetected: "No", sigLevel: "0.05 (two-sided)", critZ: "2.876",
+        anovaF: "111.11", anovaP: "&lt;0.0001",
+        S: "126.76", r2: "0.8104", r2adj: "0.8031",
+        coefConst: "-123.29", seConst: "83.9",  tConst: "-1.47", pConst: "0.154",
+        coefSize:  "8.2976",  seSize:  "0.787", tSize:  "10.54", pSize:  "&lt;0.0001",
+        equation: "Effort (hrs) = &minus;123.29 + 8.2976 &times; Size (CFP)",
+        mmre: "0.165"
+      },
+      {
+        name: "Real time-Maintenance-Java",
+        filters: "Application: Real time &bull; Type: Maintenance &bull; Language: Java",
+        nTotal: 12, nOutliers: 2, nModel: 10, rowsWoData: 1,
+        sizeMean: "120.4",  sizeSd: "35.87",
+        effortMean: "199.1", effortSd: "30.61",
+        outlierDetected: "No", sigLevel: "0.05 (two-sided)", critZ: "2.290",
+        anovaF: "11.73", anovaP: "0.009",
+        S: "20.67", r2: "0.5946", r2adj: "0.5439",
+        coefConst: "119.88", seConst: "24.03", tConst: "4.99",  pConst: "0.001",
+        coefSize:  "0.6580",  seSize:  "0.192", tSize:  "3.43",  pSize:  "0.009",
+        equation: "Effort (hrs) = 119.88 + 0.6580 &times; Size (CFP)",
+        mmre: "0.089"
+      },
+      {
+        name: "Real time-Maintenance",
+        filters: "Application: Real time &bull; Type: Maintenance",
+        nTotal: 14, nOutliers: 1, nModel: 13, rowsWoData: 1,
+        sizeMean: "121.31", sizeSd: "37.13",
+        effortMean: "217.38", effortSd: "44.19",
+        outlierDetected: "No", sigLevel: "0.05 (two-sided)", critZ: "2.462",
+        anovaF: "3.54", anovaP: "0.087",
+        S: "40.15", r2: "0.2434", r2adj: "0.1746",
+        coefConst: "146.17", seConst: "39.47", tConst: "3.70", pConst: "0.004",
+        coefSize:  "0.5871",  seSize:  "0.312", tSize:  "1.88", pSize:  "0.087",
+        equation: "Effort (hrs) = 146.17 + 0.5871 &times; Size (CFP)",
+        mmre: "0.131"
+      },
+      {
+        name: "Real time-C",
+        filters: "Application: Real time &bull; Language: C",
+        nTotal: 18, nOutliers: 1, nModel: 17, rowsWoData: 1,
+        sizeMean: "99.24",  sizeSd: "42.56",
+        effortMean: "165.41", effortSd: "63.47",
+        outlierDetected: "No", sigLevel: "0.05 (two-sided)", critZ: "2.620",
+        anovaF: "47.72", anovaP: "&lt;0.0001",
+        S: "32.06", r2: "0.7608", r2adj: "0.7449",
+        coefConst: "36.32",  seConst: "20.24", tConst: "1.79", pConst: "0.093",
+        coefSize:  "1.3009", seSize:  "0.188", tSize:  "6.91", pSize:  "&lt;0.0001",
+        equation: "Effort (hrs) = 36.32 + 1.3009 &times; Size (CFP)",
+        mmre: "0.231"
+      },
+      {
+        name: "Maintenance",
+        filters: "Type: Maintenance",
+        nTotal: 40, nOutliers: 28, nModel: 12, rowsWoData: 1,
+        sizeMean: "117.25", sizeSd: "46.59",
+        effortMean: "199.92", effortSd: "45.99",
+        outlierDetected: "No", sigLevel: "0.05 (two-sided)", critZ: "2.412",
+        anovaF: "32.66", anovaP: "0.0002",
+        S: "23.35", r2: "0.7656", r2adj: "0.7422",
+        coefConst: "98.65",  seConst: "18.96", tConst: "5.20", pConst: "0.0004",
+        coefSize:  "0.8636", seSize:  "0.151", tSize:  "5.72", pSize:  "0.0002",
+        equation: "Effort (hrs) = 98.65 + 0.8636 &times; Size (CFP)",
+        mmre: "0.085"
+      },
+      {
+        name: "Business-New",
+        filters: "Application: Business &bull; Type: New development",
+        nTotal: 44, nOutliers: 13, nModel: 31, rowsWoData: 1,
+        sizeMean: "101.13", sizeSd: "31.54",
+        effortMean: "721.23", effortSd: "297.82",
+        outlierDetected: "No", sigLevel: "0.05 (two-sided)", critZ: "2.924",
+        anovaF: "140.81", anovaP: "&lt;0.0001",
+        S: "125.18", r2: "0.8292", r2adj: "0.8233",
+        coefConst: "-148.22", seConst: "76.64", tConst: "-1.93", pConst: "0.063",
+        coefSize:  "8.5974",  seSize:  "0.725", tSize:  "11.87", pSize:  "&lt;0.0001",
+        equation: "Effort (hrs) = &minus;148.22 + 8.5974 &times; Size (CFP)",
+        mmre: "0.169"
+      },
+      {
+        name: "Real time",
+        filters: "Application: Real time",
+        nTotal: 20, nOutliers: 2, nModel: 18, rowsWoData: 1,
+        sizeMean: "103.61", sizeSd: "45.27",
+        effortMean: "172.33", effortSd: "68.22",
+        outlierDetected: "No", sigLevel: "0.05 (two-sided)", critZ: "2.652",
+        anovaF: "64.12", anovaP: "&lt;0.0001",
+        S: "31.43", r2: "0.8003", r2adj: "0.7878",
+        coefConst: "32.65",  seConst: "18.95", tConst: "1.72", pConst: "0.104",
+        coefSize:  "1.3481", seSize:  "0.168", tSize:  "8.01", pSize:  "&lt;0.0001",
+        equation: "Effort (hrs) = 32.65 + 1.3481 &times; Size (CFP)",
+        mmre: "0.216"
+      },
+      {
+        name: "New",
+        filters: "Type: New development",
+        nTotal: 50, nOutliers: 16, nModel: 34, rowsWoData: 1,
+        sizeMean: "96.26",  sizeSd: "34.31",
+        effortMean: "664.91", effortSd: "338.45",
+        outlierDetected: "No", sigLevel: "0.05 (two-sided)", critZ: "2.965",
+        anovaF: "191.30", anovaP: "&lt;0.0001",
+        S: "130.11", r2: "0.8567", r2adj: "0.8522",
+        coefConst: "-213.98", seConst: "67.35", tConst: "-3.18", pConst: "0.003",
+        coefSize:  "9.1299",  seSize:  "0.660", tSize:  "13.83", pSize:  "&lt;0.0001",
+        equation: "Effort (hrs) = &minus;213.98 + 9.1299 &times; Size (CFP)",
+        mmre: "0.245"
+      },
+      {
+        name: "C",
+        filters: "Language: C",
+        nTotal: 20, nOutliers: 1, nModel: 19, rowsWoData: 1,
+        sizeMean: "92.37",  sizeSd: "45.19",
+        effortMean: "162.11", effortSd: "60.89",
+        outlierDetected: "No", sigLevel: "0.05 (two-sided)", critZ: "2.681",
+        anovaF: "41.09", anovaP: "&lt;0.0001",
+        S: "33.90", r2: "0.7073", r2adj: "0.6901",
+        coefConst: "57.43",  seConst: "18.09", tConst: "3.18", pConst: "0.006",
+        coefSize:  "1.1332", seSize:  "0.177", tSize:  "6.41", pSize:  "&lt;0.0001",
+        equation: "Effort (hrs) = 57.43 + 1.1332 &times; Size (CFP)",
+        mmre: "0.272"
+      },
+      {
+        name: "Java",
+        filters: "Language: Java",
+        nTotal: 70, nOutliers: 28, nModel: 42, rowsWoData: 1,
+        sizeMean: "113.12", sizeSd: "40.87",
+        effortMean: "717.74", effortSd: "300.72",
+        outlierDetected: "No", sigLevel: "0.05 (two-sided)", critZ: "3.057",
+        anovaF: "0.81", anovaP: "0.373",
+        S: "301.41", r2: "0.0199", r2adj: "0.00",
+        coefConst: "600.4",  seConst: "138.3", tConst: "4.34", pConst: "&lt;0.0001",
+        coefSize:  "1.038",  seSize:  "1.152", tSize:  "0.90", pSize:  "0.373",
+        equation: "Effort (hrs) = 600.4 + 1.038 &times; Size (CFP)",
+        mmre: "0.461"
+      }
+    ];
+
+    function openSheet(index) {
+      const s = sheets[index];
+      document.getElementById("modalTitle").textContent = s.name;
+
+      document.getElementById("modalBody").innerHTML = `
+
+        <!-- Filters -->
+        <div class="c-section-label">Data subset filters</div>
+        <p style="font-size:.875rem; color:#374151; margin:0 0 16px;">${s.filters}</p>
+
+        <!-- Outlier / Test de Grubbs -->
+        <div class="c-section-label">Outlier &mdash; Test de Grubbs</div>
+        <table class="c-table" style="margin-bottom:16px;">
+          <thead>
+            <tr>
+              <th>Variable</th>
+              <th style="text-align:right;">Mean</th>
+              <th style="text-align:right;">SD</th>
+              <th style="text-align:right;"># of values</th>
+              <th style="text-align:right;"># rows w/o data</th>
+              <th style="text-align:center;">Outlier detected?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Size (CFP)</td>
+              <td style="text-align:right;">${s.sizeMean}</td>
+              <td style="text-align:right;">${s.sizeSd}</td>
+              <td style="text-align:right;">${s.nModel}</td>
+              <td style="text-align:right;">${s.rowsWoData}</td>
+              <td style="text-align:center; font-weight:600;">${s.outlierDetected}</td>
+            </tr>
+            <tr>
+              <td>Effort (hrs)</td>
+              <td style="text-align:right;">${s.effortMean}</td>
+              <td style="text-align:right;">${s.effortSd}</td>
+              <td style="text-align:right;">${s.nModel}</td>
+              <td style="text-align:right;">${s.rowsWoData}</td>
+              <td style="text-align:center; font-weight:600;">${s.outlierDetected}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:.8rem; color:#64748b; margin:0 0 16px;">
+          Significance level: ${s.sigLevel} &nbsp;&bull;&nbsp; Critical value of Z: ${s.critZ}
+        </p>
+
+        <!-- Analysis of Variance -->
+        <div class="c-section-label">Analysis of Variance</div>
+        <table class="c-table" style="margin-bottom:16px;">
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th style="text-align:right;">DF</th>
+              <th style="text-align:right;">F-Value</th>
+              <th style="text-align:right;">P-Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Regression</td>
+              <td style="text-align:right;">1</td>
+              <td style="text-align:right;">${s.anovaF}</td>
+              <td style="text-align:right;">${s.anovaP}</td>
+            </tr>
+            <tr>
+              <td>Error</td>
+              <td style="text-align:right;">${s.nModel - 2}</td>
+              <td style="text-align:right;"></td>
+              <td style="text-align:right;"></td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td style="text-align:right;">${s.nModel - 1}</td>
+              <td style="text-align:right;"></td>
+              <td style="text-align:right;"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Model Summary -->
+        <div class="c-section-label">Model Summary</div>
+        <table class="c-table" style="margin-bottom:16px;">
+          <thead>
+            <tr>
+              <th style="text-align:right;">S</th>
+              <th style="text-align:right;">R&#178;</th>
+              <th style="text-align:right;">R&#178;(adj)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align:right;">${s.S}</td>
+              <td style="text-align:right; font-weight:700;">${s.r2}</td>
+              <td style="text-align:right;">${s.r2adj}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Coefficients -->
+        <div class="c-section-label">Coefficients</div>
+        <table class="c-table" style="margin-bottom:16px;">
+          <thead>
+            <tr>
+              <th>Term</th>
+              <th style="text-align:right;">Coef</th>
+              <th style="text-align:right;">SE Coef</th>
+              <th style="text-align:right;">T-Value</th>
+              <th style="text-align:right;">P-Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Constant</td>
+              <td style="text-align:right;">${s.coefConst}</td>
+              <td style="text-align:right;">${s.seConst}</td>
+              <td style="text-align:right;">${s.tConst}</td>
+              <td style="text-align:right;">${s.pConst}</td>
+            </tr>
+            <tr>
+              <td>Size (CFP)</td>
+              <td style="text-align:right; font-weight:600;">${s.coefSize}</td>
+              <td style="text-align:right;">${s.seSize}</td>
+              <td style="text-align:right;">${s.tSize}</td>
+              <td style="text-align:right;">${s.pSize}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Regression Equation -->
+        <div class="c-section-label">Regression Equation</div>
+        <div class="c-equation">${s.equation}</div>
+
+        <!-- MMRE -->
+        <div class="c-section-label" style="margin-top:16px;">MMRE</div>
+        <div style="display:flex; gap:12px; margin-bottom:16px; flex-wrap:wrap;">
+          <div class="c-stat-card" style="flex:1; min-width:110px;">
+            <div class="c-stat-label">N (used in model)</div>
+            <div class="c-stat-value">${s.nModel}</div>
+          </div>
+          <div class="c-stat-card" style="flex:1; min-width:110px;">
+            <div class="c-stat-label">R&#178;</div>
+            <div class="c-stat-value">${s.r2}</div>
+          </div>
+          <div class="c-stat-card" style="flex:1; min-width:110px;">
+            <div class="c-stat-label">MMRE</div>
+            <div class="c-stat-value">${s.mmre}</div>
+          </div>
+        </div>
+
+        <div class="action-note">
+          <strong>Next Step</strong>
+          Review the results above, then submit your answers for this data subset in SimSE.
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-soft" onclick="closeModal()">Close</button>
+        </div>
+      `;
+
+      document.getElementById("sheetModal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("sheetModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("sheetModal");
+      if (event.target === modal) closeModal();
+    };
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") closeModal();
+    });
+  </script>
+
+  <style>
+    .c-section-label {
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin: 0 0 6px;
+    }
+
+    .c-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .83rem;
+    }
+
+    .c-table th,
+    .c-table td {
+      padding: 6px 8px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+    }
+
+    .c-table thead { background: #f9fafb; }
+
+    .c-table th {
+      font-weight: 600;
+      color: #374151;
+      font-size: .78rem;
+    }
+
+    .c-equation {
+      font-family: monospace;
+      font-size: .95rem;
+      font-weight: 700;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #1e293b;
+      margin-bottom: 4px;
+    }
+
+    .c-stat-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      text-align: center;
+      box-shadow: var(--shadow2);
+    }
+
+    .c-stat-label {
+      font-size: .75rem;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 6px;
+    }
+
+    .c-stat-value {
+      font-size: 1.75rem;
+      font-weight: 900;
+      color: #0f172a;
+      letter-spacing: -0.03em;
+    }
+  </style>
+</body>
+</html>
