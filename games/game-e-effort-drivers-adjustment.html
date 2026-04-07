@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Game E - Effort Estimation Adjustment using Non-Product Effort Drivers | SimSE Educational Games</title>
-  <meta name="description" content="Game E: Adjust an initial NFR-based effort estimation by incorporating non-product effort drivers from Boehm's COCOMO model." />
+  <title>Game E - Estimation impact of Project Constraints | SimSE Educational Games</title>
+  <meta name="description" content="Game E: Adjustment to the estimation range using a set of 10 project constraints." />
   <link rel="stylesheet" href="../assets/css/style.css" />
 </head>
 
@@ -39,14 +39,9 @@
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="container hero-inner hero-inner-page">
         <div class="hero-copy">
-          <p class="kicker">Estimation & Project constraints</p>
-          <h1>Adjustment to the estimation range with a set of project constraints</h1>
-          <p class="lead">
-            Learn to <strong>adjust an initial estimation</strong> by incorporating <strong>non-product effort drivers</strong> 
-            (Computer, Personnel, and Project attributes) that influence development effort beyond functional and 
-            non-functional requirements.
-          </p>
-
+          <p class="kicker">Game E - Estimation impact of Project Constraints</p>
+          <h1>Adjustment to the estimation range using a set of 10 project constraints</h1>
+         
           <div class="cta-row">
             <a class="btn btn-primary" href="../questionnaires/game-e-questionnaire.html">Open questionnaire</a>
             <a class="btn btn-soft" href="#downloads">Downloads</a>
@@ -55,7 +50,7 @@
           <div class="hero-links">
             <span class="muted">Recommended:</span>
             <a href="#how-it-works">read "How it works" first</a>
-          </div>
+          </div>«
         </div>
 
         <aside class="hero-aside" aria-label="Quick facts">
@@ -68,7 +63,7 @@
           <div class="mini-cards">
             <div class="mini-card">
               <div class="mini-title">Input</div>
-              <p class="mini-text">Initial NFR estimation + 10 effort drivers with their levels.</p>
+              <p class="mini-text">Initial NFR estimation + 10 project contraints with their levels.</p>
             </div>
             <div class="mini-card">
               <div class="mini-title">Action</div>
@@ -90,7 +85,7 @@
           <h2>Learning objective</h2>
           <p>
             Teach students how to <strong>adjust a previously established effort estimation range</strong> by incorporating 
-            <strong>non-product attributes</strong> as additional independent variables, building upon initial estimates 
+            <strong>project contraints</strong> as additional independent variables, building upon initial estimates 
             derived from functional size and non-functional requirements.
           </p>
         </header>
@@ -102,8 +97,8 @@
               <li>A graph showing the linear regression model with equation line and ±MMRE bounds</li>
               <li>Five effort ranges, each divided into bottom half and top half (10 positions total)</li>
               <li>An initial estimation position based on NFR analysis</li>
-              <li>Ten scenarios with different combinations of effort driver levels</li>
-              <li>A table of 10 effort drivers: TIME, STOR, TURN, ACAP, AEXP, PCAP, LEXP, MODP, TOOL, SCED</li>
+              <li>Ten scenarios with different combinations of project contraint levels</li>
+              <li>A table of 10 project contraints: TIME, STOR, TURN, ACAP, AEXP, PCAP, LEXP, MODP, TOOL, SCED</li>
             </ul>
           </article>
 
@@ -111,7 +106,7 @@
             <h3>What the player does</h3>
             <ol class="steps">
               <li>Review the initial NFR-based estimation position (Range 1-5).</li>
-              <li>Examine the 10 effort drivers and their levels (Low, Nominal, High, Very High).</li>
+              <li>Examine the 10 project contraints and their levels (Low, Nominal, High, Very High).</li>
               <li>Calculate the total weight using the weight system.</li>
               <li>Apply adjustment criteria to determine the final estimation position.</li>
               <li>Select the appropriate position from <strong>1 to 10</strong> (bottom/top half of each range).</li>
@@ -130,7 +125,7 @@
         <header class="section-header">
           <h2>Weight system</h2>
           <p>
-            Each effort driver has an associated weight based on its level. Players sum these weights to determine 
+            Each project contraint has an associated weight based on its level. Players sum these weights to determine 
             the adjustment to the initial estimation.
           </p>
         </header>
@@ -170,10 +165,10 @@
         </div>
 
         <div class="card card-raise top-gap">
-          <h3>The 10 Effort Drivers</h3>
+          <h3>The 10 project contraints (From COCOMO)</h3>
           <div class="grid-2">
             <div>
-              <h4>Computer Attributes</h4>
+              <h4>Computer Constraints</h4>
               <ul class="bullets">
                 <li><strong>TIME</strong> - Execution time constraint</li>
                 <li><strong>STOR</strong> - Main storage constraint</li>
@@ -181,7 +176,7 @@
               </ul>
             </div>
             <div>
-              <h4>Personnel Attributes</h4>
+              <h4>Personnel Constraints</h4>
               <ul class="bullets">
                 <li><strong>ACAP</strong> - Analyst capability</li>
                 <li><strong>AEXP</strong> - Applications experience</li>
@@ -191,7 +186,7 @@
             </div>
           </div>
           <div class="top-gap">
-            <h4>Project Attributes</h4>
+            <h4>Process Constraints</h4>
             <ul class="bullets">
               <li><strong>MODP</strong> - Use of modern programming practices</li>
               <li><strong>TOOL</strong> - Use of software tools</li>
@@ -208,7 +203,7 @@
         <header class="section-header">
           <h2>Adjustment decision criteria</h2>
           <p>
-            The sum of the 10 effort driver weights determines how to adjust the initial NFR estimation range.
+            The sum of the 10 project contraints weights determines how to adjust the initial NFR estimation range.
           </p>
         </header>
 
@@ -264,9 +259,9 @@
         <div class="card card-raise top-gap">
           <h3>Interpretation</h3>
           <ul class="bullets">
-            <li><strong>Negative totals:</strong> Effort drivers decrease expected effort → move toward lower ranges or bottom halves</li>
-            <li><strong>Positive totals:</strong> Effort drivers increase expected effort → move toward higher ranges or top halves</li>
-            <li><strong>Zero total:</strong> Effort drivers balance out → remain in current range</li>
+            <li><strong>Negative totals:</strong> project contraints decrease expected effort → move toward lower ranges or bottom halves</li>
+            <li><strong>Positive totals:</strong> project contraints increase expected effort → move toward higher ranges or top halves</li>
+            <li><strong>Zero total:</strong> project contraints balance out → remain in current range</li>
           </ul>
         </div>
       </div>
@@ -279,7 +274,7 @@
           <h2>Answer options (enter a number from 1 to 12)</h2>
           <p>
             For each scenario, the player answers the following question:
-            <strong>"After considering these additional effort drivers, which estimation position would you choose?"</strong>
+            <strong>"After considering these additional project contraints, which estimation position would you choose?"</strong>
           </p>
         </header>
 
@@ -393,7 +388,7 @@
           <h2>Teaching notes</h2>
           <p>
             This game builds on estimation fundamentals by introducing <strong>effort adjustment</strong> based on 
-            project context factors beyond product requirements.
+            project constraints beyond product requirements.
           </p>
         </header>
 
@@ -402,9 +397,9 @@
             <h3>Suggested use in class</h3>
             <ul class="bullets">
               <li>Review the concept of initial NFR-based estimation as a starting point</li>
-              <li>Explain how non-product factors (team, environment, process) influence effort</li>
+              <li>Explain how project contraints (team, environment, process) influence effort</li>
               <li>Have students work through weight calculations step-by-step</li>
-              <li>Discuss scenarios where drivers offset each other (mixed weights)</li>
+              <li>Discuss scenarios where project contraints offset each other (mixed weights)</li>
               <li>Emphasize the precision gained by using half-intervals</li>
             </ul>
           </article>
@@ -412,10 +407,10 @@
           <article class="card card-raise">
             <h3>What to evaluate</h3>
             <ul class="bullets">
-              <li>Accuracy of weight calculation (correct sum of 10 drivers)</li>
+              <li>Accuracy of weight calculation (correct sum of 10 project contraints)</li>
               <li>Correct application of adjustment criteria</li>
               <li>Understanding that adjustments can move ranges or stay within range</li>
-              <li>Recognition of the cumulative effect of multiple drivers</li>
+              <li>Recognition of the cumulative effect of multiple project contraints</li>
             </ul>
           </article>
         </div>
