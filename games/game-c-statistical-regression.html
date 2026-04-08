@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Game C - Building a Valid Statistical Model with Industry Data | SimSE Educational Games</title>
-  <meta name="description" content="Game C: Build a valid linear regression model from ISBSG industry data by selecting the right data subset, removing outliers, and evaluating model fit using R² and MMRE." />
+  <title>Game C — Statistical Regression Model | Software Estimation Educational Games</title>
+  <meta name="description" content="Select data subsets, handle outliers, and interpret regression statistics (R², MMRE, ANOVA) to evaluate the validity of a size-effort estimation model built from industry benchmark data." />
   <link rel="stylesheet" href="../assets/css/style.css" />
 </head>
 
@@ -14,19 +14,18 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="../index.html" aria-label="Home">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-text">
-          <span class="brand-title">SimSE Educational Games</span>
-          <span class="brand-subtitle">Philanthropic Research Chair in Software Product and Project Management</span>
-        </span>
-      </a>
+      <a class="brand" href="../index.html" aria-label="Home">Software Estimation Educational Games</a>
 
       <nav class="nav" aria-label="Primary">
         <a href="../index.html#games">Games</a>
         <a href="../index.html#about">About</a>
         <a href="../index.html#use">How to use</a>
       </nav>
+      <div class="header-logos">
+        <a href="https://cosmic-sizing.org" target="_blank" rel="noopener noreferrer" aria-label="COSMIC sizing standard"><img src="https://cosmic-sizing.org/wp-content/uploads/2020/03/logo-cosmic@2x.png" alt="COSMIC" /></a>
+        <a href="https://www.etsmtl.ca" target="_blank" rel="noopener noreferrer" aria-label="Philanthropic Research Chair"><img src="https://www.etsmtl.ca/uploads/_1900x2102_crop_center-center_70_none/logo-chaire-philanthropique.png" alt="Chaire philanthropique" /></a>
+        <a href="https://www.etsmtl.ca" target="_blank" rel="noopener noreferrer" aria-label="ETS Montreal"><img src="https://www.etsmtl.ca/assets/img/ets.svg" alt="ETS" /></a>
+      </div>
     </div>
   </header>
 
@@ -36,12 +35,11 @@
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="container hero-inner hero-inner-page">
         <div class="hero-copy">
-          <p class="kicker">Game C • Statistical regression track</p>
-          <h1>Building a valid statistical model with industry data on functional requirements and related development effort</h1>
+          <p class="kicker">Game C • Size-effort statistical models</p>
+          <h1>Evaluation of size-effort statistical models – linear regression</h1>
           <p class="lead">
-            Select the appropriate subset of <strong>ISBSG industry data</strong>, apply outlier removal,
-            and build a valid linear regression model that relates functional size (COSMIC Function Points)
-            to development effort.
+            For each of 10 ISBSG data subsets, <strong>interpret the statistical results</strong> of a linear regression
+            model by answering four questions on sample size, R², outliers, and MMRE.
           </p>
 
           <div class="cta-row">
@@ -58,75 +56,139 @@
         <aside class="hero-aside" aria-label="Quick facts">
           <div class="stat-card">
             <div class="stat-num">10</div>
-            <div class="stat-label">Data subsets to explore</div>
+            <div class="stat-label">data subsets to analyse</div>
             <div class="stat-sub">filtered from 90 ISBSG projects</div>
           </div>
 
           <div class="mini-cards">
             <div class="mini-card">
-              <div class="mini-title">Filter</div>
-              <p class="mini-text">Select a data subset by application type, development type, or language.</p>
+              <div class="mini-title">Analyse</div>
+              <p class="mini-text">Study the full statistical output for each data subset in the Excel file.</p>
             </div>
             <div class="mini-card">
-              <div class="mini-title">Build</div>
-              <p class="mini-text">Remove outliers and fit a linear regression of effort on functional size.</p>
+              <div class="mini-title">Interpret</div>
+              <p class="mini-text">Qualify N, R², outliers, and MMRE through four structured questions per scenario.</p>
             </div>
             <div class="mini-card">
-              <div class="mini-title">Evaluate</div>
-              <p class="mini-text">Assess model quality using R², MMRE, and sample size.</p>
+              <div class="mini-title">Compare</div>
+              <p class="mini-text">Develop critical judgment by contrasting statistical results across 10 different subsets.</p>
             </div>
           </div>
         </aside>
       </div>
     </section>
 
-    <!-- Learning objective -->
+    <!-- Overview -->
     <section class="section">
       <div class="container">
         <header class="section-header">
           <h2>Learning objective</h2>
           <p>
-            Teach students how to <strong>construct and evaluate a linear regression model</strong> from
-            industry benchmark data by selecting appropriate project subsets, handling outliers,
-            and interpreting model fit statistics to judge whether an estimation model is valid.
+            Teach students how to <strong>adequately analyse the parameters of a linear regression model</strong>
+            built from software project data: sample size, R², outliers, and MMRE.
           </p>
         </header>
 
         <div class="grid-2">
-          <article class="card card-raise" id="how-it-works">
-            <h3>How the game works</h3>
-            <ol class="steps">
-              <li>Choose a data subset from the ISBSG database (90 projects filtered by application type, development type, or language).</li>
-              <li>Review the descriptive statistics of the subset.</li>
-              <li>Apply the Grubbs outlier test and remove flagged projects from the dataset.</li>
-              <li>Fit a simple linear regression: Effort (hrs) = b0 + b1 × Size (COSMIC CFP).</li>
-              <li>Evaluate model quality: examine R², MMRE, and the final sample size.</li>
-              <li>Decide whether the model is valid for use in estimation and submit your assessment in SimSE.</li>
-            </ol>
+          <article class="card card-raise">
+            <h3>What the player sees</h3>
+            <ul class="bullets">
+              <li>An Excel questionnaire file containing the full steps for building each regression model</li>
+              <li>For each data subset: Grubbs test results, ANOVA table, model summary, regression coefficients, and MMRE</li>
+              <li>10 scenarios available as artifacts in SimSE, one per data subset</li>
+              <li>Free access to the Excel file throughout the entire game</li>
+            </ul>
+            <p class="muted small">
+              The statistical calculations are pre-computed. The player focuses on interpretation, not calculation.
+            </p>
           </article>
 
-          <article class="card card-raise">
-            <h3>What drives model quality</h3>
-            <ul class="bullets">
-              <li><strong>Sample size (N)</strong> - the number of projects used after outlier removal</li>
-              <li><strong>R-square (R²)</strong> - proportion of effort variance explained by size</li>
-              <li><strong>MMRE</strong> - Mean Magnitude of Relative Error; measures prediction dispersion</li>
-              <li><strong>Subset homogeneity</strong> - filtering by type or language reduces variability</li>
-              <li><strong>Outlier removal</strong> - Grubbs test applied to both size and effort distributions</li>
-            </ul>
+          <article class="card card-raise" id="how-it-works">
+            <h3>What the player does</h3>
+            <ol class="steps">
+              <li>Open the Excel questionnaire and locate the sheet for the current scenario.</li>
+              <li>Read the statistical results: number of projects (N), outliers, R², and MMRE.</li>
+              <li>Answer Q1 (sample size), Q2 (R²), Q3 (outliers), and Q4 (MMRE).</li>
+              <li>Enter the answers in SimSE and move to the next scenario.</li>
+              <li>Repeat until all 10 scenarios are completed.</li>
+            </ol>
+            <p class="muted small">
+              Each scenario is answered once and cannot be revisited.
+            </p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Dataset and subsets -->
+    <!-- The four questions -->
     <section class="section section-soft">
       <div class="container">
         <header class="section-header">
-          <h2>Dataset and subsets</h2>
+          <h2>The four questions (answered for each scenario)</h2>
           <p>
-            The game uses a database of <strong>90 ISBSG projects</strong> measured in COSMIC Function Points.
-            Each subset is defined by one or more filter criteria applied to the full dataset.
+            For each of the 10 data subsets, the player answers the same four questions based on the Excel results.
+          </p>
+        </header>
+
+        <div class="option-grid">
+          <div class="option-card">
+            <div class="option-num">Q1</div>
+            <div class="option-body">
+              <div class="option-title">Sample size – "Is it valid to draw statistical conclusions from this sample size?"</div>
+              <div class="option-text">
+                <strong>High</strong> – big enough to trust the statistical results.<br />
+                <strong>Medium</strong> – barely enough; results are moderately supported.<br />
+                <strong>None</strong> – much too small for any statistical conclusions.
+              </div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">Q2</div>
+            <div class="option-body">
+              <div class="option-title">R² – "How is the relationship between size and effort?"</div>
+              <div class="option-text">
+                <strong>High</strong> – strong size-to-effort relationship; other project characteristics have little impact.<br />
+                <strong>Medium</strong> – moderate relationship; other characteristics have a moderate impact.<br />
+                <strong>Low</strong> – weak relationship; other characteristics also have a strong impact on effort.
+              </div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">Q3</div>
+            <div class="option-body">
+              <div class="option-title">Outliers – "What is the impact when there is at least one outlier?"</div>
+              <div class="option-text">
+                <strong>None</strong> – no outlier detected; proceed with the regression analysis as is.<br />
+                <strong>One or more</strong> – each outlier must be removed and the regression analysis must be redone.
+              </div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">Q4</div>
+            <div class="option-body">
+              <div class="option-title">MMRE – "How wide is the range of effort variation?"</div>
+              <div class="option-text">
+                <strong>High</strong> – very wide range of effort variation.<br />
+                <strong>Medium</strong> – moderate range of effort variation.<br />
+                <strong>Low</strong> – very small range of effort variation.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Data subsets -->
+    <section class="section section-soft">
+      <div class="container">
+        <header class="section-header">
+          <h2>Data subsets</h2>
+          <p>
+            The Excel file contains results for the following 10 subsets, each filtered from a database of 90 ISBSG projects.
           </p>
         </header>
 
@@ -207,79 +269,13 @@
       </div>
     </section>
 
-    <!-- Model evaluation criteria -->
-    <section class="section">
-      <div class="container">
-        <header class="section-header">
-          <h2>Model evaluation criteria</h2>
-          <p>
-            Three statistics are used to assess whether the regression model is suitable for software effort estimation.
-          </p>
-        </header>
-
-        <div class="table-container">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Statistic</th>
-                <th>Definition</th>
-                <th>Interpretation</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="highlight">R² (R-square)</td>
-                <td>Proportion of effort variance explained by functional size</td>
-                <td>Higher is better. Values above 0.70 indicate a strong size-effort relationship.</td>
-              </tr>
-              <tr>
-                <td class="highlight">MMRE</td>
-                <td>Mean Magnitude of Relative Error across all projects in the model</td>
-                <td>Lower is better. Values below 0.25 are generally considered acceptable.</td>
-              </tr>
-              <tr>
-                <td class="highlight">N</td>
-                <td>Number of projects used in the final regression after outlier removal</td>
-                <td>A larger sample produces more reliable estimates. Very small N reduces model generalizability.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="grid-2" style="margin-top: 2rem;">
-          <article class="card card-raise">
-            <h3>Outlier removal</h3>
-            <p>
-              Before fitting the regression, outliers are identified using the <strong>Grubbs test</strong>
-              (significance level 0.05, two-sided) applied independently to the size and effort distributions.
-              Projects flagged as outliers are excluded and the model is refitted on the remaining data.
-            </p>
-          </article>
-
-          <article class="card card-raise">
-            <h3>Regression model form</h3>
-            <p>
-              All models in this game use a <strong>simple linear regression</strong> of the form:
-            </p>
-            <p style="font-family: monospace; background: #f8fafc; padding: 0.75rem 1rem; border-radius: 8px; margin-top: 0.75rem; font-size: 0.95rem;">
-              Effort (hrs) = b0 + b1 &times; Size (CFP)
-            </p>
-            <p style="margin-top: 0.75rem;">
-              where Size is measured in COSMIC Function Points (CFP) and Effort in hours.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <!-- Teaching notes -->
-    <section class="section section-soft">
+    <section class="section">
       <div class="container">
         <header class="section-header">
           <h2>Teaching notes</h2>
           <p>
-            This game develops students' ability to <strong>critically evaluate regression-based estimation models</strong>
-            and understand how data subsetting affects model validity.
+            This game trains students to practise <strong>interpretation</strong> of regression statistics rather than calculation.
           </p>
         </header>
 
@@ -287,21 +283,20 @@
           <article class="card card-raise">
             <h3>Suggested use in class</h3>
             <ul class="bullets">
-              <li>Introduce the concept of homogeneous data subsets before running the game</li>
-              <li>Discuss why filtering by application type, development type, or language can improve model fit</li>
-              <li>Compare R² and MMRE values across subsets and explain the differences</li>
-              <li>Highlight cases where outlier removal drastically reduces N and discuss the trade-off</li>
-              <li>Identify which subsets produce models suitable for estimation and justify the criteria used</li>
+              <li>Review how to read a regression output before the game (Grubbs, ANOVA, model summary, coefficients)</li>
+              <li>Walk through the evaluation thresholds for N, R², and MMRE with students before they start</li>
+              <li>Compare results across subsets to discuss why different filters lead to different outcomes</li>
+              <li>Use the four questions as a debriefing framework after the session</li>
             </ul>
           </article>
 
           <article class="card card-raise">
             <h3>What to evaluate</h3>
             <ul class="bullets">
-              <li>Ability to interpret R² and MMRE in the context of estimation quality</li>
-              <li>Understanding of the effect of subset selection on model homogeneity and fit</li>
-              <li>Correct application of outlier detection and its impact on the regression results</li>
-              <li>Judgment on whether a model with given N, R², and MMRE is valid for practical use</li>
+              <li>Correct interpretation of sample size validity (Q1)</li>
+              <li>Ability to qualify the strength of the size-effort relationship from R² (Q2)</li>
+              <li>Understanding of the impact of outliers on the regression analysis (Q3)</li>
+              <li>Correct reading of MMRE as a measure of effort variation width (Q4)</li>
             </ul>
           </article>
         </div>
@@ -309,7 +304,7 @@
     </section>
 
     <!-- Downloads -->
-    <section id="downloads" class="section">
+    <section id="downloads" class="section section-soft">
       <div class="container">
         <header class="section-header">
           <h2>Downloads &amp; documentation</h2>
@@ -320,25 +315,22 @@
           <article class="download-card">
             <h3>Game</h3>
             <div class="download-links">
-              <a class="btn btn-primary" href="#" download>Download EXE</a>
-              <a class="btn btn-soft" href="#" download>Download JAR</a>
-            </div>
-          </article>
-
-          <article class="download-card">
-            <h3>Documentation</h3>
-            <div class="download-links">
-              <a class="btn btn-soft" href="#">Player's Manual</a>
-              <a class="btn btn-soft" href="#">Instructor's Manual</a>
+              <a class="btn btn-primary" href="../assets/downloads/game-c/JAR - Game C.jar" download>Download JAR</a>
+              <button class="btn btn-soft" onclick="openLaunchGuide('JAR - Game C.jar')" type="button">How to launch</button>
             </div>
           </article>
 
           <article class="download-card">
             <h3>Resources</h3>
             <div class="download-links">
-              <a class="btn btn-soft" href="#">ISBSG Dataset</a>
-              <a class="btn btn-soft" href="#">Additional links</a>
+              <a href="../assets/downloads/game-c/Manual-Game C-students.pdf" download>Student Manual</a>
+              <a href="../assets/downloads/game-c/MDL - Game C.mdl" download>MDL File</a>
             </div>
+          </article>
+
+          <article class="download-card">
+            <h3>Instructor Manual</h3>
+            <a class="btn btn-soft" href="mailto:alain.abran@etsmtl.ca,alain.april@etsmtl.ca,pierre.bourque@etsmtl.ca?subject=Instructor%20Manual%20Request%20%E2%80%93%20Game%20C&body=Hello%2C%0A%0AI%20would%20like%20to%20request%20the%20Instructor%20Manual%20for%20Game%20C%20(Statistical%20Regression%20Model).%0A%0AThank%20you.">Request access by email</a>
           </article>
         </div>
 
@@ -358,8 +350,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>
-        <div class="footer-title">SimSE Educational Games</div>
-        <div class="muted">Philanthropic Research Chair in Software Product and Project Management</div>
+        <div class="footer-title">Software Estimation Educational Games</div>
       </div>
       <div class="footer-links">
         <a href="../index.html#games">Games</a>
@@ -369,6 +360,17 @@
       </div>
     </div>
   </footer>
+
+  <!-- Launch guide popup (shared pattern) -->
+  <div id="launchModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="launchModalTitle">
+    <div class="modal-content" style="max-width:680px;">
+      <div class="modal-header">
+        <h2 class="modal-title" id="launchModalTitle">How to launch the game</h2>
+        <button class="close-btn" onclick="document.getElementById('launchModal').style.display='none'" aria-label="Close">&times;</button>
+      </div>
+      <div id="launchModalBody"></div>
+    </div>
+  </div>
 
   <style>
     .top-gap { margin-top: 2rem; }
@@ -407,5 +409,34 @@
       font-size: 1rem;
     }
   </style>
+
+  <script>
+    function openLaunchGuide(jarName) {
+      document.getElementById('launchModalBody').innerHTML = `
+        <p style="color:var(--muted);margin-bottom:16px;">Requires <strong>Java 17 or later</strong>. <a href="https://www.oracle.com/java/technologies/downloads/" target="_blank" rel="noopener noreferrer">Download Java</a></p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="background:rgba(15,23,42,.03);border:1px solid var(--border);border-radius:14px;padding:14px;">
+            <div style="font-weight:800;margin-bottom:6px;">Windows</div>
+            <code style="font-size:.85rem;">java -jar "${jarName}"</code>
+            <p style="font-size:.82rem;color:var(--muted);margin-top:6px;">Or double-click the JAR if Java is associated with .jar files.</p>
+          </div>
+          <div style="background:rgba(15,23,42,.03);border:1px solid var(--border);border-radius:14px;padding:14px;">
+            <div style="font-weight:800;margin-bottom:6px;">macOS</div>
+            <code style="font-size:.85rem;">java -jar "${jarName}"</code>
+            <p style="font-size:.82rem;color:var(--muted);margin-top:6px;">Run from Terminal in the folder containing the JAR.</p>
+          </div>
+          <div style="background:rgba(15,23,42,.03);border:1px solid var(--border);border-radius:14px;padding:14px;">
+            <div style="font-weight:800;margin-bottom:6px;">Linux</div>
+            <code style="font-size:.85rem;">java -jar "${jarName}"</code>
+            <p style="font-size:.82rem;color:var(--muted);margin-top:6px;">Run from a terminal in the folder containing the JAR.</p>
+          </div>
+        </div>`;
+      document.getElementById('launchModal').style.display = 'flex';
+    }
+
+    document.getElementById('launchModal').addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
