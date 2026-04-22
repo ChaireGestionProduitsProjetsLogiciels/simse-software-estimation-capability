@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Game E Questionnaire — Effort Drivers Adjustment | Software Estimation Educational Games</title>
+  <title>Game E Questionnaire — Project Constraints Adjustment | Software Estimation Educational Games</title>
   <meta name="description" content="Reference questionnaire for Game E: adjust an NFR-based effort estimation by incorporating project constraints and select the refined estimation position." />
 
   <!-- Use the site CSS only -->
@@ -37,17 +37,17 @@
     <div class="q-wrap">
       <div class="q-topbar">
         <a class="q-back" href="../games/game-e-effort-drivers-adjustment.html">← Back to Game E</a>
-        <span class="muted small">Questionnaire • Effort Driver scenarios</span>
+        <span class="muted small">Questionnaire • Project Constraint scenarios</span>
       </div>
 
       <section class="q-header">
-        <h1>Effort Drivers Adjustment Questionnaire</h1>
-        <p class="q-subtitle">Effort Estimation Adjustment using Non-Product Effort Drivers - Game E</p>
+        <h1>Project Constraints Adjustment Questionnaire</h1>
+        <p class="q-subtitle">Effort Estimation Adjustment using Project Constraints - Game E</p>
       </section>
 
       <div class="info-box">
         <strong>How to use</strong><br />
-        Select a scenario to open the interactive calculator. Review the initial NFR estimation, examine the 10 effort drivers and their levels, 
+        Select a scenario to open the interactive calculator. Review the initial NFR estimation, examine the 10 project Constraint and their levels, 
         calculate the total weight, determine the adjustment, select the final estimation position (1-10), and submit your answer in SimSE.
         <p class="muted small" style="margin: 10px 0 0;">
           <strong>Weight system:</strong> Low = -1, Nominal = 0, High = +1, Very High = +2
@@ -103,7 +103,7 @@
   </footer>
 
   <script>
-    // Scenario data with 10 effort drivers
+    // Scenario data with 10 project constraints
     const scenarios = [
       {
         id: 1,
@@ -310,7 +310,7 @@
         </div>
 
         <div style="margin: 20px 0;">
-          <h3 style="margin:0 0 14px; font-size:1rem; font-weight:700;">Effort Drivers</h3>
+          <h3 style="margin:0 0 14px; font-size:1rem; font-weight:700;">Project Constraints</h3>
           ${generateDriversTable(scenario.drivers)}
         </div>
 
@@ -362,10 +362,10 @@
           <thead>
             <tr>
               <th style="width:25px; text-align:center;">#</th>
-              <th>Effort Driver</th>
+              <th>Project Constraint</th>
               <th style="width:110px; text-align:center;">Level</th>
               <th style="width:25px; text-align:center;">#</th>
-              <th>Effort Driver</th>
+              <th>Project Constraint</th>
               <th style="width:110px; text-align:center;">Level</th>
             </tr>
           </thead>
