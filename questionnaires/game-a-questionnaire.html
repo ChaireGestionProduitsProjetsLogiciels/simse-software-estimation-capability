@@ -58,41 +58,40 @@
         </ol>
 
         <p style="margin: 0 0 16px; font-size: 0.95rem; color: var(--muted);">
-          You can choose among different task sequences, each represented by a combination of letters such as BDAC.
-          These letters stand for the analytical steps needed to build and interpret the regression model:
+          Each task sequence is a series of analytical steps represented by icons in the game:
         </p>
 
         <table class="nfr-compact-table" style="width: 100%; margin-bottom: 0;">
           <thead>
             <tr>
-              <th style="width: 60px;">Code</th>
-              <th style="width: 160px;">Step</th>
+              <th style="width: 64px; text-align:center;">Step</th>
+              <th style="width: 160px;">Name</th>
               <th>Description</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style="font-weight: 700; color: #2563eb;">A</td>
+              <td style="text-align:center;"><img src="../assets/img/game-a/outliers.png" alt="Outlier" style="height:44px;width:auto;display:block;margin:0 auto;cursor:pointer;border-radius:6px;transition:transform .15s;" onmouseover="this.style.transform='scale(1.12)'" onmouseout="this.style.transform=''" onclick="openImg(this.src,this.alt)" /></td>
               <td>Outlier</td>
               <td>Projects too large that may mislead interpretation of the model's strength.</td>
             </tr>
             <tr>
-              <td style="font-weight: 700; color: #2563eb;">B</td>
+              <td style="text-align:center;"><img src="../assets/img/game-a/rsquare.png" alt="R-square" style="height:44px;width:auto;display:block;margin:0 auto;cursor:pointer;border-radius:6px;transition:transform .15s;" onmouseover="this.style.transform='scale(1.12)'" onmouseout="this.style.transform=''" onclick="openImg(this.src,this.alt)" /></td>
               <td>R-square (R²)</td>
               <td>Strength of the size-effort relationship.</td>
             </tr>
             <tr>
-              <td style="font-weight: 700; color: #2563eb;">C</td>
+              <td style="text-align:center;"><img src="../assets/img/game-a/measurement.png" alt="Measurement" style="height:44px;width:auto;display:block;margin:0 auto;cursor:pointer;border-radius:6px;transition:transform .15s;" onmouseover="this.style.transform='scale(1.12)'" onmouseout="this.style.transform=''" onclick="openImg(this.src,this.alt)" /></td>
               <td>Measurement</td>
               <td>Knowledge of early sizing and data preparation.</td>
             </tr>
             <tr>
-              <td style="font-weight: 700; color: #2563eb;">D</td>
+              <td style="text-align:center;"><img src="../assets/img/game-a/descriptive.png" alt="Descriptive" style="height:44px;width:auto;display:block;margin:0 auto;cursor:pointer;border-radius:6px;transition:transform .15s;" onmouseover="this.style.transform='scale(1.12)'" onmouseout="this.style.transform=''" onclick="openImg(this.src,this.alt)" /></td>
               <td>Descriptive</td>
               <td>Basic statistics describing the quantitative sample data.</td>
             </tr>
             <tr>
-              <td style="font-weight: 700; color: #2563eb;">E</td>
+              <td style="text-align:center;"><img src="../assets/img/game-a/mmre.png" alt="MMRE" style="height:44px;width:auto;display:block;margin:0 auto;cursor:pointer;border-radius:6px;transition:transform .15s;" onmouseover="this.style.transform='scale(1.12)'" onmouseout="this.style.transform=''" onclick="openImg(this.src,this.alt)" /></td>
               <td>MMRE</td>
               <td>Analyse the dispersion of the projects across the regression model.</td>
             </tr>
@@ -115,5 +114,25 @@
       </div>
     </div>
   </footer>
+
+  <!-- Image lightbox -->
+  <div id="imgLightbox" style="display:none;position:fixed;z-index:300;inset:0;background:rgba(0,0,0,.75);animation:fadeInBg .18s;align-items:center;justify-content:center;" onclick="if(event.target===this)closeImg()">
+    <div style="position:relative;max-width:90vw;max-height:90vh;display:flex;align-items:center;justify-content:center;">
+      <button onclick="closeImg()" aria-label="Close" style="position:absolute;top:-16px;right:-16px;width:36px;height:36px;border-radius:50%;border:none;background:#fff;font-size:1.2rem;cursor:pointer;line-height:1;box-shadow:0 2px 8px rgba(0,0,0,.3);">&times;</button>
+      <img id="imgLightboxSrc" src="" alt="" style="max-width:80vw;max-height:80vh;border-radius:12px;box-shadow:0 24px 64px rgba(0,0,0,.4);display:block;" />
+    </div>
+  </div>
+  <style>@keyframes fadeInBg{from{opacity:0}to{opacity:1}}</style>
+  <script>
+    function openImg(src, alt) {
+      document.getElementById('imgLightboxSrc').src = src;
+      document.getElementById('imgLightboxSrc').alt = alt || '';
+      document.getElementById('imgLightbox').style.display = 'flex';
+    }
+    function closeImg() {
+      document.getElementById('imgLightbox').style.display = 'none';
+    }
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeImg(); });
+  </script>
 </body>
 </html>

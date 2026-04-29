@@ -117,8 +117,8 @@
         <header class="section-header">
           <h2>Statistical steps</h2>
           <p>
-            Sequences are represented by combinations of letters such as BDAC.
-            Each letter stands for an analytical step needed to build and interpret the regression model.
+            Five analytical steps are used to build and interpret the regression model.
+            Each is represented by an icon in the game.
           </p>
         </header>
 
@@ -126,34 +126,34 @@
           <table class="data-table">
             <thead>
               <tr>
-                <th>Code</th>
-                <th>Step</th>
+                <th style="width:80px; text-align:center;">Step</th>
+                <th>Name</th>
                 <th>Description</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td class="highlight">A</td>
+                <td style="text-align:center;"><img src="../assets/img/game-a/outliers.png" alt="Outlier step" class="step-icon" onclick="openImg(this.src,this.alt)" /></td>
                 <td>Outlier</td>
                 <td>Identify projects too large that may mislead interpretation of the model's strength.</td>
               </tr>
               <tr>
-                <td class="highlight">B</td>
+                <td style="text-align:center;"><img src="../assets/img/game-a/rsquare.png" alt="R-square step" class="step-icon" onclick="openImg(this.src,this.alt)" /></td>
                 <td>R-square (R²)</td>
                 <td>Measure the strength of the size-effort relationship.</td>
               </tr>
               <tr>
-                <td class="highlight">C</td>
+                <td style="text-align:center;"><img src="../assets/img/game-a/measurement.png" alt="Measurement step" class="step-icon" onclick="openImg(this.src,this.alt)" /></td>
                 <td>Measurement</td>
                 <td>Apply knowledge of early software sizing and prepare the data.</td>
               </tr>
               <tr>
-                <td class="highlight">D</td>
+                <td style="text-align:center;"><img src="../assets/img/game-a/descriptive.png" alt="Descriptive step" class="step-icon" onclick="openImg(this.src,this.alt)" /></td>
                 <td>Descriptive</td>
                 <td>Compute basic statistics describing the quantitative sample data.</td>
               </tr>
               <tr>
-                <td class="highlight">E</td>
+                <td style="text-align:center;"><img src="../assets/img/game-a/mmre.png" alt="MMRE step" class="step-icon" onclick="openImg(this.src,this.alt)" /></td>
                 <td>MMRE</td>
                 <td>Analyse the dispersion of projects across the regression model using the Mean Magnitude of Relative Error.</td>
               </tr>
@@ -178,21 +178,51 @@
           <table class="data-table">
             <thead>
               <tr>
-                <th>Sequence</th>
                 <th>Steps performed (in order)</th>
+                <th>Visual sequence</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td class="highlight">DAB</td><td>Descriptive, Outlier, R-square</td></tr>
-              <tr><td class="highlight">DBAB</td><td>Descriptive, R-square, Outlier, R-square</td></tr>
-              <tr><td class="highlight">CDAB</td><td>Measurement, Descriptive, Outlier, R-square</td></tr>
-              <tr><td class="highlight">DBAE</td><td>Descriptive, Outlier, R-square, MMRE</td></tr>
-              <tr><td class="highlight">CDAE</td><td>Measurement, Descriptive, Outlier, MMRE</td></tr>
-              <tr><td class="highlight">CDBE</td><td>Measurement, Descriptive, R-square, MMRE</td></tr>
-              <tr><td class="highlight">BABE</td><td>R-square, Outlier, R-square, MMRE</td></tr>
-              <tr><td class="highlight">CDBAE</td><td>Measurement, Descriptive, Outlier, R-square, MMRE</td></tr>
-              <tr><td class="highlight">DBABE</td><td>Descriptive, R-square, Outlier, R-square, MMRE</td></tr>
-              <tr><td class="highlight">CDBABE</td><td>Measurement, Descriptive, R-square, Outlier, R-square, MMRE</td></tr>
+              <tr>
+                <td>Descriptive &rarr; Outlier &rarr; R-square</td>
+                <td class="seq-cell"><img src="../assets/img/game-a/descriptive.png" alt="Descriptive" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/outliers.png" alt="Outlier" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/rsquare.png" alt="R-square" class="seq-icon" onclick="openImg(this.src,this.alt)" /></td>
+              </tr>
+              <tr>
+                <td>Descriptive &rarr; R-square &rarr; Outlier &rarr; R-square</td>
+                <td class="seq-cell"><img src="../assets/img/game-a/descriptive.png" alt="Descriptive" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/rsquare.png" alt="R-square" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/outliers.png" alt="Outlier" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/rsquare.png" alt="R-square" class="seq-icon" onclick="openImg(this.src,this.alt)" /></td>
+              </tr>
+              <tr>
+                <td>Measurement &rarr; Descriptive &rarr; Outlier &rarr; R-square</td>
+                <td class="seq-cell"><img src="../assets/img/game-a/measurement.png" alt="Measurement" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/descriptive.png" alt="Descriptive" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/outliers.png" alt="Outlier" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/rsquare.png" alt="R-square" class="seq-icon" onclick="openImg(this.src,this.alt)" /></td>
+              </tr>
+              <tr>
+                <td>Descriptive &rarr; Outlier &rarr; R-square &rarr; MMRE</td>
+                <td class="seq-cell"><img src="../assets/img/game-a/descriptive.png" alt="Descriptive" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/outliers.png" alt="Outlier" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/rsquare.png" alt="R-square" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/mmre.png" alt="MMRE" class="seq-icon" onclick="openImg(this.src,this.alt)" /></td>
+              </tr>
+              <tr>
+                <td>Measurement &rarr; Descriptive &rarr; Outlier &rarr; MMRE</td>
+                <td class="seq-cell"><img src="../assets/img/game-a/measurement.png" alt="Measurement" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/descriptive.png" alt="Descriptive" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/outliers.png" alt="Outlier" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/mmre.png" alt="MMRE" class="seq-icon" onclick="openImg(this.src,this.alt)" /></td>
+              </tr>
+              <tr>
+                <td>Measurement &rarr; Descriptive &rarr; R-square &rarr; MMRE</td>
+                <td class="seq-cell"><img src="../assets/img/game-a/measurement.png" alt="Measurement" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/descriptive.png" alt="Descriptive" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/rsquare.png" alt="R-square" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/mmre.png" alt="MMRE" class="seq-icon" onclick="openImg(this.src,this.alt)" /></td>
+              </tr>
+              <tr>
+                <td>R-square &rarr; Outlier &rarr; R-square &rarr; MMRE</td>
+                <td class="seq-cell"><img src="../assets/img/game-a/rsquare.png" alt="R-square" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/outliers.png" alt="Outlier" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/rsquare.png" alt="R-square" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/mmre.png" alt="MMRE" class="seq-icon" onclick="openImg(this.src,this.alt)" /></td>
+              </tr>
+              <tr>
+                <td>Measurement &rarr; Descriptive &rarr; Outlier &rarr; R-square &rarr; MMRE</td>
+                <td class="seq-cell"><img src="../assets/img/game-a/measurement.png" alt="Measurement" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/descriptive.png" alt="Descriptive" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/outliers.png" alt="Outlier" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/rsquare.png" alt="R-square" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/mmre.png" alt="MMRE" class="seq-icon" onclick="openImg(this.src,this.alt)" /></td>
+              </tr>
+              <tr>
+                <td>Descriptive &rarr; R-square &rarr; Outlier &rarr; R-square &rarr; MMRE</td>
+                <td class="seq-cell"><img src="../assets/img/game-a/descriptive.png" alt="Descriptive" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/rsquare.png" alt="R-square" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/outliers.png" alt="Outlier" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/rsquare.png" alt="R-square" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/mmre.png" alt="MMRE" class="seq-icon" onclick="openImg(this.src,this.alt)" /></td>
+              </tr>
+              <tr>
+                <td>Measurement &rarr; Descriptive &rarr; R-square &rarr; Outlier &rarr; R-square &rarr; MMRE</td>
+                <td class="seq-cell"><img src="../assets/img/game-a/measurement.png" alt="Measurement" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/descriptive.png" alt="Descriptive" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/rsquare.png" alt="R-square" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/outliers.png" alt="Outlier" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/rsquare.png" alt="R-square" class="seq-icon" onclick="openImg(this.src,this.alt)" /><span class="seq-arrow">&rarr;</span><img src="../assets/img/game-a/mmre.png" alt="MMRE" class="seq-icon" onclick="openImg(this.src,this.alt)" /></td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -217,7 +247,7 @@
               <li>Discuss the differences between in-house project data and industry benchmark data (ISBSG)</li>
               <li>Explain why sizing skill and statistics competency matter for building a valid model</li>
               <li>Have students justify which employee profile fits each dataset type and why</li>
-              <li>Walk through the logic of each step (A through E) before students select sequences</li>
+              <li>Walk through the logic of each step (Descriptive, Outlier, R-square, MMRE, Measurement) before students select sequences</li>
               <li>Compare the sequences of step chosen for each dataset and discuss how the data source influences the required steps</li>
             </ul>
           </article>
@@ -303,6 +333,41 @@
   <style>
     .top-gap { margin-top: 2rem; }
 
+    /* Step icons in the statistical steps table */
+    .step-icon {
+      height: 48px;
+      width: auto;
+      display: block;
+      margin: 0 auto;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .step-icon:hover { transform: scale(1.12); box-shadow: 0 4px 16px rgba(0,0,0,.15); }
+
+    /* Sequence icons and arrows in the available sequences table */
+    .seq-cell {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+    .seq-icon {
+      height: 36px;
+      width: auto;
+      display: block;
+      flex-shrink: 0;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .seq-icon:hover { transform: scale(1.15); box-shadow: 0 4px 12px rgba(0,0,0,.15); }
+    .seq-arrow {
+      color: #94a3b8;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
     .table-container {
       overflow-x: auto;
       margin: 1.5rem 0;
@@ -370,8 +435,27 @@
       <p style="margin:16px 0 0;font-size:.8rem;color:#94a3b8;">If you see a blank screen on launch, try running with <code>-Dsun.java2d.noddraw=true</code> appended to the command.</p>
     </div>
   </div>
+  <!-- Image lightbox -->
+  <div id="imgLightbox" style="display:none;position:fixed;z-index:300;inset:0;background:rgba(0,0,0,.75);animation:fadeInBg .18s;align-items:center;justify-content:center;" onclick="if(event.target===this)closeImg()">
+    <div style="position:relative;max-width:90vw;max-height:90vh;display:flex;align-items:center;justify-content:center;">
+      <button onclick="closeImg()" aria-label="Close" style="position:absolute;top:-16px;right:-16px;width:36px;height:36px;border-radius:50%;border:none;background:#fff;font-size:1.2rem;cursor:pointer;line-height:1;box-shadow:0 2px 8px rgba(0,0,0,.3);">&times;</button>
+      <img id="imgLightboxSrc" src="" alt="" style="max-width:80vw;max-height:80vh;border-radius:12px;box-shadow:0 24px 64px rgba(0,0,0,.4);display:block;" />
+    </div>
+  </div>
+
   <style>@keyframes fadeInBg{from{opacity:0}to{opacity:1}}</style>
   <script>
+    function openImg(src, alt) {
+      document.getElementById('imgLightboxSrc').src = src;
+      document.getElementById('imgLightboxSrc').alt = alt;
+      var lb = document.getElementById('imgLightbox');
+      lb.style.display = 'flex';
+    }
+    function closeImg() {
+      document.getElementById('imgLightbox').style.display = 'none';
+    }
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeImg(); });
+
     function openLaunchGuide(jarName) {
       var cmd = 'java -jar "' + jarName + '"';
       document.getElementById('winCmd').textContent   = cmd;
