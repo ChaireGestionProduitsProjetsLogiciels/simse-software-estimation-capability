@@ -3,8 +3,8 @@ false
 <endAllowHireFire>
 <beginModelOptions>
 false
-D:\Workspace\eclipse-workspace\Games\icons
-D:\Workspace\eclipse-workspace\init1\src
+D:\Workspace\JavaApps\simse-mdl\icons
+D:\Workspace\JavaApps\simse-generated-game\src
 true
 true
 <endModelOptions>
@@ -164,7 +164,7 @@ boundless
 3
 Sequence
 <beginAttribute>
-DisplayName
+Description
 1
 1
 1
@@ -180,11 +180,11 @@ boundless
 boundless
 <endAttribute>
 <beginAttribute>
-Description
-1
+CodeName
 1
 0
-1
+0
+0
 <endAttribute>
 <beginAttribute>
 IsSelected
@@ -242,19 +242,29 @@ boundless
 <endDefinedObjectTypes>
 <beginCreatedObjects>
 <beginStartingNarrative>
-This is a learning game designed to simulate the process of constructing a linear regression estimation model in a software engineering context. 
-As a player, you have to: 
-1. Select the right employee (from six available profiles) based on their skills in measurement and statistics. 
-2. Work on two resources, one after the other:  30 In-House Project, and 100 ISBSG Data. 
-3. For each resource, choose the correct pair of task sequences required to complete the estimation model. 
+This is a learning game designed to simulate the process of constructing
+a linear regression estimation model in a software engineering context.
 
-You can choose among different task sequences, each represented by a combination of letters such as BDAC. These letters stand for the analytical steps needed to build and interpret the regression model:
-• A = Outlier — Projects too large that may mislead interpretation of the model’s strength
-• B = R-square (R²) — Strength of the size–effort relationship.
-• C = Measurement — Knowledge of early sizing and data preparation.
-• D = Descriptive — Basic statistics describing the quantitative sample data.
-• E = MMRE — Analyse the dispersion of the projects across the regression model.
+As a player, you have to:
+1. Select the right employee (from six available profiles) based on their
+   skills in measurement and statistics.
+2. Work on two resources, one after the other: 30 In-House Projects,
+   then 100 ISBSG Data.
+3. For each resource, choose the correct pair of task sequences required
+   to complete the estimation model.
 
+Each task sequence is an ordered combination of the following
+analytical steps:
+
+- Outlier: Identify projects too large that may mislead interpretation
+  of the model's strength.
+- R-square (R2): Measure the strength of the size-effort relationship.
+- Measurement: Apply knowledge of early software sizing and prepare
+  the data.
+- Descriptive: Compute basic statistics describing the quantitative
+  sample data.
+- MMRE: Analyse the dispersion of projects across the regression model
+  using the Mean Magnitude of Relative Error.
 <endStartingNarrative>
 <beginObject>
 1
@@ -557,14 +567,14 @@ ResourceID
 Sequence
 <beginInstantiatedAttribute>
 Description
-R-square, Outlier, R-square, MMRE
+R-square -> Outlier -> R-square -> MMRE
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
 IsSelected
 false
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
-DisplayName
+CodeName
 BABE
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
@@ -577,14 +587,14 @@ SequenceValue
 Sequence
 <beginInstantiatedAttribute>
 Description
-Measurement, Descriptive, R-square, MMRE
+Measurement -> Descriptive -> R-square -> MMRE
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
 IsSelected
 false
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
-DisplayName
+CodeName
 CDBE
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
@@ -620,12 +630,12 @@ SequenceOverallScore
 3
 Sequence
 <beginInstantiatedAttribute>
-DisplayName
+CodeName
 CDAE
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
 Description
-Measurement, Descriptive, Outlier, MMRE
+Measurement -> Descriptive -> Outlier -> MMRE
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
 IsSelected
@@ -640,12 +650,12 @@ SequenceValue
 3
 Sequence
 <beginInstantiatedAttribute>
-DisplayName
+CodeName
 DBAE
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
 Description
-Descriptive, Outlier, R-square, MMRE
+Descriptive -> Outlier -> R-square -> MMRE
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
 IsSelected
@@ -660,12 +670,12 @@ SequenceValue
 3
 Sequence
 <beginInstantiatedAttribute>
-DisplayName
+CodeName
 CDAB
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
 Description
-Measurement, Descriptive, Outlier, R-square
+Measurement -> Descriptive -> Outlier -> R-square
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
 IsSelected
@@ -680,12 +690,12 @@ SequenceValue
 3
 Sequence
 <beginInstantiatedAttribute>
-DisplayName
+CodeName
 DBAB
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
 Description
-Descriptive, R-square, Outlier, R-square
+Descriptive -> R-square -> Outlier -> R-square
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
 IsSelected
@@ -700,12 +710,12 @@ SequenceValue
 3
 Sequence
 <beginInstantiatedAttribute>
-DisplayName
+CodeName
 DAB
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
 Description
-Descriptive, Outlier, R-square
+Descriptive -> Outlier -> R-square
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
 IsSelected
@@ -720,12 +730,12 @@ SequenceValue
 3
 Sequence
 <beginInstantiatedAttribute>
-DisplayName
+CodeName
 DBABE
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
 Description
-Descriptive, R-square, Outlier, R-square, MMRE
+Descriptive -> R-square -> Outlier -> R-square -> MMRE
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
 IsSelected
@@ -740,12 +750,12 @@ SequenceValue
 3
 Sequence
 <beginInstantiatedAttribute>
-DisplayName
+CodeName
 CDBAE
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
 Description
-Measurement, Descriptive, Outlier, R-square, MMRE
+Measurement -> Descriptive -> Outlier -> R-square -> MMRE
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
 IsSelected
@@ -760,12 +770,12 @@ SequenceValue
 3
 Sequence
 <beginInstantiatedAttribute>
-DisplayName
+CodeName
 CDBABE
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
 Description
-Measurement, Descriptive, R-square, Outlier, R-square, MMRE
+Measurement -> Descriptive -> R-square -> Outlier -> R-square -> MMRE
 <endInstantiatedAttribute>
 <beginInstantiatedAttribute>
 IsSelected
@@ -1016,7 +1026,7 @@ Seq
 <beginActionTypeParticipantConstraint>
 Sequence
 <beginActionTypeParticipantAttributeConstraint>
-DisplayName
+Description
 =
 <>
 false
@@ -1028,8 +1038,8 @@ SequenceValue
 false
 <endActionTypeParticipantAttributeConstraint>
 <beginActionTypeParticipantAttributeConstraint>
-Description
-=
+CodeName
+<
 <>
 false
 <endActionTypeParticipantAttributeConstraint>
@@ -1399,7 +1409,7 @@ Seq
 <beginActionTypeParticipantConstraint>
 Sequence
 <beginActionTypeParticipantAttributeConstraint>
-DisplayName
+Description
 =
 <>
 false
@@ -1411,8 +1421,8 @@ SequenceValue
 false
 <endActionTypeParticipantAttributeConstraint>
 <beginActionTypeParticipantAttributeConstraint>
-Description
-=
+CodeName
+<
 <>
 false
 <endActionTypeParticipantAttributeConstraint>
@@ -1586,7 +1596,7 @@ Seq
 <beginActionTypeParticipantConstraint>
 Sequence
 <beginActionTypeParticipantAttributeConstraint>
-DisplayName
+Description
 =
 <>
 false
@@ -1598,8 +1608,8 @@ SequenceValue
 false
 <endActionTypeParticipantAttributeConstraint>
 <beginActionTypeParticipantAttributeConstraint>
-Description
-=
+CodeName
+<
 <>
 false
 <endActionTypeParticipantAttributeConstraint>
@@ -1780,7 +1790,7 @@ Seq
 Sequence
 None
 <beginParticipantAttributeRuleEffect>
-DisplayName
+CodeName
 
 <endParticipantAttributeRuleEffect>
 <beginParticipantAttributeRuleEffect>
@@ -1927,7 +1937,7 @@ Seq
 Sequence
 None
 <beginParticipantAttributeRuleEffect>
-DisplayName
+CodeName
 
 <endParticipantAttributeRuleEffect>
 <beginParticipantAttributeRuleEffect>
@@ -2074,7 +2084,7 @@ Seq
 Sequence
 None
 <beginParticipantAttributeRuleEffect>
-DisplayName
+CodeName
 
 <endParticipantAttributeRuleEffect>
 <beginParticipantAttributeRuleEffect>
@@ -2221,7 +2231,7 @@ Seq
 Sequence
 None
 <beginParticipantAttributeRuleEffect>
-DisplayName
+CodeName
 
 <endParticipantAttributeRuleEffect>
 <beginParticipantAttributeRuleEffect>
@@ -2368,7 +2378,7 @@ Seq
 Sequence
 None
 <beginParticipantAttributeRuleEffect>
-DisplayName
+CodeName
 
 <endParticipantAttributeRuleEffect>
 <beginParticipantAttributeRuleEffect>
@@ -2487,7 +2497,7 @@ Seq
 Sequence
 None
 <beginParticipantAttributeRuleEffect>
-DisplayName
+CodeName
 
 <endParticipantAttributeRuleEffect>
 <beginParticipantAttributeRuleEffect>
@@ -2713,7 +2723,7 @@ Seq
 Sequence
 None
 <beginParticipantAttributeRuleEffect>
-DisplayName
+CodeName
 
 <endParticipantAttributeRuleEffect>
 <beginParticipantAttributeRuleEffect>
@@ -2860,7 +2870,7 @@ Seq
 Sequence
 None
 <beginParticipantAttributeRuleEffect>
-DisplayName
+CodeName
 
 <endParticipantAttributeRuleEffect>
 <beginParticipantAttributeRuleEffect>
@@ -3007,7 +3017,7 @@ Seq
 Sequence
 None
 <beginParticipantAttributeRuleEffect>
-DisplayName
+CodeName
 
 <endParticipantAttributeRuleEffect>
 <beginParticipantAttributeRuleEffect>
@@ -3154,7 +3164,7 @@ Seq
 Sequence
 None
 <beginParticipantAttributeRuleEffect>
-DisplayName
+CodeName
 
 <endParticipantAttributeRuleEffect>
 <beginParticipantAttributeRuleEffect>
@@ -3301,7 +3311,7 @@ Seq
 Sequence
 None
 <beginParticipantAttributeRuleEffect>
-DisplayName
+CodeName
 
 <endParticipantAttributeRuleEffect>
 <beginParticipantAttributeRuleEffect>
@@ -3391,13 +3401,13 @@ use_case_green.GIF
 
 Tool
 Sequence
-BABE
-3.gif
+R-square -> Outlier -> R-square -> MMRE
+mmre.gif
 
 Tool
 Sequence
-CDBE
-12.gif
+Measurement -> Descriptive -> R-square -> MMRE
+descriptive.gif
 
 Project
 LinearRegressionEstimation
@@ -3406,63 +3416,57 @@ Linear Regression Estimation Project
 
 Tool
 Sequence
-CDAE
-4.gif
+Measurement -> Descriptive -> Outlier -> MMRE
+measurement.gif
 
 Tool
 Sequence
-DBAE
-7.gif
+Descriptive -> Outlier -> R-square -> MMRE
+outliers.gif
 
 Tool
 Sequence
-CDAB
-3.gif
+Measurement -> Descriptive -> Outlier -> R-square
+rsquare.gif
 
 Tool
 Sequence
-DBAB
-7.gif
+Descriptive -> R-square -> Outlier -> R-square
+descriptive.gif
 
 Tool
 Sequence
-DAB
-4.gif
+Descriptive -> Outlier -> R-square
+measurement.gif
 
 Tool
 Sequence
-DBABE
-1.gif
+Descriptive -> R-square -> Outlier -> R-square -> MMRE
+mmre.gif
 
 Tool
 Sequence
-CDBAE
-2.gif
+Measurement -> Descriptive -> Outlier -> R-square -> MMRE
+outliers.gif
 
 Tool
 Sequence
-CDBABE
-11.gif
+Measurement -> Descriptive -> R-square -> Outlier -> R-square -> MMRE
+rsquare.gif
 
 <endGraphics>
 <beginMap>
 <beginSOPUsers>
-- Employee - Measurer - Chris V.
-true
-true
-9
-3
-
-- Employee - Measurer - Anita
-true
-true
-11
-5
-
 - Employee - Measurer - Chris J.
 true
 true
 5
+3
+
+- Employee - Measurer - Chris V.
+true
+true
+9
 3
 
 - Employee - Measurer - Beverly
@@ -3482,6 +3486,12 @@ true
 true
 7
 3
+
+- Employee - Measurer - Anita
+true
+true
+11
+5
 
 <endSOPUsers>
 605
