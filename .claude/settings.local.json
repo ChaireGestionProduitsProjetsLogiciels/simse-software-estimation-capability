@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C \"D:\\\\Workspace\\\\StaticApps\\\\simse-software-estimation-capability\" ls-tree -r main --name-only)",
+      "Bash(powershell -Command \"Get-ChildItem 'D:\\\\Workspace\\\\StaticApps\\\\simse-software-estimation-capability\\\\assets' -Recurse | Select-Object FullName\")"
+    ]
+  }
+}
