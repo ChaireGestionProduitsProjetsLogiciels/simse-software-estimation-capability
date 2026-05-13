@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(git -C \"D:\\\\Workspace\\\\StaticApps\\\\simse-software-estimation-capability\" ls-tree -r main --name-only)",
-      "Bash(powershell -Command \"Get-ChildItem 'D:\\\\Workspace\\\\StaticApps\\\\simse-software-estimation-capability\\\\assets' -Recurse | Select-Object FullName\")"
+      "Bash(powershell -Command \"Get-ChildItem 'D:\\\\Workspace\\\\StaticApps\\\\simse-software-estimation-capability\\\\assets' -Recurse | Select-Object FullName\")",
+      "PowerShell(Get-ChildItem -Path \"D:\\\\Workspace\\\\StaticApps\\\\simse-software-estimation-capability\\\\.claude\\\\worktrees\\\\brave-cray-f48a12\" -Recurse -Force | Select-Object -Property FullName, @{Name=\"Type\";Expression={if\\($_.PSIsContainer\\){\"DIR\"}else{\"FILE\"}}} | Sort-Object FullName)",
+      "PowerShell(pandoc \"D:\\\\External\\\\OneDrive - ETS\\\\SimSE\\\\SIMSE 17\\\\Official Game\\\\Game F\\\\1. Technical Scenario File - Game F.docx\" -o - --to=markdown 2>&1)"
     ]
   }
 }
