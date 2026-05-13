@@ -1,0 +1,801 @@
+<!-- questionnaires/game-f-questionnaire.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game F Questionnaire - Risks, Budget &amp; Contingency | Software Estimation Educational Games</title>
+  <meta name="description" content="Interactive reference questionnaire for Game F: calculate combined risk/opportunity impact and determine base budget, project contingency, and corporate contingency." />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/questionnaire.css" />
+  <style>
+    /* Profile selector */
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 10px;
+    }
+    .profile-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      padding: 20px;
+      transition: box-shadow .15s;
+    }
+    .profile-card:hover { box-shadow: var(--shadow); }
+    .profile-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: .75rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      border: 1px solid rgba(15,23,42,.12);
+    }
+    .badge-a { background: rgba(239,68,68,.12); color: #7f1d1d; }
+    .badge-b { background: rgba(34,197,94,.12); color: #0f5132; }
+    .badge-c { background: rgba(59,130,246,.12); color: #1e3a8a; }
+    .profile-name { font-size: 1rem; font-weight: 900; margin: 0 0 4px; letter-spacing: -.02em; }
+    .profile-rule { font-size: .82rem; color: var(--muted); margin: 0 0 14px; }
+    .scenario-btn-row { display: flex; flex-direction: column; gap: 8px; }
+
+    /* Reference panel */
+    .ref-panel {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      margin-bottom: 18px;
+      overflow: hidden;
+    }
+    .ref-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: rgba(15,23,42,.02);
+      border: none;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: .95rem;
+      color: var(--text);
+      border-bottom: 1px solid transparent;
+    }
+    .ref-toggle[aria-expanded="true"] { border-bottom-color: var(--border); }
+    .ref-toggle-arrow { font-size: 1rem; transition: transform .2s; }
+    .ref-toggle[aria-expanded="true"] .ref-toggle-arrow { transform: rotate(180deg); }
+    .ref-body { padding: 20px; display: none; }
+    .ref-body.open { display: block; }
+
+    .ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 16px; }
+    .ref-sub-title { font-size: .85rem; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin: 0 0 10px; }
+
+    .graph-section { text-align: center; margin-bottom: 18px; }
+    .graph-section img { max-width: 680px; width: 100%; border-radius: 14px; border: 1px solid var(--border); }
+    .graph-section figcaption { font-size: .82rem; color: var(--muted); margin-top: 8px; }
+
+    /* Reference tables */
+    .ref-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+    .ref-table th { background: rgba(15,23,42,.04); padding: 7px 10px; font-weight: 800; color: var(--muted); font-size: .72rem; text-align: left; border-bottom: 1px solid var(--border); }
+    .ref-table td { padding: 7px 10px; border-bottom: 1px solid rgba(15,23,42,.05); }
+    .ref-table tr:last-child td { border-bottom: none; }
+    .ref-table-wrap { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+
+    /* Modal: risk/opp tables - levels only */
+    .ro-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+    .ro-table th { background: rgba(15,23,42,.04); padding: 8px 10px; font-weight: 800; font-size: .73rem; color: var(--muted); border-bottom: 1px solid var(--border); text-align: left; }
+    .ro-table td { padding: 7px 10px; border-bottom: 1px solid rgba(15,23,42,.05); vertical-align: middle; }
+    .ro-table tr:last-child td { border-bottom: none; }
+    .ro-table-wrap { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 12px; }
+
+    /* Q1 calculator section */
+    .q1-calc { background: rgba(15,23,42,.03); border: 1px solid var(--border); border-radius: 16px; padding: 16px; margin-top: 14px; }
+    .q1-calc-title { font-weight: 900; font-size: .95rem; margin: 0 0 12px; letter-spacing: -.01em; }
+    .q1-inputs { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+    .q1-input-group { flex: 1; min-width: 200px; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 12px; }
+    .q1-input-group label { display: block; font-size: .8rem; color: var(--muted); margin-bottom: 8px; font-weight: 700; }
+    .q1-input-group input {
+      width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 12px;
+      font-size: 1.05rem; font-weight: 800; text-align: center; box-sizing: border-box;
+    }
+    .q1-input-group input:focus { outline: none; border-color: rgba(59,130,246,.55); box-shadow: 0 0 0 4px rgba(59,130,246,.18); }
+    .q1-hint { font-size: .76rem; color: var(--muted); margin-top: 5px; }
+
+    /* Q blocks in step 2 */
+    .q-block { border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; margin-bottom: 12px; background: #fff; }
+    .q-block-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .q-num { width: 30px; height: 30px; border-radius: 8px; background: linear-gradient(135deg, var(--primary), var(--primary2)); color: #fff; font-weight: 900; font-size: .9rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .q-label { font-weight: 800; font-size: .95rem; color: var(--text); }
+    .q-formula-display { font-family: ui-monospace, 'Courier New', monospace; font-size: .85rem; background: rgba(15,23,42,.04); padding: 10px 14px; border-radius: 8px; margin: 8px 0; color: #1e293b; }
+    .q-formula-display .known { color: #1d4ed8; font-weight: 700; }
+    .q-formula-display .unknown { color: #94a3b8; }
+
+    /* MCQ options */
+    .mcq-label { font-size: .78rem; color: var(--muted); font-weight: 700; margin: 10px 0 6px; }
+    .mcq-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .mcq-opt {
+      display: flex; align-items: center; gap: 7px;
+      padding: 7px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      font-size: .82rem;
+      cursor: pointer;
+      transition: all .15s;
+      background: #fff;
+    }
+    .mcq-opt:hover { border-color: rgba(59,130,246,.5); background: rgba(59,130,246,.06); }
+    .mcq-opt.selected { border-color: rgba(59,130,246,.75); background: rgba(59,130,246,.12); font-weight: 700; }
+    .mcq-letter { font-weight: 900; color: var(--muted); min-width: 14px; }
+
+    /* Combo header */
+    .combo-header {
+      background: radial-gradient(400px 200px at 0% 0%, rgba(59,130,246,.12), rgba(59,130,246,0) 65%), rgba(15,23,42,.02);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .combo-header-item { min-width: 150px; }
+    .combo-header-label { font-size: .72rem; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
+    .combo-header-value { font-size: .95rem; font-weight: 800; color: var(--text); }
+
+    .section-divider { font-size: .78rem; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 8px; }
+
+    @media (max-width: 900px) {
+      .profile-grid { grid-template-columns: 1fr; }
+      .ref-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Home">Software Estimation Educational Games</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#use">How to use</a>
+      </nav>
+      <div class="header-logos">
+        <a href="https://cosmic-sizing.org" target="_blank" rel="noopener noreferrer" aria-label="COSMIC sizing standard"><img src="https://cosmic-sizing.org/wp-content/uploads/2020/03/logo-cosmic@2x.png" alt="COSMIC" /></a>
+        <a href="https://www.etsmtl.ca/recherche-innovation/chaires-laboratoires-instituts-centres/chaires-recherche/chaire-philanthropique-gestion-produits-projets-logiciels" target="_blank" rel="noopener noreferrer" aria-label="Philanthropic Research Chair"><img src="https://www.etsmtl.ca/uploads/_1900x2102_crop_center-center_70_none/logo-chaire-philanthropique.png" alt="Chaire philanthropique" /></a>
+        <a href="https://www.etsmtl.ca" target="_blank" rel="noopener noreferrer" aria-label="ETS Montreal"><img src="https://www.etsmtl.ca/assets/img/ets.svg" alt="ETS" /></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="q-wrap">
+      <div class="q-topbar">
+        <a class="q-back" href="../games/game-f-risks-budget.html">← Back to Game F</a>
+        <span class="muted small">Questionnaire &bull; 3 scenarios &times; 3 manager profiles</span>
+      </div>
+
+      <section class="q-header">
+        <h1>Risks, Budget &amp; Contingency Questionnaire</h1>
+        <p class="q-subtitle">Using information on risks and opportunities to select a budget and a contingency reserve - Game F</p>
+      </section>
+
+      <div class="info-box">
+        <strong>How to use</strong><br />
+        Select a manager profile and a scenario. In <strong>Step 1</strong>, use the risk and opportunity tables together with the reference tables to compute each value (Impact% &times; Probability%), sum them up, and enter your totals. In <strong>Step 2</strong>, use your Q1 result and the manager profile rule to answer Q2–Q5, then submit your answers in SimSE.
+        <p class="muted small" style="margin: 10px 0 0;">
+          <strong>Q1</strong> = Σ risks &minus; Σ opportunities &nbsp;|&nbsp;
+          <strong>Q2</strong> = base budget (profile rule) &nbsp;|&nbsp;
+          <strong>Q3</strong> = Q1% &times; Q2 &nbsp;|&nbsp;
+          <strong>Q4</strong> = max(ceiling &minus; Q2,&ensp;ceiling &times; 5%) &nbsp;|&nbsp;
+          <strong>Q5</strong> = Q2 + Q3 + Q4
+        </p>
+      </div>
+
+      <!-- Reference panel -->
+      <div class="ref-panel">
+        <button class="ref-toggle" onclick="toggleRef(this)" aria-expanded="false" aria-controls="refBody">
+          <span>Reference tables &amp; regression graph (open before starting)</span>
+          <span class="ref-toggle-arrow">▼</span>
+        </button>
+        <div class="ref-body" id="refBody">
+
+          <div class="graph-section">
+            <p class="ref-sub-title">Linear regression model - 500 CFP project</p>
+            <figure>
+              <img src="../assets/img/game-f/image9.png" alt="Linear regression graph showing 5 effort reference lines for a 500 CFP project: ①7,800h ②6,100h ③5,300h ④4,700h ⑤4,000h" />
+              <figcaption>
+                For a project of 500 CFP: ① 7,800h (max in dataset) &nbsp;② 6,100h (+MMRE) &nbsp;③ 5,300h (regression equation) &nbsp;④ 4,700h (&minus;MMRE) &nbsp;⑤ 4,000h (min in dataset)
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="ref-grid">
+            <div>
+              <p class="ref-sub-title">Risks - effort impact % by level</p>
+              <div class="ref-table-wrap">
+                <table class="ref-table">
+                  <thead>
+                    <tr><th>#</th><th>Risk</th><th style="text-align:center;">Low</th><th style="text-align:center;">Medium</th><th style="text-align:center;">High</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>1</td><td>Developers with less technical skills than planned</td><td style="text-align:center;">2%</td><td style="text-align:center;">3%</td><td style="text-align:center;">4%</td></tr>
+                    <tr><td>2</td><td>Communication problems between users and software developers</td><td style="text-align:center;">1%</td><td style="text-align:center;">3%</td><td style="text-align:center;">7%</td></tr>
+                    <tr><td>3</td><td>Software architecture more complex than expected</td><td style="text-align:center;">1%</td><td style="text-align:center;">5%</td><td style="text-align:center;">12%</td></tr>
+                    <tr><td>4</td><td>More functional requirements changes than expected</td><td style="text-align:center;">1%</td><td style="text-align:center;">10%</td><td style="text-align:center;">40%</td></tr>
+                    <tr><td>5</td><td>Users not available in time to review and approve specifications</td><td style="text-align:center;">1%</td><td style="text-align:center;">2%</td><td style="text-align:center;">3%</td></tr>
+                    <tr><td>6</td><td>Users not available in time to conduct user testing</td><td style="text-align:center;">2%</td><td style="text-align:center;">5%</td><td style="text-align:center;">7%</td></tr>
+                    <tr><td>7</td><td>Required technical support staff not available in time</td><td style="text-align:center;">1%</td><td style="text-align:center;">2%</td><td style="text-align:center;">3%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div>
+              <p class="ref-sub-title">Opportunities - effort reduction % by level</p>
+              <div class="ref-table-wrap">
+                <table class="ref-table">
+                  <thead>
+                    <tr><th>#</th><th>Opportunity</th><th style="text-align:center;">Low</th><th style="text-align:center;">Medium</th><th style="text-align:center;">High</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>1</td><td>Users decide to decrease functions by 20%</td><td style="text-align:center;">5%</td><td style="text-align:center;">10%</td><td style="text-align:center;">20%</td></tr>
+                    <tr><td>2</td><td>Testing tool utilization is much more productive</td><td style="text-align:center;">2%</td><td style="text-align:center;">4%</td><td style="text-align:center;">7%</td></tr>
+                    <tr><td>3</td><td>Improved user communication for reviews &amp; approval</td><td style="text-align:center;">1%</td><td style="text-align:center;">3%</td><td style="text-align:center;">8%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p class="ref-sub-title" style="margin-top:16px;">Probability levels</p>
+              <div class="ref-table-wrap">
+                <table class="ref-table">
+                  <thead><tr><th>Level</th><th>Probability range</th></tr></thead>
+                  <tbody>
+                    <tr><td>Remotely</td><td>0% – 5%</td></tr>
+                    <tr><td>Unlikely</td><td>6% – 30%</td></tr>
+                    <tr><td>Likely</td><td>31% – 70%</td></tr>
+                    <tr><td>Highly likely</td><td>71% – 95%</td></tr>
+                    <tr><td>Near certainty</td><td>96% – 99%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p class="ref-sub-title" style="margin-top:16px;">Manager profiles</p>
+              <div class="ref-table-wrap">
+                <table class="ref-table">
+                  <thead><tr><th>Profile</th><th>Budget selection</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="nfr-level level-high" style="font-size:.75rem;">High risk-taking</span></td><td>Selects the <strong>minimum</strong> of the range</td></tr>
+                    <tr><td><span class="nfr-level level-low" style="font-size:.75rem;">On-target strategy</span></td><td>Selects the <strong>maximum</strong> of the range</td></tr>
+                    <tr><td><span class="nfr-level level-nominal" style="font-size:.75rem;">Balanced risk-mitigation</span></td><td>Selects the <strong>midpoint</strong> of the range</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile / Scenario selector -->
+      <section class="scenario-card">
+        <div style="margin-bottom:16px;">
+          <h2 style="margin:0 0 4px; font-size:1.1rem; font-weight:900;">Select a manager profile &amp; scenario</h2>
+          <p class="muted small" style="margin:0;">Click "Play" to open the two-step calculator for that combination.</p>
+        </div>
+
+        <div class="profile-grid">
+          <div class="profile-card">
+            <div class="profile-badge badge-a">Profile A</div>
+            <p class="profile-name">High risk-taking</p>
+            <p class="profile-rule">Selects the minimum of the estimation range</p>
+            <div class="scenario-btn-row">
+              <div class="scenario-btn">
+                <div class="scenario-btn-title">Scenario 1 - Range 5 (4,000h – 4,700h)</div>
+                <button class="play-btn" onclick="openCombination(1,'a')">Play</button>
+              </div>
+              <div class="scenario-btn">
+                <div class="scenario-btn-title">Scenario 2 - Range 2 (5,300h – 6,100h)</div>
+                <button class="play-btn" onclick="openCombination(2,'a')">Play</button>
+              </div>
+              <div class="scenario-btn">
+                <div class="scenario-btn-title">Scenario 3 - Range 1 (6,100h – 7,800h)</div>
+                <button class="play-btn" onclick="openCombination(3,'a')">Play</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-card">
+            <div class="profile-badge badge-b">Profile B</div>
+            <p class="profile-name">On-target strategy</p>
+            <p class="profile-rule">Selects the maximum of the estimation range</p>
+            <div class="scenario-btn-row">
+              <div class="scenario-btn">
+                <div class="scenario-btn-title">Scenario 1 - Range 5 (4,000h – 4,700h)</div>
+                <button class="play-btn" onclick="openCombination(1,'b')">Play</button>
+              </div>
+              <div class="scenario-btn">
+                <div class="scenario-btn-title">Scenario 2 - Range 2 (5,300h – 6,100h)</div>
+                <button class="play-btn" onclick="openCombination(2,'b')">Play</button>
+              </div>
+              <div class="scenario-btn">
+                <div class="scenario-btn-title">Scenario 3 - Range 1 (6,100h – 7,800h)</div>
+                <button class="play-btn" onclick="openCombination(3,'b')">Play</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-card">
+            <div class="profile-badge badge-c">Profile C</div>
+            <p class="profile-name">Balanced risk-mitigation</p>
+            <p class="profile-rule">Selects the midpoint of the estimation range</p>
+            <div class="scenario-btn-row">
+              <div class="scenario-btn">
+                <div class="scenario-btn-title">Scenario 1 - Range 5 (4,000h – 4,700h)</div>
+                <button class="play-btn" onclick="openCombination(1,'c')">Play</button>
+              </div>
+              <div class="scenario-btn">
+                <div class="scenario-btn-title">Scenario 2 - Range 2 (5,300h – 6,100h)</div>
+                <button class="play-btn" onclick="openCombination(2,'c')">Play</button>
+              </div>
+              <div class="scenario-btn">
+                <div class="scenario-btn-title">Scenario 3 - Range 1 (6,100h – 7,800h)</div>
+                <button class="play-btn" onclick="openCombination(3,'c')">Play</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Modal -->
+    <div id="scenarioModal" class="modal" onclick="handleModalClick(event)">
+      <div class="modal-content" style="max-width:860px;">
+        <div class="modal-header">
+          <h2 class="modal-title" id="modalTitle">Combination</h2>
+          <button class="close-btn" onclick="closeModal()" aria-label="Close">&times;</button>
+        </div>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div><div class="footer-title">Software Estimation Educational Games</div></div>
+      <div class="footer-links">
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#use">How to use</a>
+        <a class="ext" href="https://www.ics.uci.edu/~emilyo/SimSE/" target="_blank" rel="noopener noreferrer">SimSE community</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ==================== DATA ====================
+
+    const SCENARIO_DATA = {
+      1: {
+        label: "Scenario 1",
+        rangeLabel: "Range 5 – Below −MMRE",
+        rangeShort: "4,000h – 4,700h",
+        minH: 4000, maxH: 4700,
+        risks: [
+          { desc: "Developers with less technical skills than planned",                    impact: "Low",    prob: "Unlikely"       },
+          { desc: "Communication problems between users and software developers",          impact: "Medium", prob: "Highly likely"  },
+          { desc: "Software architecture more complex than expected",                      impact: "Medium", prob: "Remotely"       },
+          { desc: "More functional requirements changes than expected",                    impact: "High",   prob: "Unlikely"       },
+          { desc: "Users not available in time to review and approve specifications",      impact: "High",   prob: "Near certainty" },
+          { desc: "Users not available in time to conduct user testing",                   impact: "Low",    prob: "Unlikely"       },
+          { desc: "Required technical support staff not available in a timely manner",     impact: "Medium", prob: "Remotely"       }
+        ],
+        opps: [
+          { desc: "Users decide to decrease functions by 20%",                impact: "Medium", prob: "Unlikely" },
+          { desc: "Testing tool utilization is much more productive",         impact: "Low",    prob: "Remotely" },
+          { desc: "Improve user communication for reviews and approval",      impact: "High",   prob: "Unlikely" }
+        ],
+        q1mcq: { A: "7.11%", B: "5.94%", C: "5.28%", D: "1.90%" }
+      },
+      2: {
+        label: "Scenario 2",
+        rangeLabel: "Range 2 – Equation to +MMRE",
+        rangeShort: "5,300h – 6,100h",
+        minH: 5300, maxH: 6100,
+        risks: [
+          { desc: "Developers with less technical skills than planned",                    impact: "Medium", prob: "Unlikely"      },
+          { desc: "Communication problems between users and software developers",          impact: "High",   prob: "Likely"        },
+          { desc: "Software architecture more complex than expected",                      impact: "Low",    prob: "Highly likely" },
+          { desc: "More functional requirements changes than expected",                    impact: "Low",    prob: "Remotely"      },
+          { desc: "Users not available in time to review and approve specifications",      impact: "High",   prob: "Highly likely" },
+          { desc: "Users not available in time to conduct user testing",                   impact: "High",   prob: "Unlikely"      },
+          { desc: "Required technical support staff not available in a timely manner",     impact: "Low",    prob: "Remotely"      }
+        ],
+        opps: [
+          { desc: "Users decide to decrease functions by 20%",                impact: "Low",  prob: "Unlikely" },
+          { desc: "Testing tool utilization is much more productive",         impact: "Low",  prob: "Unlikely" },
+          { desc: "Improve user communication for reviews and approval",      impact: "High", prob: "Unlikely" }
+        ],
+        q1mcq: { A: "21.76%", B: "2.00%", C: "19.76%", D: "7.65%" }
+      },
+      3: {
+        label: "Scenario 3",
+        rangeLabel: "Range 1 – Above +MMRE",
+        rangeShort: "6,100h – 7,800h",
+        minH: 6100, maxH: 7800,
+        risks: [
+          { desc: "Developers with less technical skills than planned",                    impact: "Medium", prob: "Likely"        },
+          { desc: "Communication problems between users and software developers",          impact: "Medium", prob: "Highly likely" },
+          { desc: "Software architecture more complex than expected",                      impact: "High",   prob: "Remotely"      },
+          { desc: "More functional requirements changes than expected",                    impact: "High",   prob: "Remotely"      },
+          { desc: "Users not available in time to review and approve specifications",      impact: "Low",    prob: "Unlikely"      },
+          { desc: "Users not available in time to conduct user testing",                   impact: "Low",    prob: "Unlikely"      },
+          { desc: "Required technical support staff not available in a timely manner",     impact: "Low",    prob: "Remotely"      }
+        ],
+        opps: [
+          { desc: "Users decide to decrease functions by 20%",                impact: "Low",  prob: "Remotely" },
+          { desc: "Testing tool utilization is much more productive",         impact: "Low",  prob: "Remotely" },
+          { desc: "Improve user communication for reviews and approval",      impact: "High", prob: "Unlikely" }
+        ],
+        q1mcq: { A: "3.79%", B: "0.90%", C: "2.85%", D: "4.69%" }
+      }
+    };
+
+    const PROFILE_DATA = {
+      a: { label: "High risk-taking",       badgeClass: "badge-a", rule: "Select the minimum of the range", budgetType: "min" },
+      b: { label: "On-target strategy",     badgeClass: "badge-b", rule: "Select the maximum of the range", budgetType: "max" },
+      c: { label: "Balanced risk-mitigation", badgeClass: "badge-c", rule: "Select the midpoint of the range", budgetType: "mid" }
+    };
+
+    // MCQ options for Q2–Q5 per combination
+    const MCQ_DATA = {
+      S1a: {
+        q2: { A: "4,000h", B: "4,700h", C: "5,300h", D: "6,100h" },
+        q3: { A: "76h",    B: "238h",   C: "89h",    D: "161h"   },
+        q4: { A: "0h",     B: "700h",   C: "600h",   D: "1,400h" },
+        q5: { A: "4,938h", B: "4,776h", C: "4,676h", D: "4,789h" }
+      },
+      S1b: {
+        q2: { A: "4,000h", B: "4,700h", C: "5,300h", D: "6,100h" },
+        q3: { A: "76h",    B: "258h",   C: "89h",    D: "279h"   },
+        q4: { A: "235h",   B: "279h",   C: "600h",   D: "1,400h" },
+        q5: { A: "5,589h", B: "5,137h", C: "5,214h", D: "5,789h" }
+      },
+      S1c: {
+        q2: { A: "4,000h", B: "4,500h", C: "4,350h", D: "4,200h" },
+        q3: { A: "144h",   B: "279h",   C: "258h",   D: "238h"   },
+        q4: { A: "235h",   B: "450h",   C: "200h",   D: "350h"   },
+        q5: { A: "4,350h", B: "4,958h", C: "4,149h", D: "4,200h" }
+      },
+      S2a: {
+        q2: { A: "4,000h", B: "4,700h", C: "5,300h", D: "6,100h" },
+        q3: { A: "106h",   B: "1,153h", C: "405h",   D: "835h"   },
+        q4: { A: "0h",     B: "800h",   C: "941h",   D: "835h"   },
+        q5: { A: "941h",   B: "6,505h", C: "1,776h", D: "906h"   }
+      },
+      S2b: {
+        q2: { A: "4,000h", B: "4,700h", C: "5,300h", D: "6,100h" },
+        q3: { A: "467h",   B: "1,153h", C: "941h",   D: "835h"   },
+        q4: { A: "305h",   B: "800h",   C: "941h",   D: "835h"   },
+        q5: { A: "6,670h", B: "6,853h", C: "6,872h", D: "6,776h" }
+      },
+      S2c: {
+        q2: { A: "4,000h", B: "5,700h", C: "4,350h", D: "6,100h" },
+        q3: { A: "436h",   B: "80h",    C: "8,596h", D: "773h"   },
+        q4: { A: "0h",     B: "450h",   C: "800h",   D: "405h"   },
+        q5: { A: "6,670h", B: "6,536h", C: "6,480h", D: "6,530h" }
+      },
+      S3a: {
+        q2: { A: "4,000h", B: "4,700h", C: "5,300h", D: "6,100h" },
+        q3: { A: "76h",    B: "174h",   C: "89h",    D: "161h"   },
+        q4: { A: "0h",     B: "1,700h", C: "600h",   D: "1,400h" },
+        q5: { A: "7,974h", B: "7,776h", C: "7,676h", D: "7,789h" }
+      },
+      S3b: {
+        q2: { A: "4,000h", B: "7,800h", C: "6,950h", D: "6,100h" },
+        q3: { A: "222h",   B: "137h",   C: "89h",    D: "198h"   },
+        q4: { A: "390h",   B: "1,700h", C: "600h",   D: "850h"   },
+        q5: { A: "8,922h", B: "8,737h", C: "8,412h", D: "8,939h" }
+      },
+      S3c: {
+        q2: { A: "4,000h", B: "7,800h", C: "6,950h", D: "6,100h" },
+        q3: { A: "222h",   B: "137h",   C: "89h",    D: "198h"   },
+        q4: { A: "0h",     B: "700h",   C: "850h",   D: "1,700h" },
+        q5: { A: "7,837h", B: "7,939h", C: "7,998h", D: "7,922h" }
+      }
+    };
+
+    // ==================== STATE ====================
+    let currentScen = null, currentProfile = null;
+
+    // ==================== HELPERS ====================
+    function getQ2(sData, pData) {
+      if (pData.budgetType === 'min') return sData.minH;
+      if (pData.budgetType === 'max') return sData.maxH;
+      return Math.round((sData.minH + sData.maxH) / 2);
+    }
+
+    function levelClass(level) {
+      const l = level.toLowerCase();
+      if (l === 'low') return 'level-low';
+      if (l === 'medium' || l === 'middle') return 'level-nominal';
+      if (l === 'high') return 'level-high';
+      if (l.includes('certainty') || l === 'highly likely') return 'level-very-high';
+      return '';
+    }
+
+    function fmt(n) { return n.toLocaleString('en-US'); }
+
+    function mcqRow(qKey, opts) {
+      return `<div class="mcq-row" id="mcq-${qKey}">` +
+        ['A','B','C','D'].map(l =>
+          `<button class="mcq-opt" id="mcq-${qKey}-${l}" onclick="selectMcq('${qKey}','${l}')">
+            <span class="mcq-letter">${l}</span><span>${opts[l]}</span>
+          </button>`
+        ).join('') +
+      `</div>`;
+    }
+
+    function selectMcq(qKey, letter) {
+      ['A','B','C','D'].forEach(l => document.getElementById('mcq-' + qKey + '-' + l)?.classList.remove('selected'));
+      document.getElementById('mcq-' + qKey + '-' + letter)?.classList.add('selected');
+    }
+
+    // ==================== STEP 1 ====================
+    function openCombination(scenId, profileId) {
+      currentScen = scenId;
+      currentProfile = profileId;
+      const sData = SCENARIO_DATA[scenId];
+      const pData = PROFILE_DATA[profileId];
+
+      document.getElementById('modalTitle').textContent =
+        sData.label + ' × Profile ' + profileId.toUpperCase() + ' - ' + pData.label;
+
+      document.getElementById('modalBody').innerHTML = renderStep1(sData, pData);
+      document.getElementById('scenarioModal').style.display = 'flex';
+    }
+
+    function renderStep1(sData, pData) {
+      const riskRows = sData.risks.map((r, i) => `
+        <tr>
+          <td style="color:var(--muted); font-weight:700; text-align:center; font-size:.8rem;">${i+1}</td>
+          <td style="font-size:.79rem;">${r.desc}</td>
+          <td style="text-align:center;"><span class="nfr-level ${levelClass(r.impact)}">${r.impact}</span></td>
+          <td style="text-align:center;"><span class="nfr-level ${levelClass(r.prob)}">${r.prob}</span></td>
+        </tr>`).join('');
+
+      const oppRows = sData.opps.map((o, i) => `
+        <tr>
+          <td style="color:var(--muted); font-weight:700; text-align:center; font-size:.8rem;">${i+1}</td>
+          <td style="font-size:.79rem;">${o.desc}</td>
+          <td style="text-align:center;"><span class="nfr-level ${levelClass(o.impact)}">${o.impact}</span></td>
+          <td style="text-align:center;"><span class="nfr-level ${levelClass(o.prob)}">${o.prob}</span></td>
+        </tr>`).join('');
+
+      return `
+        <div class="combo-header">
+          <div class="combo-header-item">
+            <div class="combo-header-label">Estimation range</div>
+            <div class="combo-header-value">${sData.rangeLabel}</div>
+            <div style="font-size:.8rem; color:var(--muted); margin-top:2px;">${sData.rangeShort}</div>
+          </div>
+          <div class="combo-header-item">
+            <div class="combo-header-label">Manager profile</div>
+            <div class="combo-header-value">${pData.label}</div>
+          </div>
+          <div class="combo-header-item">
+            <div class="combo-header-label">Budget selection rule</div>
+            <div class="combo-header-value" style="font-size:.88rem;">${pData.rule}</div>
+          </div>
+        </div>
+
+        <p class="section-divider">Step 1 of 2 - Calculate the combined impact (Q1)</p>
+
+        <p style="font-size:.85rem; color:var(--muted); margin: 0 0 12px;">
+          For each row, look up the <strong>Impact %</strong> and <strong>Probability %</strong> in the reference tables, then calculate: <em>value = Impact% × Probability%</em>. Sum all risk values and all opportunity values, then enter your totals below.
+        </p>
+
+        <p class="section-divider" style="margin-top:0;">Risks with negative impact on effort</p>
+        <div class="ro-table-wrap">
+          <table class="ro-table">
+            <thead>
+              <tr>
+                <th style="width:28px;">#</th>
+                <th>Risk</th>
+                <th style="width:100px; text-align:center;">Impact level</th>
+                <th style="width:130px; text-align:center;">Probability level</th>
+              </tr>
+            </thead>
+            <tbody>${riskRows}</tbody>
+          </table>
+        </div>
+
+        <p class="section-divider">Opportunities with positive impact on effort</p>
+        <div class="ro-table-wrap">
+          <table class="ro-table">
+            <thead>
+              <tr>
+                <th style="width:28px;">#</th>
+                <th>Opportunity</th>
+                <th style="width:100px; text-align:center;">Impact level</th>
+                <th style="width:130px; text-align:center;">Probability level</th>
+              </tr>
+            </thead>
+            <tbody>${oppRows}</tbody>
+          </table>
+        </div>
+
+        <div class="q1-calc">
+          <p class="q1-calc-title">Enter your computed totals</p>
+          <div class="q1-inputs">
+            <div class="q1-input-group">
+              <label for="inputRisks">Σ Total risk impact (%)</label>
+              <input type="number" id="inputRisks" step="0.01" min="0" placeholder="e.g. 7.80" oninput="updateQ1()">
+              <p class="q1-hint">Sum of all (Impact% × Probability%) for the 7 risks</p>
+            </div>
+            <div class="q1-input-group">
+              <label for="inputOpps">Σ Total opportunity impact (%)</label>
+              <input type="number" id="inputOpps" step="0.01" min="0" placeholder="e.g. 1.86" oninput="updateQ1()">
+              <p class="q1-hint">Sum of all (Impact% × Probability%) for the 3 opportunities</p>
+            </div>
+          </div>
+          <div class="calc-formula" id="q1Formula">Q1 = Σ Risks − Σ Opportunities = ? − ? = ?</div>
+          <div class="total-display">
+            <div class="total-label">Your Q1 - Combined impact</div>
+            <div class="total-value" id="q1Display">?</div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-soft" onclick="closeModal()">Cancel</button>
+          <button class="btn btn-primary" onclick="goToStep2()">Next: Budget calculations →</button>
+        </div>
+      `;
+    }
+
+    function updateQ1() {
+      const risks = parseFloat(document.getElementById('inputRisks').value) || null;
+      const opps  = parseFloat(document.getElementById('inputOpps').value)  || null;
+      if (risks !== null && opps !== null) {
+        const q1 = (risks - opps).toFixed(2);
+        document.getElementById('q1Formula').textContent =
+          'Q1 = Σ Risks − Σ Opportunities = ' + risks.toFixed(2) + '% − ' + opps.toFixed(2) + '% = ' + q1 + '%';
+        document.getElementById('q1Display').textContent = q1 + '%';
+      } else {
+        document.getElementById('q1Formula').textContent = 'Q1 = Σ Risks − Σ Opportunities = ? − ? = ?';
+        document.getElementById('q1Display').textContent = '?';
+      }
+    }
+
+    // ==================== STEP 2 ====================
+    function goToStep2() {
+      const risksVal = parseFloat(document.getElementById('inputRisks')?.value);
+      const oppsVal  = parseFloat(document.getElementById('inputOpps')?.value);
+      if (isNaN(risksVal) || isNaN(oppsVal)) {
+        alert('Please enter your Σ Risks and Σ Opportunities totals before proceeding.');
+        return;
+      }
+
+      const q1 = parseFloat((risksVal - oppsVal).toFixed(2));
+      const sData = SCENARIO_DATA[currentScen];
+      const pData = PROFILE_DATA[currentProfile];
+      const q2 = getQ2(sData, pData);
+      const mcq = MCQ_DATA['S' + currentScen + currentProfile];
+
+      document.getElementById('modalTitle').textContent =
+        sData.label + ' × Profile ' + currentProfile.toUpperCase() + ' - Step 2: Budget calculations';
+
+      document.getElementById('modalBody').innerHTML = renderStep2(sData, pData, q1, q2, mcq);
+    }
+
+    function renderStep2(sData, pData, q1, q2, mcq) {
+      return `
+        <p class="section-divider">Step 2 of 2 - Budget calculations (Q1 to Q5)</p>
+
+        <p style="font-size:.85rem; color:var(--muted); margin: 0 0 14px;">
+          Using your computed Q1 and the manager profile rule, calculate Q2–Q5 and select your answers for SimSE.
+        </p>
+
+        <!-- Q1 -->
+        <div class="q-block">
+          <div class="q-block-header">
+            <div class="q-num">Q1</div>
+            <div class="q-label">Combined impact on effort</div>
+          </div>
+          <div class="q-formula-display">
+            Q1 (your result) = <span class="known">${q1}%</span>
+          </div>
+          <p class="mcq-label">Select your answer in SimSE:</p>
+          ${mcqRow('q1', sData.q1mcq)}
+        </div>
+
+        <!-- Q2 -->
+        <div class="q-block">
+          <div class="q-block-header">
+            <div class="q-num">Q2</div>
+            <div class="q-label">Project base budget</div>
+          </div>
+          <div class="q-formula-display">
+            <span class="known">${pData.label}</span> → ${pData.rule} → range <span class="known">${sData.rangeShort}</span><br>
+            Q2 = <span class="unknown">?</span>
+          </div>
+          <p class="mcq-label">Select your answer in SimSE:</p>
+          ${mcqRow('q2', mcq.q2)}
+        </div>
+
+        <!-- Q3 -->
+        <div class="q-block">
+          <div class="q-block-header">
+            <div class="q-num">Q3</div>
+            <div class="q-label">Project contingency reserve</div>
+          </div>
+          <div class="q-formula-display">
+            Q3 = Q1% × Q2 = <span class="known">${q1}%</span> × Q2 = <span class="unknown">?</span>
+          </div>
+          <p class="mcq-label">Select your answer in SimSE:</p>
+          ${mcqRow('q3', mcq.q3)}
+        </div>
+
+        <!-- Q4 -->
+        <div class="q-block">
+          <div class="q-block-header">
+            <div class="q-num">Q4</div>
+            <div class="q-label">Corporate contingency reserve</div>
+          </div>
+          <div class="q-formula-display">
+            Q4 = max(ceiling − Q2,&ensp;ceiling × 5%) = max(<span class="known">${fmt(sData.maxH)}</span> − Q2,&ensp;<span class="known">${fmt(sData.maxH)}</span> × 5%) = <span class="unknown">?</span>
+          </div>
+          <p class="mcq-label">Select your answer in SimSE:</p>
+          ${mcqRow('q4', mcq.q4)}
+        </div>
+
+        <!-- Q5 -->
+        <div class="q-block">
+          <div class="q-block-header">
+            <div class="q-num">Q5</div>
+            <div class="q-label">Total corporate budget</div>
+          </div>
+          <div class="q-formula-display">
+            Q5 = Q2 + Q3 + Q4 = <span class="unknown">?</span>
+          </div>
+          <p class="mcq-label">Select your answer in SimSE:</p>
+          ${mcqRow('q5', mcq.q5)}
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-soft" onclick="backToStep1()">← Back to Step 1</button>
+          <button class="btn btn-primary" onclick="closeModal()">Done</button>
+        </div>
+      `;
+    }
+
+    function backToStep1() {
+      openCombination(currentScen, currentProfile);
+    }
+
+    // ==================== MODAL ====================
+    function closeModal() {
+      document.getElementById('scenarioModal').style.display = 'none';
+      currentScen = null; currentProfile = null;
+    }
+
+    function handleModalClick(event) {
+      if (event.target === document.getElementById('scenarioModal')) closeModal();
+    }
+
+    function toggleRef(btn) {
+      const body = document.getElementById('refBody');
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      body.classList.toggle('open', !open);
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  </script>
+</body>
+</html>

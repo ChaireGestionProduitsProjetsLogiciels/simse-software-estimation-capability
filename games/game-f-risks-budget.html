@@ -1,0 +1,403 @@
+<!-- games/game-f-risks-budget.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Game F - Risks, Budget &amp; Contingency | Software Estimation Educational Games</title>
+  <meta name="description" content="Integrate identified risks and opportunities into the selection of a project budget and contingency reserve, accounting for the project manager's risk attitude." />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Home">Software Estimation Educational Games</a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#use">How to use</a>
+      </nav>
+      <div class="header-logos">
+        <a href="https://cosmic-sizing.org" target="_blank" rel="noopener noreferrer" aria-label="COSMIC sizing standard"><img src="https://cosmic-sizing.org/wp-content/uploads/2020/03/logo-cosmic@2x.png" alt="COSMIC" /></a>
+        <a href="https://www.etsmtl.ca/recherche-innovation/chaires-laboratoires-instituts-centres/chaires-recherche/chaire-philanthropique-gestion-produits-projets-logiciels" target="_blank" rel="noopener noreferrer" aria-label="Philanthropic Research Chair"><img src="https://www.etsmtl.ca/uploads/_1900x2102_crop_center-center_70_none/logo-chaire-philanthropique.png" alt="Chaire philanthropique" /></a>
+        <a href="https://www.etsmtl.ca" target="_blank" rel="noopener noreferrer" aria-label="ETS Montreal"><img src="https://www.etsmtl.ca/assets/img/ets.svg" alt="ETS" /></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Page header -->
+    <section class="hero hero-page">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-inner hero-inner-page">
+        <div class="hero-copy">
+          <p class="kicker">Game F &bull; Risks, Budget &amp; Contingency</p>
+          <h1>Using information on risks and opportunities to select a budget and a contingency reserve</h1>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="../questionnaires/game-f-questionnaire.html">Open questionnaire</a>
+            <a class="btn btn-soft" href="#downloads">Downloads</a>
+          </div>
+
+          <div class="hero-links">
+            <span class="muted">Recommended:</span>
+            <a href="#how-it-works">read "How it works" first</a>
+          </div>
+        </div>
+
+        <aside class="hero-aside" aria-label="Quick facts">
+          <div class="stat-card">
+            <div class="stat-num">9</div>
+            <div class="stat-label">Scenario–profile combinations</div>
+            <div class="stat-sub">3 scenarios &times; 3 manager profiles</div>
+          </div>
+
+          <div class="mini-cards">
+            <div class="mini-card">
+              <div class="mini-title">Input</div>
+              <p class="mini-text">An estimation range, 7 risks, 3 opportunities, and a manager risk profile.</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-title">Action</div>
+              <p class="mini-text">Calculate combined impact and determine base budget, project and corporate contingency reserves.</p>
+            </div>
+            <div class="mini-card">
+              <div class="mini-title">Outcome</div>
+              <p class="mini-text">Immediate scoring across 5 sequential budget questions per scenario.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Learning objective</h2>
+          <p>
+            Teach students how to <strong>integrate a set of identified risks and opportunities</strong> into the
+            selection of a <strong>project budget and an associated contingency reserve</strong>, taking into account
+            the risk attitude of the project manager.
+          </p>
+        </header>
+
+        <div class="grid-2">
+          <article class="card card-raise">
+            <h3>What the player sees</h3>
+            <ul class="bullets">
+              <li>A regression model graph with equation line and &plusmn;MMRE bounds for a 500 CFP project</li>
+              <li>A reference table of 7 risks with their effort impact percentages (Low / Medium / High)</li>
+              <li>A reference table of 3 opportunities with their effort impact percentages (Low / Medium / High)</li>
+              <li>A probability scale ranging from Remotely to Near certainty</li>
+              <li>Three scenarios, each specifying an estimation range, a manager profile, and assigned impact and probability levels for each risk and opportunity</li>
+            </ul>
+          </article>
+
+          <article class="card card-raise" id="how-it-works">
+            <h3>How the game works</h3>
+            <ol class="steps">
+              <li>Select a manager profile (High risk-taking / On-target / Balanced).</li>
+              <li>Select one of the three available scenarios for that profile.</li>
+              <li>Answer 5 sequential budget questions using the questionnaire data.</li>
+              <li>Return to profile and scenario selection; repeat for additional combinations.</li>
+              <li>Trigger <strong>EndGame</strong> at any time after completing at least one scenario.</li>
+            </ol>
+            <p class="muted small">
+              Once a scenario is completed under a given profile, it becomes unavailable for that profile.
+              The same scenario remains accessible under the other profiles.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Manager profiles -->
+    <section class="section section-soft">
+      <div class="container">
+        <header class="section-header">
+          <h2>Manager profiles</h2>
+          <p>
+            Three manager profiles are used throughout the game. Each reflects a distinct
+            <strong>attitude toward budget risk</strong> and determines how the base budget is selected
+            from the estimation range.
+          </p>
+        </header>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Profile</th>
+                <th>Attitude</th>
+                <th>Budget selection</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="highlight">High risk-taking</td>
+                <td>Accepts the risk of being over budget</td>
+                <td>Selects the lowest value of the estimation range</td>
+              </tr>
+              <tr>
+                <td class="highlight">On-target strategy</td>
+                <td>Seeks the highest probability of staying on budget</td>
+                <td>Selects the highest value of the estimation range</td>
+              </tr>
+              <tr>
+                <td class="highlight">Balanced risk-mitigation</td>
+                <td>Balances risk and cost</td>
+                <td>Selects the midpoint of the estimation range</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Budget questions -->
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Budget questions (5 per scenario)</h2>
+          <p>
+            For each scenario–profile combination, five questions are answered <strong>sequentially</strong>.
+            Each question presents four multiple-choice answers (A / B / C / D).
+          </p>
+        </header>
+
+        <div class="option-grid">
+          <div class="option-card">
+            <div class="option-num">Q1</div>
+            <div class="option-body">
+              <div class="option-title">Combined impact on effort</div>
+              <div class="option-text">What is the net percentage impact of all risks and opportunities combined?</div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">Q2</div>
+            <div class="option-body">
+              <div class="option-title">Project base budget</div>
+              <div class="option-text">Which effort value does this manager profile select from the estimation range?</div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">Q3</div>
+            <div class="option-body">
+              <div class="option-title">Project contingency reserve</div>
+              <div class="option-text">What reserve covers the expected net impact of risks and opportunities on the base budget?</div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">Q4</div>
+            <div class="option-body">
+              <div class="option-title">Corporate contingency</div>
+              <div class="option-text">What additional reserve does the organization retain to cover the gap within the estimation range?</div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-num">Q5</div>
+            <div class="option-body">
+              <div class="option-title">Total corporate budget</div>
+              <div class="option-text">What is the total budget combining base budget, project contingency, and corporate contingency?</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Teaching notes -->
+    <section class="section section-soft">
+      <div class="container">
+        <header class="section-header">
+          <h2>Teaching notes</h2>
+          <p>
+            This game extends estimation practice by introducing <strong>risk-based budget decisions</strong>
+            and the distinction between project and corporate contingency reserves.
+          </p>
+        </header>
+
+        <div class="grid-2">
+          <article class="card card-raise">
+            <h3>Suggested use in class</h3>
+            <ul class="bullets">
+              <li>Introduce the concepts of risk, opportunity, and probability before the session</li>
+              <li>Have students compute individual risk and opportunity values by hand first</li>
+              <li>Discuss how manager risk attitude influences budget selection</li>
+              <li>Compare the three profiles side-by-side on the same scenario to highlight trade-offs</li>
+              <li>Emphasize the role of the corporate contingency as an organizational safety net</li>
+            </ul>
+          </article>
+
+          <article class="card card-raise">
+            <h3>What to evaluate</h3>
+            <ul class="bullets">
+              <li>Correct computation of individual risk and opportunity values</li>
+              <li>Accurate combined impact percentage (Q1)</li>
+              <li>Correct application of the manager profile to select the base budget (Q2)</li>
+              <li>Understanding of the project contingency as a percentage of the base budget (Q3)</li>
+              <li>Correct application of the corporate contingency rule (Q4)</li>
+              <li>Consistent aggregation to total corporate budget (Q5)</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Downloads -->
+    <section id="downloads" class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Downloads &amp; documentation</h2>
+          <p>Access game files, manuals, and supporting resources.</p>
+        </header>
+
+        <div class="download-grid">
+
+          <article class="download-card">
+            <h3>Game</h3>
+            <div class="download-links">
+              <a class="btn btn-primary" href="../assets/downloads/game-f/JAR - Game F.jar" download>Download JAR</a>
+              <button class="btn btn-soft" onclick="openLaunchGuide('JAR - Game F.jar')" type="button">How to launch</button>
+            </div>
+          </article>
+
+          <article class="download-card">
+            <h3>Resources</h3>
+            <div class="download-links">
+              <a class="btn btn-soft" href="../assets/downloads/game-f/Manual-Game F-students.pdf" download>Student Manual</a>
+              <a class="btn btn-soft" href="../assets/downloads/game-f/MDL - Game F.mdl" download>MDL File</a>
+            </div>
+          </article>
+
+          <article class="download-card">
+            <h3>Instructor Manual</h3>
+            <p style="font-size:.875rem; color:#64748b; margin:0 0 12px; line-height:1.5;">
+              Reserved for instructors. Send a request to receive access.
+            </p>
+            <div class="download-links">
+              <a class="btn btn-soft" href="mailto:alain.abran@etsmtl.ca,alain.april@etsmtl.ca,pierre.bourque@etsmtl.ca?subject=SimSE%20%E2%80%94%20Instructor%20Materials%20Access%20Request&body=Hello%2C%0A%0AI%20would%20like%20to%20request%20access%20to%20the%20instructor%20materials%20for%20SimSE%20Educational%20Games.%0A%0AGame%3A%20Game%20F%0AName%3A%20%5Byour%20name%5D%0AInstitution%3A%20%5Byour%20institution%5D%0A%0AThank%20you.">Request access by email</a>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="muted small top-gap">
+          Questionnaire: <a href="../questionnaires/game-f-questionnaire.html">game-f-questionnaire.html</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <a class="btn btn-soft" href="../index.html#games">&larr; Back to all games</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-title">Software Estimation Educational Games</div>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#use">How to use</a>
+        <a class="ext" href="https://www.ics.uci.edu/~emilyo/SimSE/" target="_blank" rel="noopener noreferrer">SimSE community</a>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .top-gap { margin-top: 2rem; }
+
+    .table-container {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .data-table thead { background: #f9fafb; }
+
+    .data-table th {
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .data-table .highlight {
+      font-weight: 700;
+      color: #2563eb;
+    }
+  </style>
+
+  <!-- Launch guide modal -->
+  <div id="launchModal" style="display:none; position:fixed; z-index:200; inset:0; background:rgba(0,0,0,.55); animation:fadeInBg .2s;" onclick="if(event.target===this)closeLaunchModal()">
+    <div style="background:#fff; border-radius:20px; max-width:560px; margin:60px auto; padding:28px 28px 22px; box-shadow:0 24px 64px rgba(0,0,0,.3); position:relative; max-height:85vh; overflow-y:auto;">
+      <button onclick="closeLaunchModal()" aria-label="Close" style="position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:10px;border:1px solid #e5e7eb;background:#f9fafb;font-size:1.2rem;cursor:pointer;line-height:1;">&times;</button>
+      <h2 style="margin:0 0 6px;font-size:1.2rem;font-weight:900;letter-spacing:-.02em;" id="launchModalTitle">How to launch the game</h2>
+      <p style="margin:0 0 18px;font-size:.875rem;color:#64748b;">Java 17 or later must be installed on your computer. <a href="https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html" target="_blank" rel="noopener" style="color:#2563eb;">Download Java 17</a></p>
+
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:14px 16px;">
+          <div style="font-weight:800;font-size:.85rem;margin-bottom:6px;">Windows</div>
+          <p style="margin:0 0 8px;font-size:.85rem;color:#374151;">Double-click the <code>.jar</code> file. If it does not open, right-click &rarr; <em>Open with &rarr; Java(TM) Platform SE Binary</em>.</p>
+          <p style="margin:0;font-size:.85rem;color:#374151;">Or open <strong>Command Prompt</strong> in the download folder and run:</p>
+          <code id="winCmd" style="display:block;margin-top:6px;background:#0f172a;color:#e2e8f0;padding:8px 12px;border-radius:8px;font-size:.82rem;"></code>
+        </div>
+
+        <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:14px 16px;">
+          <div style="font-weight:800;font-size:.85rem;margin-bottom:6px;">macOS</div>
+          <p style="margin:0 0 8px;font-size:.85rem;color:#374151;">Right-click the <code>.jar</code> file &rarr; <em>Open With &rarr; Jar Launcher</em>. If blocked by Gatekeeper, go to <strong>System Settings &rarr; Privacy &amp; Security</strong> and click <em>Open Anyway</em>.</p>
+          <p style="margin:0;font-size:.85rem;color:#374151;">Or open <strong>Terminal</strong> in the download folder and run:</p>
+          <code id="macCmd" style="display:block;margin-top:6px;background:#0f172a;color:#e2e8f0;padding:8px 12px;border-radius:8px;font-size:.82rem;"></code>
+        </div>
+
+        <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:14px 16px;">
+          <div style="font-weight:800;font-size:.85rem;margin-bottom:6px;">Linux</div>
+          <p style="margin:0 0 8px;font-size:.85rem;color:#374151;">Open a <strong>terminal</strong> in the download folder and run:</p>
+          <code id="linuxCmd" style="display:block;margin-top:6px;background:#0f172a;color:#e2e8f0;padding:8px 12px;border-radius:8px;font-size:.82rem;"></code>
+        </div>
+      </div>
+
+      <p style="margin:16px 0 0;font-size:.8rem;color:#94a3b8;">If you see a blank screen on launch, try running with <code>-Dsun.java2d.noddraw=true</code> appended to the command.</p>
+    </div>
+  </div>
+  <style>@keyframes fadeInBg{from{opacity:0}to{opacity:1}}</style>
+  <script>
+    function openLaunchGuide(jarName) {
+      var cmd = 'java -jar "' + jarName + '"';
+      document.getElementById('winCmd').textContent   = cmd;
+      document.getElementById('macCmd').textContent   = cmd;
+      document.getElementById('linuxCmd').textContent = cmd;
+      document.getElementById('launchModal').style.display = 'block';
+    }
+    function closeLaunchModal() {
+      document.getElementById('launchModal').style.display = 'none';
+    }
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLaunchModal(); });
+  </script>
+</body>
+</html>
