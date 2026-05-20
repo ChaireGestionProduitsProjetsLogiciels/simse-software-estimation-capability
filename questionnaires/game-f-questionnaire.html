@@ -510,6 +510,31 @@
       }
     };
 
+    // Impact % lookup by risk/opp index and level (matches reference panel tables)
+    const RISK_IMPACT_PCT = [
+      { Low: 2,  Medium: 3,  High: 4  },  // Risk 1 – Dev skills
+      { Low: 1,  Medium: 3,  High: 7  },  // Risk 2 – Communication
+      { Low: 1,  Medium: 5,  High: 12 },  // Risk 3 – Architecture
+      { Low: 1,  Medium: 10, High: 40 },  // Risk 4 – Func. changes
+      { Low: 1,  Medium: 2,  High: 3  },  // Risk 5 – Users specs
+      { Low: 2,  Medium: 5,  High: 7  },  // Risk 6 – Users testing
+      { Low: 1,  Medium: 2,  High: 3  }   // Risk 7 – Tech support
+    ];
+
+    const OPP_IMPACT_PCT = [
+      { Low: 5,  Medium: 10, High: 20 },  // Opp 1 – Decrease functions
+      { Low: 2,  Medium: 4,  High: 7  },  // Opp 2 – Testing tool
+      { Low: 1,  Medium: 3,  High: 8  }   // Opp 3 – User comm.
+    ];
+
+    const PROB_RANGE = {
+      'Remotely':       '0% – 5%',
+      'Unlikely':       '6% – 30%',
+      'Likely':         '31% – 70%',
+      'Highly likely':  '71% – 95%',
+      'Near certainty': '96% – 99%'
+    };
+
     // ==================== STATE ====================
     let currentScen = null, currentProfile = null;
 
@@ -531,11 +556,13 @@
 
     function fmt(n) { return n.toLocaleString('en-US'); }
 
+    const MCQ_DISPLAY = { A: '1', B: '2', C: '3', D: '4' };
+
     function mcqRow(qKey, opts) {
       return `<div class="mcq-row" id="mcq-${qKey}">` +
         ['A','B','C','D'].map(l =>
           `<button class="mcq-opt" id="mcq-${qKey}-${l}" onclick="selectMcq('${qKey}','${l}')">
-            <span class="mcq-letter">${l}</span><span>${opts[l]}</span>
+            <span class="mcq-letter">${MCQ_DISPLAY[l]}</span><span>${opts[l]}</span>
           </button>`
         ).join('') +
       `</div>`;
@@ -561,21 +588,41 @@
     }
 
     function renderStep1(sData, pData) {
-      const riskRows = sData.risks.map((r, i) => `
+      const riskRows = sData.risks.map((r, i) => {
+        const impactPct = RISK_IMPACT_PCT[i][r.impact];
+        const probRange = PROB_RANGE[r.prob] || r.prob;
+        return `
         <tr>
           <td style="color:var(--muted); font-weight:700; text-align:center; font-size:.8rem;">${i+1}</td>
           <td style="font-size:.79rem;">${r.desc}</td>
-          <td style="text-align:center;"><span class="nfr-level ${levelClass(r.impact)}">${r.impact}</span></td>
-          <td style="text-align:center;"><span class="nfr-level ${levelClass(r.prob)}">${r.prob}</span></td>
-        </tr>`).join('');
+          <td style="text-align:center;">
+            <span class="nfr-level ${levelClass(r.impact)}">${r.impact}</span>
+            <div style="font-size:.72rem; color:var(--muted); margin-top:3px; font-weight:800; font-family:ui-monospace,'Courier New',monospace;">${impactPct}%</div>
+          </td>
+          <td style="text-align:center;">
+            <span class="nfr-level ${levelClass(r.prob)}">${r.prob}</span>
+            <div style="font-size:.72rem; color:var(--muted); margin-top:3px; font-weight:800; font-family:ui-monospace,'Courier New',monospace;">${probRange}</div>
+          </td>
+        </tr>`;
+      }).join('');
 
-      const oppRows = sData.opps.map((o, i) => `
+      const oppRows = sData.opps.map((o, i) => {
+        const impactPct = OPP_IMPACT_PCT[i][o.impact];
+        const probRange = PROB_RANGE[o.prob] || o.prob;
+        return `
         <tr>
           <td style="color:var(--muted); font-weight:700; text-align:center; font-size:.8rem;">${i+1}</td>
           <td style="font-size:.79rem;">${o.desc}</td>
-          <td style="text-align:center;"><span class="nfr-level ${levelClass(o.impact)}">${o.impact}</span></td>
-          <td style="text-align:center;"><span class="nfr-level ${levelClass(o.prob)}">${o.prob}</span></td>
-        </tr>`).join('');
+          <td style="text-align:center;">
+            <span class="nfr-level ${levelClass(o.impact)}">${o.impact}</span>
+            <div style="font-size:.72rem; color:var(--muted); margin-top:3px; font-weight:800; font-family:ui-monospace,'Courier New',monospace;">${impactPct}%</div>
+          </td>
+          <td style="text-align:center;">
+            <span class="nfr-level ${levelClass(o.prob)}">${o.prob}</span>
+            <div style="font-size:.72rem; color:var(--muted); margin-top:3px; font-weight:800; font-family:ui-monospace,'Courier New',monospace;">${probRange}</div>
+          </td>
+        </tr>`;
+      }).join('');
 
       return `
         <div class="combo-header">
@@ -597,7 +644,7 @@
         <p class="section-divider">Step 1 of 2 - Calculate the combined impact (Q1)</p>
 
         <p style="font-size:.85rem; color:var(--muted); margin: 0 0 12px;">
-          For each row, look up the <strong>Impact %</strong> and <strong>Probability %</strong> in the reference tables, then calculate: <em>value = Impact% × Probability%</em>. Sum all risk values and all opportunity values, then enter your totals below.
+          For each row, the <strong>Impact %</strong> and <strong>Probability %&nbsp;range</strong> are shown directly in the table below. Calculate: <em>value = Impact% × Probability%</em> (use the midpoint of the probability range). Sum all risk values and all opportunity values, then enter your totals below.
         </p>
 
         <p class="section-divider" style="margin-top:0;">Risks with negative impact on effort</p>
@@ -607,8 +654,8 @@
               <tr>
                 <th style="width:28px;">#</th>
                 <th>Risk</th>
-                <th style="width:100px; text-align:center;">Impact level</th>
-                <th style="width:130px; text-align:center;">Probability level</th>
+                <th style="width:110px; text-align:center;">Impact level &amp; %</th>
+                <th style="width:155px; text-align:center;">Probability level &amp; range</th>
               </tr>
             </thead>
             <tbody>${riskRows}</tbody>
@@ -622,8 +669,8 @@
               <tr>
                 <th style="width:28px;">#</th>
                 <th>Opportunity</th>
-                <th style="width:100px; text-align:center;">Impact level</th>
-                <th style="width:130px; text-align:center;">Probability level</th>
+                <th style="width:110px; text-align:center;">Impact level &amp; %</th>
+                <th style="width:155px; text-align:center;">Probability level &amp; range</th>
               </tr>
             </thead>
             <tbody>${oppRows}</tbody>
@@ -721,7 +768,7 @@
             <div class="q-label">Project base budget</div>
           </div>
           <div class="q-formula-display">
-            <span class="known">${pData.label}</span> → ${pData.rule} → range <span class="known">${sData.rangeShort}</span><br>
+            Range: <span class="known">${sData.rangeShort}</span> &nbsp;|&nbsp; Profile: <span class="known">${pData.label}</span><br>
             Q2 = <span class="unknown">?</span>
           </div>
           <p class="mcq-label">Select your answer in SimSE:</p>
