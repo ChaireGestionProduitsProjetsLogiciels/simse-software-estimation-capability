@@ -84,6 +84,15 @@
     .ref-table tr:last-child td { border-bottom: none; }
     .ref-table-wrap { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
 
+    /* Inline value input inside table row */
+    .val-input {
+      width: 80px; padding: 5px 8px; border: 1.5px solid var(--border); border-radius: 8px;
+      font-size: .85rem; font-weight: 700; text-align: center; background: #fff;
+    }
+    .val-input:focus { outline: none; border-color: rgba(59,130,246,.55); box-shadow: 0 0 0 3px rgba(59,130,246,.15); }
+    .sum-row td { background: rgba(15,23,42,.04); font-weight: 800; font-size: .82rem; padding: 8px 10px; }
+    .sum-val { font-family: ui-monospace, monospace; font-size: .9rem; color: #1d4ed8; }
+
     /* Modal: risk/opp tables - levels only */
     .ro-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
     .ro-table th { background: rgba(15,23,42,.04); padding: 8px 10px; font-weight: 800; font-size: .73rem; color: var(--muted); border-bottom: 1px solid var(--border); text-align: left; }
@@ -91,18 +100,8 @@
     .ro-table tr:last-child td { border-bottom: none; }
     .ro-table-wrap { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 12px; }
 
-    /* Q1 calculator section */
-    .q1-calc { background: rgba(15,23,42,.03); border: 1px solid var(--border); border-radius: 16px; padding: 16px; margin-top: 14px; }
+    /* Q1 result area */
     .q1-calc-title { font-weight: 900; font-size: .95rem; margin: 0 0 12px; letter-spacing: -.01em; }
-    .q1-inputs { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
-    .q1-input-group { flex: 1; min-width: 200px; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 12px; }
-    .q1-input-group label { display: block; font-size: .8rem; color: var(--muted); margin-bottom: 8px; font-weight: 700; }
-    .q1-input-group input {
-      width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 12px;
-      font-size: 1.05rem; font-weight: 800; text-align: center; box-sizing: border-box;
-    }
-    .q1-input-group input:focus { outline: none; border-color: rgba(59,130,246,.55); box-shadow: 0 0 0 4px rgba(59,130,246,.18); }
-    .q1-hint { font-size: .76rem; color: var(--muted); margin-top: 5px; }
 
     /* Q blocks in step 2 */
     .q-block { border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; margin-bottom: 12px; background: #fff; }
@@ -387,18 +386,18 @@
         rangeShort: "4,000h – 4,700h",
         minH: 4000, maxH: 4700,
         risks: [
-          { desc: "Developers with less technical skills than planned",                    impact: "Low",    prob: "Unlikely"       },
-          { desc: "Communication problems between users and software developers",          impact: "Medium", prob: "Highly likely"  },
-          { desc: "Software architecture more complex than expected",                      impact: "Medium", prob: "Remotely"       },
-          { desc: "More functional requirements changes than expected",                    impact: "High",   prob: "Unlikely"       },
-          { desc: "Users not available in time to review and approve specifications",      impact: "High",   prob: "Near certainty" },
-          { desc: "Users not available in time to conduct user testing",                   impact: "Low",    prob: "Unlikely"       },
-          { desc: "Required technical support staff not available in a timely manner",     impact: "Medium", prob: "Remotely"       }
+          { desc: "Developers with less technical skills than planned",                    impact: "Low",    impactPct:  2, prob: "Unlikely",       probPct:  6 },
+          { desc: "Communication problems between users and software developers",          impact: "Medium", impactPct:  3, prob: "Highly likely",  probPct: 71 },
+          { desc: "Software architecture more complex than expected",                      impact: "Medium", impactPct:  5, prob: "Remotely",       probPct:  3 },
+          { desc: "More functional requirements changes than expected",                    impact: "High",   impactPct: 40, prob: "Unlikely",       probPct:  6 },
+          { desc: "Users not available in time to review and approve specifications",      impact: "High",   impactPct:  3, prob: "Near certainty", probPct: 96 },
+          { desc: "Users not available in time to conduct user testing",                   impact: "Low",    impactPct:  2, prob: "Unlikely",       probPct:  6 },
+          { desc: "Required technical support staff not available in a timely manner",     impact: "Medium", impactPct:  2, prob: "Remotely",       probPct:  0 }
         ],
         opps: [
-          { desc: "Users decide to decrease functions by 20%",                impact: "Medium", prob: "Unlikely" },
-          { desc: "Testing tool utilization is much more productive",         impact: "Low",    prob: "Remotely" },
-          { desc: "Improve user communication for reviews and approval",      impact: "High",   prob: "Unlikely" }
+          { desc: "Users decide to decrease functions by 20%",                impact: "Medium", impactPct: 10, prob: "Unlikely", probPct: 10 },
+          { desc: "Testing tool utilization is much more productive",         impact: "Low",    impactPct:  2, prob: "Remotely", probPct:  3 },
+          { desc: "Improve user communication for reviews and approval",      impact: "High",   impactPct:  8, prob: "Unlikely", probPct: 10 }
         ],
         q1mcq: { A: "7.11%", B: "5.94%", C: "5.28%", D: "1.90%" }
       },
@@ -408,18 +407,18 @@
         rangeShort: "5,300h – 6,100h",
         minH: 5300, maxH: 6100,
         risks: [
-          { desc: "Developers with less technical skills than planned",                    impact: "Medium", prob: "Unlikely"      },
-          { desc: "Communication problems between users and software developers",          impact: "High",   prob: "Likely"        },
-          { desc: "Software architecture more complex than expected",                      impact: "Low",    prob: "Highly likely" },
-          { desc: "More functional requirements changes than expected",                    impact: "Low",    prob: "Remotely"      },
-          { desc: "Users not available in time to review and approve specifications",      impact: "High",   prob: "Highly likely" },
-          { desc: "Users not available in time to conduct user testing",                   impact: "High",   prob: "Unlikely"      },
-          { desc: "Required technical support staff not available in a timely manner",     impact: "Low",    prob: "Remotely"      }
+          { desc: "Developers with less technical skills than planned",                    impact: "Medium", impactPct:  3, prob: "Unlikely",      probPct:  8 },
+          { desc: "Communication problems between users and software developers",          impact: "High",   impactPct:  7, prob: "Likely",        probPct: 70 },
+          { desc: "Software architecture more complex than expected",                      impact: "Low",    impactPct:  1, prob: "Highly likely", probPct: 80 },
+          { desc: "More functional requirements changes than expected",                    impact: "Low",    impactPct:  1, prob: "Remotely",      probPct:  3 },
+          { desc: "Users not available in time to review and approve specifications",      impact: "High",   impactPct:  3, prob: "Highly likely", probPct: 75 },
+          { desc: "Users not available in time to conduct user testing",                   impact: "High",   impactPct:  7, prob: "Unlikely",      probPct: 20 },
+          { desc: "Required technical support staff not available in a timely manner",     impact: "Low",    impactPct:  1, prob: "Remotely",      probPct:  3 }
         ],
         opps: [
-          { desc: "Users decide to decrease functions by 20%",                impact: "Low",  prob: "Unlikely" },
-          { desc: "Testing tool utilization is much more productive",         impact: "Low",  prob: "Unlikely" },
-          { desc: "Improve user communication for reviews and approval",      impact: "High", prob: "Unlikely" }
+          { desc: "Users decide to decrease functions by 20%",                impact: "Low",  impactPct: 5, prob: "Unlikely", probPct: 10 },
+          { desc: "Testing tool utilization is much more productive",         impact: "Low",  impactPct: 2, prob: "Unlikely", probPct: 15 },
+          { desc: "Improve user communication for reviews and approval",      impact: "High", impactPct: 8, prob: "Unlikely", probPct: 15 }
         ],
         q1mcq: { A: "21.76%", B: "2.00%", C: "19.76%", D: "7.65%" }
       },
@@ -429,18 +428,18 @@
         rangeShort: "6,100h – 7,800h",
         minH: 6100, maxH: 7800,
         risks: [
-          { desc: "Developers with less technical skills than planned",                    impact: "Medium", prob: "Likely"        },
-          { desc: "Communication problems between users and software developers",          impact: "Medium", prob: "Highly likely" },
-          { desc: "Software architecture more complex than expected",                      impact: "High",   prob: "Remotely"      },
-          { desc: "More functional requirements changes than expected",                    impact: "High",   prob: "Remotely"      },
-          { desc: "Users not available in time to review and approve specifications",      impact: "Low",    prob: "Unlikely"      },
-          { desc: "Users not available in time to conduct user testing",                   impact: "Low",    prob: "Unlikely"      },
-          { desc: "Required technical support staff not available in a timely manner",     impact: "Low",    prob: "Remotely"      }
+          { desc: "Developers with less technical skills than planned",                    impact: "Medium", impactPct:  2, prob: "Likely",        probPct: 35 },
+          { desc: "Communication problems between users and software developers",          impact: "Medium", impactPct:  1, prob: "Highly likely", probPct: 75 },
+          { desc: "Software architecture more complex than expected",                      impact: "High",   impactPct: 12, prob: "Remotely",      probPct:  3 },
+          { desc: "More functional requirements changes than expected",                    impact: "High",   impactPct: 40, prob: "Remotely",      probPct:  3 },
+          { desc: "Users not available in time to review and approve specifications",      impact: "Low",    impactPct:  1, prob: "Unlikely",      probPct: 25 },
+          { desc: "Users not available in time to conduct user testing",                   impact: "Low",    impactPct:  2, prob: "Unlikely",      probPct: 25 },
+          { desc: "Required technical support staff not available in a timely manner",     impact: "Low",    impactPct:  1, prob: "Remotely",      probPct:  3 }
         ],
         opps: [
-          { desc: "Users decide to decrease functions by 20%",                impact: "Low",  prob: "Remotely" },
-          { desc: "Testing tool utilization is much more productive",         impact: "Low",  prob: "Remotely" },
-          { desc: "Improve user communication for reviews and approval",      impact: "High", prob: "Unlikely" }
+          { desc: "Users decide to decrease functions by 20%",                impact: "Low",  impactPct: 5, prob: "Remotely",  probPct:  2 },
+          { desc: "Testing tool utilization is much more productive",         impact: "Low",  impactPct: 2, prob: "Remotely",  probPct:  2 },
+          { desc: "Improve user communication for reviews and approval",      impact: "High", impactPct: 8, prob: "Unlikely",  probPct: 10 }
         ],
         q1mcq: { A: "3.79%", B: "0.90%", C: "2.85%", D: "4.69%" }
       }
@@ -588,41 +587,46 @@
     }
 
     function renderStep1(sData, pData) {
-      const riskRows = sData.risks.map((r, i) => {
-        const impactPct = RISK_IMPACT_PCT[i][r.impact];
-        const probRange = PROB_RANGE[r.prob] || r.prob;
-        return `
+      const colHeaders = `
+        <th style="width:28px;">#</th>
+        <th>Description</th>
+        <th style="width:115px; text-align:center;">Impact level &amp; %</th>
+        <th style="width:140px; text-align:center;">Probability level &amp; %</th>
+        <th style="width:90px; text-align:center;">Value (%)<br><span style="font-weight:400; font-size:.7rem;">(Impact% × Prob%)</span></th>`;
+
+      const riskRows = sData.risks.map((r, i) => `
         <tr>
           <td style="color:var(--muted); font-weight:700; text-align:center; font-size:.8rem;">${i+1}</td>
           <td style="font-size:.79rem;">${r.desc}</td>
           <td style="text-align:center;">
             <span class="nfr-level ${levelClass(r.impact)}">${r.impact}</span>
-            <div style="font-size:.72rem; color:var(--muted); margin-top:3px; font-weight:800; font-family:ui-monospace,'Courier New',monospace;">${impactPct}%</div>
+            <div style="font-size:.78rem; font-weight:700; margin-top:3px; color:#1e293b;">${r.impactPct}%</div>
           </td>
           <td style="text-align:center;">
             <span class="nfr-level ${levelClass(r.prob)}">${r.prob}</span>
-            <div style="font-size:.72rem; color:var(--muted); margin-top:3px; font-weight:800; font-family:ui-monospace,'Courier New',monospace;">${probRange}</div>
+            <div style="font-size:.78rem; font-weight:700; margin-top:3px; color:#1e293b;">${r.probPct}%</div>
           </td>
-        </tr>`;
-      }).join('');
+          <td style="text-align:center;">
+            <input type="number" class="val-input risk-val" step="0.0001" min="0" placeholder="?" oninput="updateSums()">
+          </td>
+        </tr>`).join('');
 
-      const oppRows = sData.opps.map((o, i) => {
-        const impactPct = OPP_IMPACT_PCT[i][o.impact];
-        const probRange = PROB_RANGE[o.prob] || o.prob;
-        return `
+      const oppRows = sData.opps.map((o, i) => `
         <tr>
           <td style="color:var(--muted); font-weight:700; text-align:center; font-size:.8rem;">${i+1}</td>
           <td style="font-size:.79rem;">${o.desc}</td>
           <td style="text-align:center;">
             <span class="nfr-level ${levelClass(o.impact)}">${o.impact}</span>
-            <div style="font-size:.72rem; color:var(--muted); margin-top:3px; font-weight:800; font-family:ui-monospace,'Courier New',monospace;">${impactPct}%</div>
+            <div style="font-size:.78rem; font-weight:700; margin-top:3px; color:#1e293b;">${o.impactPct}%</div>
           </td>
           <td style="text-align:center;">
             <span class="nfr-level ${levelClass(o.prob)}">${o.prob}</span>
-            <div style="font-size:.72rem; color:var(--muted); margin-top:3px; font-weight:800; font-family:ui-monospace,'Courier New',monospace;">${probRange}</div>
+            <div style="font-size:.78rem; font-weight:700; margin-top:3px; color:#1e293b;">${o.probPct}%</div>
           </td>
-        </tr>`;
-      }).join('');
+          <td style="text-align:center;">
+            <input type="number" class="val-input opp-val" step="0.0001" min="0" placeholder="?" oninput="updateSums()">
+          </td>
+        </tr>`).join('');
 
       return `
         <div class="combo-header">
@@ -641,60 +645,46 @@
           </div>
         </div>
 
-        <p class="section-divider">Step 1 of 2 - Calculate the combined impact (Q1)</p>
+        <p class="section-divider">Step 1 of 2 – Calculate the combined impact (Q1)</p>
 
         <p style="font-size:.85rem; color:var(--muted); margin: 0 0 12px;">
-          For each row, the <strong>Impact %</strong> and <strong>Probability %&nbsp;range</strong> are shown directly in the table below. Calculate: <em>value = Impact% × Probability%</em> (use the midpoint of the probability range). Sum all risk values and all opportunity values, then enter your totals below.
+          For each row, multiply <strong>Impact%</strong> by <strong>Probability%</strong> and enter the result in the <em>Value</em> column.
+          The totals and Q1 are computed automatically.
         </p>
 
         <p class="section-divider" style="margin-top:0;">Risks with negative impact on effort</p>
         <div class="ro-table-wrap">
           <table class="ro-table">
-            <thead>
-              <tr>
-                <th style="width:28px;">#</th>
-                <th>Risk</th>
-                <th style="width:110px; text-align:center;">Impact level &amp; %</th>
-                <th style="width:155px; text-align:center;">Probability level &amp; range</th>
+            <thead><tr>${colHeaders}</tr></thead>
+            <tbody>
+              ${riskRows}
+              <tr class="sum-row">
+                <td colspan="4" style="text-align:right; padding-right:14px;">Σ Risks</td>
+                <td style="text-align:center;"><span class="sum-val" id="sumRisks">—</span></td>
               </tr>
-            </thead>
-            <tbody>${riskRows}</tbody>
+            </tbody>
           </table>
         </div>
 
         <p class="section-divider">Opportunities with positive impact on effort</p>
         <div class="ro-table-wrap">
           <table class="ro-table">
-            <thead>
-              <tr>
-                <th style="width:28px;">#</th>
-                <th>Opportunity</th>
-                <th style="width:110px; text-align:center;">Impact level &amp; %</th>
-                <th style="width:155px; text-align:center;">Probability level &amp; range</th>
+            <thead><tr>${colHeaders.replace(/Description/, 'Opportunity')}</tr></thead>
+            <tbody>
+              ${oppRows}
+              <tr class="sum-row">
+                <td colspan="4" style="text-align:right; padding-right:14px;">Σ Opportunities</td>
+                <td style="text-align:center;"><span class="sum-val" id="sumOpps">—</span></td>
               </tr>
-            </thead>
-            <tbody>${oppRows}</tbody>
+            </tbody>
           </table>
         </div>
 
-        <div class="q1-calc">
-          <p class="q1-calc-title">Enter your computed totals</p>
-          <div class="q1-inputs">
-            <div class="q1-input-group">
-              <label for="inputRisks">Σ Total risk impact (%)</label>
-              <input type="number" id="inputRisks" step="0.01" min="0" placeholder="e.g. 7.80" oninput="updateQ1()">
-              <p class="q1-hint">Sum of all (Impact% × Probability%) for the 7 risks</p>
-            </div>
-            <div class="q1-input-group">
-              <label for="inputOpps">Σ Total opportunity impact (%)</label>
-              <input type="number" id="inputOpps" step="0.01" min="0" placeholder="e.g. 1.86" oninput="updateQ1()">
-              <p class="q1-hint">Sum of all (Impact% × Probability%) for the 3 opportunities</p>
-            </div>
-          </div>
-          <div class="calc-formula" id="q1Formula">Q1 = Σ Risks − Σ Opportunities = ? − ? = ?</div>
+        <div class="calculator-section" style="margin-top:14px;">
+          <div class="calc-formula" id="q1Formula">Q1 = Σ Risks − Σ Opportunities = — − — = —</div>
           <div class="total-display">
-            <div class="total-label">Your Q1 - Combined impact</div>
-            <div class="total-value" id="q1Display">?</div>
+            <div class="total-label">Your Q1 – Combined impact</div>
+            <div class="total-value" id="q1Display">—</div>
           </div>
         </div>
 
@@ -705,30 +695,36 @@
       `;
     }
 
-    function updateQ1() {
-      const risks = parseFloat(document.getElementById('inputRisks').value) || null;
-      const opps  = parseFloat(document.getElementById('inputOpps').value)  || null;
-      if (risks !== null && opps !== null) {
-        const q1 = (risks - opps).toFixed(2);
+    function updateSums() {
+      const riskInputs = [...document.querySelectorAll('.risk-val')];
+      const oppInputs  = [...document.querySelectorAll('.opp-val')];
+      const allFilled  = [...riskInputs, ...oppInputs].every(el => el.value !== '');
+
+      const sumR = riskInputs.reduce((s, el) => s + (parseFloat(el.value) || 0), 0);
+      const sumO = oppInputs.reduce((s,  el) => s + (parseFloat(el.value) || 0), 0);
+      const q1   = sumR - sumO;
+
+      document.getElementById('sumRisks').textContent = allFilled || riskInputs.some(e => e.value) ? sumR.toFixed(4) + '%' : '—';
+      document.getElementById('sumOpps').textContent  = allFilled || oppInputs.some(e => e.value)  ? sumO.toFixed(4) + '%' : '—';
+
+      if (riskInputs.some(e => e.value) || oppInputs.some(e => e.value)) {
         document.getElementById('q1Formula').textContent =
-          'Q1 = Σ Risks − Σ Opportunities = ' + risks.toFixed(2) + '% − ' + opps.toFixed(2) + '% = ' + q1 + '%';
-        document.getElementById('q1Display').textContent = q1 + '%';
-      } else {
-        document.getElementById('q1Formula').textContent = 'Q1 = Σ Risks − Σ Opportunities = ? − ? = ?';
-        document.getElementById('q1Display').textContent = '?';
+          'Q1 = Σ Risks − Σ Opportunities = ' + sumR.toFixed(4) + '% − ' + sumO.toFixed(4) + '% = ' + q1.toFixed(4) + '%';
+        document.getElementById('q1Display').textContent = q1.toFixed(4) + '%';
       }
     }
 
     // ==================== STEP 2 ====================
     function goToStep2() {
-      const risksVal = parseFloat(document.getElementById('inputRisks')?.value);
-      const oppsVal  = parseFloat(document.getElementById('inputOpps')?.value);
-      if (isNaN(risksVal) || isNaN(oppsVal)) {
-        alert('Please enter your Σ Risks and Σ Opportunities totals before proceeding.');
+      const riskInputs = [...document.querySelectorAll('.risk-val')];
+      const oppInputs  = [...document.querySelectorAll('.opp-val')];
+      if (riskInputs.every(e => !e.value) && oppInputs.every(e => !e.value)) {
+        alert('Please fill in at least some values before proceeding.');
         return;
       }
-
-      const q1 = parseFloat((risksVal - oppsVal).toFixed(2));
+      const sumR = riskInputs.reduce((s, el) => s + (parseFloat(el.value) || 0), 0);
+      const sumO = oppInputs.reduce((s,  el) => s + (parseFloat(el.value) || 0), 0);
+      const q1   = parseFloat((sumR - sumO).toFixed(4));
       const sData = SCENARIO_DATA[currentScen];
       const pData = PROFILE_DATA[currentProfile];
       const q2 = getQ2(sData, pData);
@@ -756,6 +752,7 @@
           </div>
           <div class="q-formula-display">
             Q1 (your result) = <span class="known">${q1}%</span>
+            <span style="font-size:.75rem; color:var(--muted); margin-left:6px;">(rounded for matching: ~${parseFloat(q1).toFixed(2)}%)</span>
           </div>
           <p class="mcq-label">Select your answer in SimSE:</p>
           ${mcqRow('q1', sData.q1mcq)}
@@ -782,7 +779,7 @@
             <div class="q-label">Project contingency reserve</div>
           </div>
           <div class="q-formula-display">
-            Q3 = Q1% × Q2 = <span class="known">${q1}%</span> × Q2 = <span class="unknown">?</span>
+            Q3 = Q1% × Q2 = <span class="known">~${parseFloat(q1).toFixed(2)}%</span> × Q2 = <span class="unknown">?</span>
           </div>
           <p class="mcq-label">Select your answer in SimSE:</p>
           ${mcqRow('q3', mcq.q3)}
