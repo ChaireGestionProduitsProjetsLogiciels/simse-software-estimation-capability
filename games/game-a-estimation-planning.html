@@ -40,6 +40,7 @@
           <div class="cta-row">
             <a class="btn btn-primary" href="../questionnaires/game-a-questionnaire.html">Open questionnaire</a>
             <a class="btn btn-soft" href="#downloads">Downloads</a>
+            <a class="btn btn-soft" href="#videos">Videos</a>
           </div>
 
           <div class="hero-links">
@@ -265,6 +266,30 @@
       </div>
     </section>
 
+    <!-- Video explanations -->
+    <section id="videos" class="section section-soft">
+      <div class="container">
+        <header class="section-header">
+          <h2>Video explanations</h2>
+          <p>Watch a short walkthrough of the game before you start.</p>
+        </header>
+        <div class="video-block">
+          <div class="video-lang-toggle">
+            <button class="video-lang-btn active" onclick="switchVideoLang('en')" id="vbtn-en">🇬🇧 English</button>
+            <button class="video-lang-btn" onclick="switchVideoLang('fr')" id="vbtn-fr">🇫🇷 Français</button>
+          </div>
+          <div class="video-aspect">
+            <iframe id="video-player"
+              src="https://www.youtube.com/embed/kHRnqE_D9yM"
+              title="Game A — Estimation Planning"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Downloads -->
     <section id="downloads" class="section">
       <div class="container">
@@ -467,6 +492,13 @@
       document.getElementById('launchModal').style.display = 'none';
     }
     document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLaunchModal(); });
+
+    var VIDEO_IDS = { en: 'kHRnqE_D9yM', fr: '5e14d8rR2QA' };
+    function switchVideoLang(lang) {
+      document.getElementById('video-player').src = 'https://www.youtube.com/embed/' + VIDEO_IDS[lang];
+      document.querySelectorAll('.video-lang-btn').forEach(function(b){ b.classList.remove('active'); });
+      document.getElementById('vbtn-' + lang).classList.add('active');
+    }
   </script>
 </body>
 </html>
