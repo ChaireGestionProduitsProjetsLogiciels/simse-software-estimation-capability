@@ -3,8 +3,8 @@ false
 <endAllowHireFire>
 <beginModelOptions>
 false
-D:\Workspace\eclipse-workspace\Games\icons
-D:\Workspace\eclipse-workspace\init3\src
+D:\Workspace\JavaApps\simse-mdl\icons
+D:\Workspace\JavaApps\simse-generated-game\src
 true
 true
 <endModelOptions>
@@ -250,9 +250,11 @@ In this game, you will learn how to draw the correct conclusions regarding:
 - outlier identification and removal, and 
 - Mean Magnitude of Relative Error (MMRE) significance.
 In addition, in this game, you must demonstrate your ability to correctly interpret the statistical results. 
-You will have access to an Excel file containing the database of completed software projects, their characteristics, and the full steps of building each of the linear regression models. 
+
+You have access to a web questionnaire containing the database of completed software projects, their characteristics, and the full steps of building each of the linear regression models on the website.
+
 Your challenge is to evaluate the statistical results for 10 different scenarios, and to answer four questions related with the statistical performance of the model. 
-In terms of strategy, we recommend making full use of the Excel file to: 
+In terms of strategy, we recommend making full use of the web questionnaire to: 
 - understand steps of building up a regression model, 
 - understand statistical thresholds for all the criteria, 
 - practicing interpretation rather than calculation, 
@@ -260,9 +262,7 @@ In terms of strategy, we recommend making full use of the Excel file to:
 
 Good Luck.
 
-Excel file link : 
 
-https://etsmtl365-my.sharepoint.com/:x:/g/personal/sion-israel_sion_1_ens_etsmtl_ca/EX-XSSjLBnBGhPUv-fcKYJQBG2jr7GO01ykjx7TbpleBBQ?e=iKc85u
 <endStartingNarrative>
 <beginObject>
 1
@@ -2276,7 +2276,7 @@ Counter
 <beginRuleInput>
 EnteredReliabilityEvaluation
 Integer
-Is it valid to draw statistical conclusions from  this sample size? (High=3, Medium=2, None=1)
+Is it valid to draw statistical conclusions from  this sample size? (Yes=3, Barely Enough=2, No=1)
 false
 <beginRuleInputCondition>
 <=

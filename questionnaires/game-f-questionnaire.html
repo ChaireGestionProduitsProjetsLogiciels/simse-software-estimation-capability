@@ -509,6 +509,31 @@
       }
     };
 
+    // Impact % lookup by risk/opp index and level (matches reference panel tables)
+    const RISK_IMPACT_PCT = [
+      { Low: 2,  Medium: 3,  High: 4  },  // Risk 1 – Dev skills
+      { Low: 1,  Medium: 3,  High: 7  },  // Risk 2 – Communication
+      { Low: 1,  Medium: 5,  High: 12 },  // Risk 3 – Architecture
+      { Low: 1,  Medium: 10, High: 40 },  // Risk 4 – Func. changes
+      { Low: 1,  Medium: 2,  High: 3  },  // Risk 5 – Users specs
+      { Low: 2,  Medium: 5,  High: 7  },  // Risk 6 – Users testing
+      { Low: 1,  Medium: 2,  High: 3  }   // Risk 7 – Tech support
+    ];
+
+    const OPP_IMPACT_PCT = [
+      { Low: 5,  Medium: 10, High: 20 },  // Opp 1 – Decrease functions
+      { Low: 2,  Medium: 4,  High: 7  },  // Opp 2 – Testing tool
+      { Low: 1,  Medium: 3,  High: 8  }   // Opp 3 – User comm.
+    ];
+
+    const PROB_RANGE = {
+      'Remotely':       '0% – 5%',
+      'Unlikely':       '6% – 30%',
+      'Likely':         '31% – 70%',
+      'Highly likely':  '71% – 95%',
+      'Near certainty': '96% – 99%'
+    };
+
     // ==================== STATE ====================
     let currentScen = null, currentProfile = null;
 
@@ -530,11 +555,13 @@
 
     function fmt(n) { return n.toLocaleString('en-US'); }
 
+    const MCQ_DISPLAY = { A: '1', B: '2', C: '3', D: '4' };
+
     function mcqRow(qKey, opts) {
       return `<div class="mcq-row" id="mcq-${qKey}">` +
         ['A','B','C','D'].map(l =>
           `<button class="mcq-opt" id="mcq-${qKey}-${l}" onclick="selectMcq('${qKey}','${l}')">
-            <span class="mcq-letter">${l}</span><span>${opts[l]}</span>
+            <span class="mcq-letter">${MCQ_DISPLAY[l]}</span><span>${opts[l]}</span>
           </button>`
         ).join('') +
       `</div>`;
@@ -738,7 +765,7 @@
             <div class="q-label">Project base budget</div>
           </div>
           <div class="q-formula-display">
-            <span class="known">${pData.label}</span> → ${pData.rule} → range <span class="known">${sData.rangeShort}</span><br>
+            Range: <span class="known">${sData.rangeShort}</span> &nbsp;|&nbsp; Profile: <span class="known">${pData.label}</span><br>
             Q2 = <span class="unknown">?</span>
           </div>
           <p class="mcq-label">Select your answer in SimSE:</p>
