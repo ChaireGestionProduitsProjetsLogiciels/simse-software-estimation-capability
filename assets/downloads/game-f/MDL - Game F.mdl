@@ -260,7 +260,7 @@ The questionnaire contains all reference data and walks you through each calcula
 
 The game has 9 scenario-profile combinations (3 scenarios x 3 manager profiles). Evaluate them in any order by clicking "Evaluate Scenario", selecting a combination, and entering your answers (1 to 4) for each of the five questions.
 
-Click "End Game" at any time to see your final score.
+Once all nine combinations are completed, the "End Game" action appears. Click it to see your final score.
 
 Good luck!
 <endStartingNarrative>
@@ -1535,8 +1535,8 @@ false
 <endActionTypeParticipantAttributeConstraint>
 <beginActionTypeParticipantAttributeConstraint>
 ScenariosCompleted
-<
-<>
+>=
+9
 false
 <endActionTypeParticipantAttributeConstraint>
 <beginActionTypeParticipantAttributeConstraint>
