@@ -261,12 +261,12 @@
         </header>
         <div class="video-block">
           <div class="video-lang-toggle">
-            <button class="video-lang-btn" disabled>🇬🇧 English</button>
-            <button class="video-lang-btn active" id="vbtn-fr">🇫🇷 Français</button>
+            <button class="video-lang-btn active" onclick="switchVideoLang('en')" id="vbtn-en">🇬🇧 English</button>
+            <button class="video-lang-btn" onclick="switchVideoLang('fr')" id="vbtn-fr">🇫🇷 Français</button>
           </div>
           <div class="video-aspect">
             <iframe id="video-player"
-              src="https://www.youtube.com/embed/YINZuGMyzH0"
+              src="https://www.youtube.com/embed/vAHgcpP7kzU"
               title="Game F — Risks, Budget &amp; Contingency"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -422,6 +422,13 @@
       document.getElementById('launchModal').style.display = 'none';
     }
     document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLaunchModal(); });
+
+    var VIDEO_IDS = { en: 'vAHgcpP7kzU', fr: 'YINZuGMyzH0' };
+    function switchVideoLang(lang) {
+      document.getElementById('video-player').src = 'https://www.youtube.com/embed/' + VIDEO_IDS[lang];
+      document.querySelectorAll('.video-lang-btn').forEach(function(b){ b.classList.remove('active'); });
+      document.getElementById('vbtn-' + lang).classList.add('active');
+    }
   </script>
 </body>
 </html>
