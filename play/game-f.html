@@ -1,0 +1,104 @@
+<!-- play/game-f.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Play Game F online | Software Estimation Educational Games</title>
+  <meta name="description" content="Play Game F (Risks, budget &amp; contingency) directly in your browser, no Java installation required." />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="https://cjrtnc.leaningtech.com/4.3/loader.js"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Home">Software Estimation Educational Games</a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#use">How to use</a>
+      </nav>
+      <div class="header-logos">
+        <a href="https://cosmic-sizing.org" target="_blank" rel="noopener noreferrer" aria-label="COSMIC sizing standard"><img src="https://cosmic-sizing.org/wp-content/uploads/2020/03/logo-cosmic@2x.png" alt="COSMIC" /></a>
+        <a href="https://www.etsmtl.ca/recherche-innovation/chaires-laboratoires-instituts-centres/chaires-recherche/chaire-philanthropique-gestion-produits-projets-logiciels" target="_blank" rel="noopener noreferrer" aria-label="Philanthropic Research Chair"><img src="https://www.etsmtl.ca/uploads/_1900x2102_crop_center-center_70_none/logo-chaire-philanthropique.png" alt="Chaire philanthropique" /></a>
+        <a href="https://www.etsmtl.ca" target="_blank" rel="noopener noreferrer" aria-label="ETS Montreal"><img src="https://www.etsmtl.ca/assets/img/ets.svg" alt="ETS" /></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <p class="kicker">Game F • Risks, budget &amp; contingency - Play online</p>
+          <h2>Play Game F in your browser</h2>
+          <p>No Java installation needed. The first load can take up to a minute while the Java runtime is downloaded; later visits are faster.</p>
+        </header>
+
+        <div class="cta-row play-actions">
+          <a class="btn btn-primary" href="../questionnaires/game-f-questionnaire.html">Open questionnaire</a>
+          <a class="btn btn-soft" href="../games/game-f-risks-budget.html">Game page</a>
+          <a class="btn btn-soft" href="../assets/downloads/game-f/JAR - Game F.jar" download>Download JAR instead</a>
+        </div>
+
+        <div class="play-frame">
+          <div id="game"></div>
+        </div>
+
+        <p class="muted small top-gap">
+          Runs with <a href="https://cheerpj.com" target="_blank" rel="noopener noreferrer">CheerpJ</a>. If the game does not start, use a recent desktop browser (Chrome, Edge, Firefox) or download the JAR.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <a class="btn btn-soft" href="../index.html#games">← Back to all games</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-title">Software Estimation Educational Games</div>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#use">How to use</a>
+        <a class="ext" href="https://www.ics.uci.edu/~emilyo/SimSE/" target="_blank" rel="noopener noreferrer">SimSE community</a>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .top-gap { margin-top: 1rem; }
+    .play-actions { margin-bottom: 1.25rem; }
+    .play-frame {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow2);
+      background: #0b1220;
+    }
+    /* SimSE's main window is 1024x744 */
+    #game { width: 1024px; height: 768px; margin: 0 auto; }
+  </style>
+
+  <script>
+    (async function () {
+      // CheerpJ serves the web root under /app; resolve the JAR relative to this page
+      // so it also works when the site lives in a sub-folder (e.g. GitHub Pages).
+      var jarUrl = new URL("../assets/downloads/game-f/JAR - Game F.jar", location.href);
+      await cheerpjInit({ version: 17, status: "splash" });
+      cheerpjCreateDisplay(-1, -1, document.getElementById("game"));
+      await cheerpjRunJar("/app" + decodeURIComponent(jarUrl.pathname));
+    })();
+  </script>
+</body>
+</html>
